@@ -228,6 +228,13 @@
 			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>functor</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/commons-functor-1.0-SNAPSHOT.jar</systemPath>
+		</dependency>
 	</dependencies>
 
 </project>
