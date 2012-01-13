@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.apache.commons.functor.UnaryFunction;
+import fuzzy.mf.MembershipFunction;
 
 /**
  * Simple Fuzzy Set, that implements java.util.Set. It contains a membership 
@@ -37,11 +37,11 @@ public class FuzzySet<A> implements Set<Element<A>>, Serializable {
 
 	private static final long serialVersionUID = -4847002337204078159L;
 
-	private final UnaryFunction<A, Double> membershipFunction;
+	private final MembershipFunction<A> membershipFunction;
 	
 	private final Collection<Element<A>> elements;
 	
-	public FuzzySet(UnaryFunction<A, Double> membershipFunction) {
+	public FuzzySet(MembershipFunction<A> membershipFunction) {
 		this.membershipFunction = membershipFunction;
 		elements = new ArrayList<Element<A>>();
 	}
@@ -51,7 +51,7 @@ public class FuzzySet<A> implements Set<Element<A>>, Serializable {
 	 * 
 	 * @return membership function
 	 */
-	public UnaryFunction<? extends A, Double> getMembershipFunction() {
+	public MembershipFunction<A> getMembershipFunction() {
 		return this.membershipFunction;
 	}
 
