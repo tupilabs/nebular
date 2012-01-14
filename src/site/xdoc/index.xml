@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<document>
+  <properties>
+    <title>Overview</title>
+    <author email="dev AT commons DOT apache DOT org">Apache Commons Development Team</author>
+    <author email="rwaldhoff AT apache DOT org">Rodney Waldhoff</author>
+  </properties>
+
+  <body>
+    <section name="Commons Functor: Function Objects for Java">
+      <p>
+         A <em>functor</em> is a function that can be manipulated 
+         as an object, or an object representing a single, generic
+         function.
+      </p>
+      <p>
+         Functors support and encourage a number of powerful programming 
+         techniques including:
+      </p>
+      <ul>
+         <li>programming in a functional style</li>
+         <li>higher order functions</li>
+         <li>internal iterators</li>
+         <li>reuse and specialization through composition rather than inheritance and overloading</li>
+         <li>generic "callback" or "extension point" APIs</li>
+         <li>generic "filters" or predicate APIs</li>
+         <li>
+            many "behavioral" design patterns, such as 
+            Visitor, Strategy, Chain of Responsibility, etc.
+         </li>
+      </ul>
+      <p>
+         See the <a href="examples.html">examples</a> for more information on some of 
+         these techniques.
+      </p>
+    </section>
+    
+    
+    <section name="Overview">
+      <p>
+         <emphasis>Commons Functor</emphasis> defines three general types of
+         functors:
+      </p>
+      <dl>
+        <dt>predicates</dt>
+        <dd>functors that return a <code>boolean</code> value</dd>
+        <dt>functions</dt>
+        <dd>functors that return an <code>Object</code> value</dd>
+        <dt>procedures</dt>
+        <dd>functors that don't return anything</dd>
+      </dl>
+      <p>
+        The root 
+        <code><a href="apidocs/org/apache/commons/functor/package-summary.html">functor</a></code>
+        package defines three signatures for each functor type--taking zero, one or 
+        two <code>Object</code> arguments.
+      </p>
+      <p>
+        The 
+        <a href="apidocs/index.html">remaining packages</a>
+        provide common functor implementations, adapters and utilities.
+      </p>
+    </section>
+    
+    
+<section name="Releases">
+    <subsection name="Functor 1.0 Release (October 2011)">
+      This is the first official Apache Commons-Functor release.
+    </subsection>
+</section>
+
+  </body>
+</document>

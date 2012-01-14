@@ -1,3 +1,16 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an 
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
+ * either express or implied. See the License for the specific language 
+ * governing permissions and limitations under the License.
+ */
 package fuzzy;
 
 import java.io.Serializable;
@@ -11,27 +24,27 @@ import fuzzy.mf.MembershipFunction;
 /**
  * Simple Fuzzy Set, that implements java.util.Set. It contains a membership 
  * function and a collection of elements. 
- * 
  * <p>
  * The membership function of the Fuzzy Set indicates the degree of an element 
  * in this set. The degree is given in a value between [0, 1]. The higher the 
  * value, more the element is member of this set.
- * 
+ * </p>
  * <p>
  * For instance, if for an element x, the membership function returns 0.8, and 
  * for another element, say y, it returns 0.6, then we can say that x is more 
  * member of this Fuzzy Set than y.
- * 
+ * </p>
  * <p>
  * The membership function is a UnaryFunctor, built using classes of Apache 
  * Functor. While the collection of elements is a simple ArrayList.
- * 
+ * </p>
  * <p>
  * Each element is stored in the collection of elements wrapped in another 
  * objects that stores the original value, plus the membership degree.
- * 
- * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ * </p>
+ * @param <A> the Fuzzy element
  * @since 0.1
+ * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  */
 public class FuzzySet<A> implements Set<Element<A>>, Serializable {
 
