@@ -59,5 +59,48 @@ public class ProductSigmoidalInput extends FuzzyInput {
 	public Double getD() {
 		return d;
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(obj == this) {
+			return true;
+		}
+		if(!(obj instanceof ProductSigmoidalInput)) {
+			return false;
+		}
+		final ProductSigmoidalInput that = (ProductSigmoidalInput)obj;
+		return this.getX() == that.getX() && this.getA() == that.getA() && this.getB() == that.getB() && this.getC() == that.getC() && this.getD() == that.getD();
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		int hash = "ProductSigmoidalInput".hashCode();
+		hash <<= 2;
+		if(this.getX() != null) {
+			hash += this.getX().hashCode();
+		}
+		if(this.getA() != null) {
+			hash += this.getA().hashCode();
+		}
+		if(this.getB() != null) {
+			hash += this.getB().hashCode();
+		}
+		if(this.getC() != null) {
+			hash += this.getC().hashCode();
+		}
+		if(this.getD() != null) {
+			hash += this.getD().hashCode();
+		}
+		return hash;
+	}
 
 }

@@ -40,5 +40,42 @@ public class SShapedInput extends FuzzyInput {
 	public Double getB() {
 		return b;
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(obj == this) {
+			return true;
+		}
+		if(!(obj instanceof SShapedInput)) {
+			return false;
+		}
+		final SShapedInput that = (SShapedInput)obj;
+		return this.getX() == that.getX() && this.getA() == that.getA() && this.getB() == that.getB();
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		int hash = "TrapezoidalInput".hashCode();
+		hash <<= 2;
+		if(this.getX() != null) {
+			hash += this.getX().hashCode();
+		}
+		if(this.getA() != null) {
+			hash += this.getA().hashCode();
+		}
+		if(this.getB() != null) {
+			hash += this.getB().hashCode();
+		}
+		return hash;
+	}
 
 }

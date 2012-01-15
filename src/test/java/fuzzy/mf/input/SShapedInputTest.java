@@ -34,9 +34,9 @@ import org.junit.Test;
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
  */
-public class ZShapedInputTest {
+public class SShapedInputTest {
 
-	protected ZShapedInput input;
+	protected SShapedInput input;
 	
 	protected final Double x = 1.0;
 	protected final Double a = 2.0;
@@ -47,7 +47,7 @@ public class ZShapedInputTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		input = new ZShapedInput(x, a, b);
+		input = new SShapedInput(x, a, b);
 	}
 
 	/**
@@ -59,15 +59,15 @@ public class ZShapedInputTest {
 	}
 
 	/**
-	 * Test method for {@link fuzzy.mf.input.ZShapedInput#ZShapedInput(java.lang.Double, java.lang.Double, java.lang.Double)}.
+	 * Test method for {@link fuzzy.mf.input.SShapedInput#SShapedInput(java.lang.Double, java.lang.Double, java.lang.Double)}.
 	 */
 	@Test
-	public void testZShapedInput() {
+	public void testSShapedInput() {
 		assertNotNull(input);
 	}
 
 	/**
-	 * Test method for {@link fuzzy.mf.input.ZShapedInput#getA()}.
+	 * Test method for {@link fuzzy.mf.input.SShapedInput#getA()}.
 	 */
 	@Test
 	public void testGetA() {
@@ -75,7 +75,7 @@ public class ZShapedInputTest {
 	}
 
 	/**
-	 * Test method for {@link fuzzy.mf.input.ZShapedInput#getB()}.
+	 * Test method for {@link fuzzy.mf.input.SShapedInput#getB()}.
 	 */
 	@Test
 	public void testGetB() {
@@ -89,13 +89,13 @@ public class ZShapedInputTest {
 	public void testGetX() {
 		assertEquals(input.getX(), x);
 	}
-	
+
 	/**
 	 * Test method for {@link java.lang.Object#hashCode()}.
 	 */
 	@Test
 	public void testHashCode() {
-		assertEquals(input.hashCode(), new ZShapedInput(x, a, b).hashCode());
+		assertEquals(input.hashCode(), new SShapedInput(x, a, b).hashCode());
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class ZShapedInputTest {
 	 */
 	@Test
 	public void testEquals() {
-		assertEquals(input, new ZShapedInput(x, a, b));
+		assertEquals(input, new SShapedInput(x, a, b));
 	}
 
 }

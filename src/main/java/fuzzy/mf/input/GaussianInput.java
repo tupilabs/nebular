@@ -39,5 +39,42 @@ public class GaussianInput extends FuzzyInput {
 	public Double getA() {
 		return a;
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(obj == this) {
+			return true;
+		}
+		if(!(obj instanceof GaussianInput)) {
+			return false;
+		}
+		final GaussianInput that = (GaussianInput)obj;
+		return this.getX() == that.getX() && this.getSigma() == that.getSigma() && this.getA() == that.getA();
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		int hash = "GaussianInput".hashCode();
+		hash <<= 2;
+		if(this.getX() != null) {
+			hash <<= this.getX().hashCode();
+		}
+		if(this.getSigma() != null) {
+			hash += this.getSigma().hashCode();
+		}
+		if(this.getA() != null) {
+			hash += this.getA().hashCode();
+		}
+		return hash;
+	}
 
 }

@@ -54,7 +54,7 @@ public class ZShapedInput extends FuzzyInput {
 		if(!(obj instanceof ZShapedInput)) {
 			return false;
 		}
-		ZShapedInput that = (ZShapedInput)obj;
+		final ZShapedInput that = (ZShapedInput)obj;
 		return this.getX() == that.getX() && this.getA() == that.getA() && this.getB() == that.getB();
 	}
 	

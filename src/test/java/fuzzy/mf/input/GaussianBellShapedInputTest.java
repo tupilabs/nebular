@@ -34,20 +34,21 @@ import org.junit.Test;
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
  */
-public class ZShapedInputTest {
+public class GaussianBellShapedInputTest {
 
-	protected ZShapedInput input;
+	protected GaussianBellShapedInput input;
 	
-	protected final Double x = 1.0;
-	protected final Double a = 2.0;
-	protected final Double b = 3.0;
+	private final Double x = 1.0;
+	private final Double a = 2.0;
+	private final Double b = 3.0;
+	private final Double c = 4.0;
 	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		input = new ZShapedInput(x, a, b);
+		input = new GaussianBellShapedInput(x, a, b, c);
 	}
 
 	/**
@@ -59,15 +60,15 @@ public class ZShapedInputTest {
 	}
 
 	/**
-	 * Test method for {@link fuzzy.mf.input.ZShapedInput#ZShapedInput(java.lang.Double, java.lang.Double, java.lang.Double)}.
+	 * Test method for {@link fuzzy.mf.input.GaussianBellShapedInput#GaussianBellShapedInput(java.lang.Double, java.lang.Double, java.lang.Double, java.lang.Double)}.
 	 */
 	@Test
-	public void testZShapedInput() {
+	public void testGaussianBellShapedInput() {
 		assertNotNull(input);
 	}
 
 	/**
-	 * Test method for {@link fuzzy.mf.input.ZShapedInput#getA()}.
+	 * Test method for {@link fuzzy.mf.input.GaussianBellShapedInput#getA()}.
 	 */
 	@Test
 	public void testGetA() {
@@ -75,11 +76,19 @@ public class ZShapedInputTest {
 	}
 
 	/**
-	 * Test method for {@link fuzzy.mf.input.ZShapedInput#getB()}.
+	 * Test method for {@link fuzzy.mf.input.GaussianBellShapedInput#getB()}.
 	 */
 	@Test
 	public void testGetB() {
 		assertEquals(input.getB(), b);
+	}
+
+	/**
+	 * Test method for {@link fuzzy.mf.input.GaussianBellShapedInput#getC()}.
+	 */
+	@Test
+	public void testGetC() {
+		assertEquals(input.getC(), c);
 	}
 
 	/**
@@ -89,13 +98,13 @@ public class ZShapedInputTest {
 	public void testGetX() {
 		assertEquals(input.getX(), x);
 	}
-	
+
 	/**
 	 * Test method for {@link java.lang.Object#hashCode()}.
 	 */
 	@Test
 	public void testHashCode() {
-		assertEquals(input.hashCode(), new ZShapedInput(x, a, b).hashCode());
+		assertEquals(input.hashCode(), new GaussianBellShapedInput(x, a, b, c).hashCode());
 	}
 
 	/**
@@ -103,7 +112,7 @@ public class ZShapedInputTest {
 	 */
 	@Test
 	public void testEquals() {
-		assertEquals(input, new ZShapedInput(x, a, b));
+		assertEquals(input, new GaussianBellShapedInput(x, a, b, c));
 	}
 
 }
