@@ -21,10 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package fuzzy.mf.input;
+package fuzzy.mf;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import org.junit.After;
 import org.junit.Before;
@@ -34,22 +33,19 @@ import org.junit.Test;
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
  */
-public class PiShapedInputTest {
+public class SigmoidalMembershipFunctionTest {
 
-	protected PiShapedInput input;
+	protected SigmoidalMembershipFunction mf;
 	
-	private final Double x = 1.0;
-	private final Double a = 2.0;
-	private final Double b = 3.0;
-	private final Double c = 4.0;
-	private final Double d = 5.0;
+	private final double a = 2.0;
+	private final double c = 4.0;
 	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		input = new PiShapedInput(x, a, b, c, d);
+		mf = new SigmoidalMembershipFunction(a, c);
 	}
 
 	/**
@@ -57,55 +53,15 @@ public class PiShapedInputTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
-		input = null;
+		mf = null;
 	}
 
 	/**
-	 * Test method for {@link fuzzy.mf.input.PiShapedInput#PiShapedInput(java.lang.Double, java.lang.Double, java.lang.Double, java.lang.Double, java.lang.Double)}.
+	 * Test method for {@link fuzzy.mf.SigmoidalMembershipFunction#evaluate(fuzzy.mf.input.SigmoidalInput)}.
 	 */
 	@Test
-	public void testPiShapedInput() {
-		assertNotNull(input);
-	}
-
-	/**
-	 * Test method for {@link fuzzy.mf.input.PiShapedInput#getA()}.
-	 */
-	@Test
-	public void testGetA() {
-		assertEquals(a, input.getA());
-	}
-
-	/**
-	 * Test method for {@link fuzzy.mf.input.PiShapedInput#getB()}.
-	 */
-	@Test
-	public void testGetB() {
-		assertEquals(b, input.getB());
-	}
-
-	/**
-	 * Test method for {@link fuzzy.mf.input.PiShapedInput#getC()}.
-	 */
-	@Test
-	public void testGetC() {
-		assertEquals(c, input.getC());
-	}
-
-	/**
-	 * Test method for {@link fuzzy.mf.input.PiShapedInput#getD()}.
-	 */
-	@Test
-	public void testGetD() {
-		assertEquals(d, input.getD());
-	}
-
-	/**
-	 * Test method for {@link fuzzy.mf.input.FuzzyInput#getX()}.
-	 */
-	@Test
-	public void testGetX() {
-		assertEquals(x, input.getX());
+	public void testEvaluate() {
+		assertEquals(Double.valueOf(0.5), mf.evaluate(4.0));
 	}
 
 	/**
@@ -113,7 +69,7 @@ public class PiShapedInputTest {
 	 */
 	@Test
 	public void testHashCode() {
-		assertEquals(input.hashCode(), new PiShapedInput(x, a, b, c, d).hashCode());
+		assertEquals(mf.hashCode(), new SigmoidalMembershipFunction(a, c).hashCode());
 	}
 
 	/**
@@ -121,7 +77,7 @@ public class PiShapedInputTest {
 	 */
 	@Test
 	public void testEquals() {
-		assertEquals(input, new PiShapedInput(x, a, b, c, d));
+		assertEquals(mf, new SigmoidalMembershipFunction(a,  c));
 	}
 
 }

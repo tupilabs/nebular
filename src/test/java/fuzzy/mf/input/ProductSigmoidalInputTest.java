@@ -81,7 +81,7 @@ public class ProductSigmoidalInputTest {
 	 */
 	@Test
 	public void testGetB() {
-		assertEquals(input.getB(), b);
+		assertEquals(b, input.getB());
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class ProductSigmoidalInputTest {
 	 */
 	@Test
 	public void testGetC() {
-		assertEquals(input.getC(), c);
+		assertEquals(c, input.getC());
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class ProductSigmoidalInputTest {
 	 */
 	@Test
 	public void testGetD() {
-		assertEquals(input.getD(), d);
+		assertEquals(d, input.getD());
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class ProductSigmoidalInputTest {
 	 */
 	@Test
 	public void testGetX() {
-		assertEquals(input.getX(), x);
+		assertEquals(x, input.getX());
 	}
 
 	/**

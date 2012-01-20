@@ -71,7 +71,7 @@ public class SShapedInputTest {
 	 */
 	@Test
 	public void testGetA() {
-		assertEquals(input.getA(), a);
+		assertEquals(a, input.getA());
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class SShapedInputTest {
 	 */
 	@Test
 	public void testGetB() {
-		assertEquals(input.getB(), b);
+		assertEquals(b, input.getB());
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class SShapedInputTest {
 	 */
 	@Test
 	public void testGetX() {
-		assertEquals(input.getX(), x);
+		assertEquals(x, input.getX());
 	}
 
 	/**

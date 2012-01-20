@@ -70,7 +70,7 @@ public class GaussianInputTest {
 	 */
 	@Test
 	public void testGetSigma() {
-		assertEquals(input.getSigma(), sigma);
+		assertEquals(sigma, input.getSigma());
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class GaussianInputTest {
 	 */
 	@Test
 	public void testGetA() {
-		assertEquals(input.getA(), a);
+		assertEquals(a, input.getA());
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class GaussianInputTest {
 	 */
 	@Test
 	public void testGetX() {
-		assertEquals(input.getX(), x);
+		assertEquals(x, input.getX());
 	}
 
 	/**

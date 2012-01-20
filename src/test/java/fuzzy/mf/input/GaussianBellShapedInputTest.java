@@ -72,7 +72,7 @@ public class GaussianBellShapedInputTest {
 	 */
 	@Test
 	public void testGetA() {
-		assertEquals(input.getA(), a);
+		assertEquals(a, input.getA());
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class GaussianBellShapedInputTest {
 	 */
 	@Test
 	public void testGetB() {
-		assertEquals(input.getB(), b);
+		assertEquals(b, input.getB());
 	}
 
 	/**
@@ -88,7 +88,7 @@ public class GaussianBellShapedInputTest {
 	 */
 	@Test
 	public void testGetC() {
-		assertEquals(input.getC(), c);
+		assertEquals(c, input.getC());
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class GaussianBellShapedInputTest {
 	 */
 	@Test
 	public void testGetX() {
-		assertEquals(input.getX(), x);
+		assertEquals(x, input.getX());
 	}
 
 	/**
