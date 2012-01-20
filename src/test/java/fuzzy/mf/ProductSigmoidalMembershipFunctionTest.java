@@ -25,29 +25,34 @@ package fuzzy.mf;
 
 import static org.junit.Assert.assertEquals;
 
+import java.math.RoundingMode;
+import java.text.NumberFormat;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for Sigmoidal Membership Function.
+ * Tests for Product Sigmoidal Membership Function.
  * 
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
  */
-public class SigmoidalMembershipFunctionTest {
+public class ProductSigmoidalMembershipFunctionTest {
 
-	protected SigmoidalMembershipFunction mf;
+	protected ProductSigmoidalMembershipFunction mf;
 	
-	private final double a = 2.0;
-	private final double c = 4.0;
+	private final double a1 = 2.0;
+	private final double c1 = 3.0;
+	private final double a2 = -5.0;
+	private final double c2 = 8.0;
 	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		mf = new SigmoidalMembershipFunction(a, c);
+		mf = new ProductSigmoidalMembershipFunction(a1, c1, a2, c2);
 	}
 
 	/**
@@ -59,27 +64,33 @@ public class SigmoidalMembershipFunctionTest {
 	}
 
 	/**
-	 * Test method for {@link fuzzy.mf.SigmoidalMembershipFunction#evaluate(fuzzy.mf.input.SigmoidalInput)}.
+	 * Test method for {@link fuzzy.mf.ProductSigmoidalMembershipFunction#evaluate(java.lang.Double)}.
 	 */
 	@Test
 	public void testEvaluate() {
-		assertEquals(Double.valueOf(0.5), mf.evaluate(4.0));
+		NumberFormat nf = NumberFormat.getInstance();
+		nf.setMaximumFractionDigits(2);
+		nf.setMinimumFractionDigits(2);
+		nf.setRoundingMode(RoundingMode.HALF_UP);
+		Double r1 = Double.parseDouble(nf.format(mf.evaluate(3.0)));
+		Double r2 = Double.parseDouble(nf.format(mf.evaluate(8.0)));
+		assertEquals(r1, r2);
 	}
-	
+
 	/**
-	 * Test method for {@link fuzzy.mf.SigmoidalMembershipFunction#equals(java.lang.Object)}.
+	 * Test method for {@link fuzzy.mf.ProductSigmoidalMembershipFunction#equals(java.lang.Object)}.
 	 */
 	@Test
-	public void testEquals() {
-		assertEquals(mf, new SigmoidalMembershipFunction(a,  c));
+	public void testEqualsObject() {
+		assertEquals(mf, new ProductSigmoidalMembershipFunction(a1, c1, a2, c2));
 	}
 	
 	/**
-	 * Test method for {@link fuzzy.mf.SigmoidalMembershipFunction#hashCode()}.
+	 * Test method for {@link fuzzy.mf.ProductSigmoidalMembershipFunction#hashCode()}.
 	 */
 	@Test
 	public void testHashCode() {
-		assertEquals(mf.hashCode(), new SigmoidalMembershipFunction(a, c).hashCode());
+		assertEquals(mf.hashCode(), new ProductSigmoidalMembershipFunction(a1, c1, a2, c2).hashCode());
 	}
 
 }

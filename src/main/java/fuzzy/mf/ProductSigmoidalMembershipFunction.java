@@ -13,31 +13,74 @@
  */
 package fuzzy.mf;
 
-import fuzzy.mf.input.ProductSigmoidalInput;
+import org.apache.commons.math.analysis.function.Sigmoid;
 
 
-public class ProductSigmoidalMembershipFunction implements FuzzyMembershipFunction<ProductSigmoidalInput> {
 
-	public Double evaluate(ProductSigmoidalInput input) {
-		final Double e = Math.E;
+public class ProductSigmoidalMembershipFunction implements FuzzyMembershipFunction<Double> {
+
+	protected final static double DEFAULT_LOW_ASYMPTOTE = 0.0;
+	protected final static double DEFAULT_HIGH_ASYMPTOTE = 1.0;
+	
+	protected final Sigmoid sigmoid;
+	
+	private double a1;
+	private double c1;
+	private double a2;
+	private double c2;
+	
+	public ProductSigmoidalMembershipFunction(double a1, double c1, double a2, double c2) {
+		this(DEFAULT_LOW_ASYMPTOTE, DEFAULT_HIGH_ASYMPTOTE, a1, c1, a2, c2);
+	}
+	
+	public ProductSigmoidalMembershipFunction(double lowAsymptote, double highAsymptote, double a1, double c1, double a2, double c2) {
+		sigmoid = new Sigmoid(lowAsymptote, highAsymptote);
+		this.a1 = a1;
+		this.c1 = c1;
+		this.a2 = a2;
+		this.c2 = c2;
+	}
+	
+	public Double evaluate(Double x) {
+		final double r1 = sigmoid.value(a1*(x-c1));
+		final double r2 = sigmoid.value(a2*(x-c2));
 		
-		final Double function1 = (
-					1
-					/
-					(1+(
-						Math.pow(e, -(input.getA() * (input.getX()-input.getB())))
-					))
-				);
-		
-		final Double function2 = (
-				1
-				/
-				(1+(
-					Math.pow(e, -(input.getC() * (input.getX()-input.getD())))
-				))
-			);
-		
-		return (function1 * function2);
+		return (r1 * r2);
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(obj == this) {
+			return true;
+		}
+		if(!(obj instanceof ProductSigmoidalMembershipFunction)) {
+			return false;
+		}
+		final ProductSigmoidalMembershipFunction that = (ProductSigmoidalMembershipFunction)obj;
+		return this.a1 == that.a1 && this.c1 == that.c1 && this.a2 == that.a2 && this.c2 == that.c2;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		int hash = "ProductSigmoidalMembershipFunction".hashCode();
+		hash <<= 2;
+		hash ^= (int)this.a1;
+		hash <<= 2;
+		hash ^= (int)this.c1;
+		hash <<= 2;
+		hash ^= (int)this.a2;
+		hash <<= 2;
+		hash ^= (int)this.c2;
+		return hash;
 	}
 
 }
