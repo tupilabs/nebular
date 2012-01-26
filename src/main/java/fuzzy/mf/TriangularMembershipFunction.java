@@ -13,13 +13,78 @@
  */
 package fuzzy.mf;
 
-import fuzzy.mf.input.TriangularInput;
+import java.io.Serializable;
 
+import org.apache.commons.math.util.FastMath;
 
-public class TriangularMembershipFunction implements FuzzyMembershipFunction<TriangularInput> {
+/**
+ * Triangular Membership Function. Equivalent to Matlab 
+ * <a href="http://www.mathworks.com/help/toolbox/fuzzy/trimf.html">trimf</a> 
+ * function. 
+ * 
+ * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ * @since 0.1
+ */
+public class TriangularMembershipFunction implements MembershipFunction, Serializable {
 
-	public Double evaluate(TriangularInput input) {
-		return Math.max(Math.min((input.getX()-input.getA()), (input.getX())/(input.getC()-input.getB())), 0);
+	/**
+     * serialVersionUID declaration.
+     */
+	private static final long serialVersionUID = 7696291193049536862L;
+	
+	private final double a;
+	private final double b;
+	private final double c;
+	
+	public TriangularMembershipFunction(double a, double b, double c) {
+		this.a = a;
+		this.b = b;
+		this.c = c;
+	}
+	
+	public Double evaluate(Double x) {
+		return FastMath.max(FastMath.min(((x-a)/(b-a)), ((c-x)/(c-b))), 0.0);
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(obj == this) {
+			return true;
+		}
+		if(!(obj instanceof TriangularMembershipFunction)) {
+			return false;
+		}
+		final TriangularMembershipFunction that = (TriangularMembershipFunction)obj;
+		return this.a == that.a && this.b == that.b && this.c == that.c;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		int hash = "TriangularMembershipFunction".hashCode();
+		hash <<= 2;
+		hash ^= (int)this.a;
+		hash <<= 2;
+		hash ^= (int)this.b;
+		hash <<= 2;
+		hash ^= (int)this.c;
+		return hash;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Triangular Membership Function ["+this.a+" "+this.b+" "+this.c+"]";
 	}
 
 }

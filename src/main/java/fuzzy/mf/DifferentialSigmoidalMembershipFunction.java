@@ -13,37 +13,112 @@
  */
 package fuzzy.mf;
 
-import fuzzy.mf.input.DifferentialSigmoidalInput;
+import java.io.IOException;
+import java.io.Serializable;
 
+import org.apache.commons.math.analysis.function.Sigmoid;
 
-public class DifferentialSigmoidalMembershipFunction implements FuzzyMembershipFunction<DifferentialSigmoidalInput> {
+/**
+ * Differential Sigmoidal Membership Function. Equivalent to Matlab 
+ * <a href="http://www.mathworks.com/help/toolbox/fuzzy/dsigmf.html">dsigmf</a> 
+ * function. 
+ * 
+ * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ * @since 0.1
+ */
+public class DifferentialSigmoidalMembershipFunction implements MembershipFunction, Serializable {
 
-	public Double evaluate(DifferentialSigmoidalInput input) {
-		final Double e = Math.E;
+	/**
+     * serialVersionUID declaration.
+     */
+	private static final long serialVersionUID = 1107852818087942508L;
+	
+	protected final static double DEFAULT_LOW_ASYMPTOTE = 0.0;
+	protected final static double DEFAULT_HIGH_ASYMPTOTE = 1.0;
+	
+	protected transient Sigmoid sigmoid;
+	
+	private final double a1;
+	private final double c1;
+	private final double a2;
+	private final double c2;
+	
+	private final double lowAsymptote;
+	private final double highAsymptote;
+	
+	public DifferentialSigmoidalMembershipFunction(double a1, double c1, double a2, double c2) {
+		this(DEFAULT_LOW_ASYMPTOTE, DEFAULT_HIGH_ASYMPTOTE, a1, c1, a2, c2);
+	}
+	
+	public DifferentialSigmoidalMembershipFunction(double lowAsymptote, double highAsymptote, double a1, double c1, double a2, double c2) {
+		sigmoid = new Sigmoid(lowAsymptote, highAsymptote);
+		this.a1 = a1;
+		this.c1 = c1;
+		this.a2 = a2;
+		this.c2 = c2;
 		
-		final Double function1 = (
-								1 
-								/ 
-								(
-									1 + 
-									(
-										Math.pow(e, -(input.getA() * input.getX() - input.getB()) )
-									)
-								)  
-							);
+		this.lowAsymptote = lowAsymptote;
+		this.highAsymptote = highAsymptote;
+	}
+	
+	public void writeObject(java.io.ObjectOutputStream out) throws IOException {
+		out.defaultWriteObject();
+	}
+	
+	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException {
+		in.defaultReadObject();
 		
-		final Double function2 = (
-								1 
-								/ 
-								(
-									1 + 
-									(
-										Math.pow(e, -(input.getC() * input.getX() - input.getD()) )
-									)
-								)  
-							);
-								
-		return (function1 - function2);
+		sigmoid = new Sigmoid(lowAsymptote, highAsymptote);
+	}
+	
+	public Double evaluate(Double x) {
+		final double r1 = sigmoid.value(a1*(x-c1));
+		final double r2 = sigmoid.value(a2*(x-c2));
+		
+		return (r1 - r2);
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(obj == this) {
+			return true;
+		}
+		if(!(obj instanceof DifferentialSigmoidalMembershipFunction)) {
+			return false;
+		}
+		final DifferentialSigmoidalMembershipFunction that = (DifferentialSigmoidalMembershipFunction)obj;
+		return this.a1 == that.a1 && this.c1 == that.c1 && this.a2 == that.a2 && this.c2 == that.c2;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		int hash = "DifferentialSigmoidalMembershipFunction".hashCode();
+		hash <<= 2;
+		hash ^= (int)this.a1;
+		hash <<= 2;
+		hash ^= (int)this.c1;
+		hash <<= 2;
+		hash ^= (int)this.a2;
+		hash <<= 2;
+		hash ^= (int)this.c2;
+		return hash;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Differential Sigmoidal Membership Function ["+a1+" "+c1+" "+a2+" "+c2+"]";
 	}
 
 }

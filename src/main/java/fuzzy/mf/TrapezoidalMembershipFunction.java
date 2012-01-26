@@ -13,14 +13,87 @@
  */
 package fuzzy.mf;
 
-import fuzzy.mf.input.TrapezoidalInput;
+import java.io.Serializable;
 
-public class TrapezoidalMembershipFunction implements FuzzyMembershipFunction<TrapezoidalInput> {
+/**
+ * Trapezoidal Shaped Membership Function. Equivalent to Matlab 
+ * <a href="http://www.mathworks.com/help/toolbox/fuzzy/trapmf.html">trapmf</a> 
+ * function.
+ * 
+ * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ * @since 0.1
+ */
+public class TrapezoidalMembershipFunction implements MembershipFunction, Serializable {
 
-	public Double evaluate(TrapezoidalInput input) {
-		final Double minimum1 = Math.min((input.getX()-input.getA())/(input.getB()-input.getA()), 1);
-		final Double minimum2 = Math.min(minimum1, (input.getD()-input.getX())/(input.getD()-input.getC()));
-		return Math.max(minimum2, 0);
+	/**
+     * serialVersionUID declaration.
+     */
+	private static final long serialVersionUID = 6694250592149329781L;
+	
+	private final double a;
+	private final double b;
+	private final double c;
+	private final double d;
+	
+	public TrapezoidalMembershipFunction(double a, double b, double c, double d) {
+		this.a = a;
+		this.b = b;
+		this.c = c;
+		this.d = d;
+	}
+	
+	public Double evaluate(Double x) {
+		if(x <= a) {
+			return 0.0;
+		} else if(a <= x && x <= b) {
+			return ((x-a)/(b-a));
+		} else if(c <= x && x <= d) {
+			return ((d-x)/(d-c));
+		} else if(d <= x) {
+			return 0.0;
+		}
+		
+		// TODO: find out what happens in Matlab when the value is out of range
+		return 0.0;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(obj == this) {
+			return true;
+		}
+		if(!(obj instanceof TrapezoidalMembershipFunction)) {
+			return false;
+		}
+		final TrapezoidalMembershipFunction that = (TrapezoidalMembershipFunction)obj;
+		return this.a == that.a && this.b == that.b && this.c == that.c && this.d == that.d;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		int hash = "TrapezoidalMembershipFunction".hashCode();
+		hash <<= 2;
+		hash ^= (int)this.a;
+		hash <<= 2;
+		hash ^= (int)this.b;
+		return hash;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Trapezoidal-Shaped Membership Function ["+this.a+" "+this.b+"]";
 	}
 
 }

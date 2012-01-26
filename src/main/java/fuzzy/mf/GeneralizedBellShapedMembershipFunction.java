@@ -18,41 +18,32 @@ import java.io.Serializable;
 import org.apache.commons.math.util.FastMath;
 
 /**
- * S-Shaped Membership Function. Equivalent to Matlab 
- * <a href="http://www.mathworks.com/help/toolbox/fuzzy/smf.html">smf</a> 
- * function.
+ * Generalized Bell-Shaped Membership Function. Equivalent to Matlab 
+ * <a href="http://www.mathworks.com/help/toolbox/fuzzy/gbellmf.html">gbellmf</a> 
+ * function. 
  * 
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
  */
-public class SShapedMembershipFunction implements MembershipFunction, Serializable {
+public class GeneralizedBellShapedMembershipFunction implements MembershipFunction, Serializable {
 
 	/**
      * serialVersionUID declaration.
      */
-	private static final long serialVersionUID = -4171080765970704081L;
+	private static final long serialVersionUID = 8440666936218883278L;
 	
 	private final double a;
 	private final double b;
+	private final double c;
 	
-	public SShapedMembershipFunction(double a, double b) {
+	public GeneralizedBellShapedMembershipFunction(double a, double b, double c) {
 		this.a = a;
 		this.b = b;
+		this.c = c;
 	}
 	
 	public Double evaluate(Double x) {
-		if(x <= a) {
-			return 0.0;
-		} else if(a <= x && x <= ((a+b)/2)) {
-			return 2 * FastMath.pow((x-a)/(b-a), 2);
-		} else if((a+b)/2 <= x && x <= b) {
-			return 1 - (2 * FastMath.pow((x-b)/(b-a), 2));
-		} else if(x >= b) {
-			return 1.0;
-		}
-		
-		// TODO: find out what happens in Matlab when the value is out of range
-		return 0.0;
+		return (1/(1+FastMath.pow(FastMath.abs((x-c)/a), (2*b))));
 	}
 	
 	/* (non-Javadoc)
@@ -66,11 +57,11 @@ public class SShapedMembershipFunction implements MembershipFunction, Serializab
 		if(obj == this) {
 			return true;
 		}
-		if(!(obj instanceof SShapedMembershipFunction)) {
+		if(!(obj instanceof GeneralizedBellShapedMembershipFunction)) {
 			return false;
 		}
-		final SShapedMembershipFunction that = (SShapedMembershipFunction)obj;
-		return this.a == that.a && this.b == that.b;
+		final GeneralizedBellShapedMembershipFunction that = (GeneralizedBellShapedMembershipFunction)obj;
+		return this.a == that.a && this.b == that.b && this.c == that.c;
 	}
 	
 	/* (non-Javadoc)
@@ -78,11 +69,13 @@ public class SShapedMembershipFunction implements MembershipFunction, Serializab
 	 */
 	@Override
 	public int hashCode() {
-		int hash = "SShapedMembershipFunction".hashCode();
+		int hash = "GeneralizedBellShapedMembershipFunction".hashCode();
 		hash <<= 2;
 		hash ^= (int)this.a;
 		hash <<= 2;
 		hash ^= (int)this.b;
+		hash <<= 2;
+		hash ^= (int)this.c;
 		return hash;
 	}
 	
@@ -91,7 +84,7 @@ public class SShapedMembershipFunction implements MembershipFunction, Serializab
 	 */
 	@Override
 	public String toString() {
-		return "S-Shaped Membership Function ["+this.a+" "+this.b+"]";
+		return "Generalized Bell-Shaped Membership Function ["+a+" "+b+" "+c+"]";
 	}
 
 }
