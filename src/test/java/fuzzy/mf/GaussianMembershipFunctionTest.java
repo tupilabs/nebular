@@ -52,7 +52,7 @@ public class GaussianMembershipFunctionTest extends
 		mf = makeMembershipFunction();
 
 		/*
-		 * Results from Matlab psigmf.
+		 * Results from Matlab gaussmf.
 		 * 
 		 * x=0:0.1:10; y=gaussmf(x,[2 5]);
 		 */
@@ -180,7 +180,7 @@ public class GaussianMembershipFunctionTest extends
 		int i = 0;
 		for (double x = 0.0; x <= 10.0; x += 0.1) {
 			double y = Double.parseDouble(nf.format(mf.evaluate(x)));
-			assertEquals(Double.valueOf(y), Double.valueOf(expected[i][1]));
+			assertEquals(Double.valueOf(expected[i][1]), Double.valueOf(y));
 			i++;
 		}
 	}

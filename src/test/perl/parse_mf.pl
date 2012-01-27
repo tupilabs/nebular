@@ -3,6 +3,10 @@
 use strict;
 use warnings;
 
+use feature 'say';
+
+sub trim($);
+
 my $countArguments;
 
 $countArguments = $#ARGV + 1;
@@ -26,13 +30,30 @@ $doubleIndex = 0.0;
 while(<SIGMF>) {
 	$line = $_; 
 	chomp($line);
-	if($line =~ m/\s?(\d.\d{4})/) {
+    if($line =~ m/\s?\d.\d{4}/) {
 		$value = $line;
 		$value =~ s/\s?(\d\.\d{4})/$1/;
+		$value = trim($value);
 		$doubleIndexFormatted = sprintf("%.4f", $doubleIndex);
-		$line =~ s/\s?(\d\.\d{4})/expected[$i] = new double[]{$doubleIndexFormatted, $1};/;
-        print $line, "\n";
+		$line = "expected[$i] = new double[]{$doubleIndexFormatted, $value};";
+        say $line;
         $i+=1;
         $doubleIndex+=0.1;
-	} # else ignore
+	} elsif($line =~ m/\s?\d+\s?$/) {
+		$value = $line;
+        $value =~ s/\s?(\d+)\s?$/$1/;
+        $value = sprintf("%.4f", $value);
+        $doubleIndexFormatted = sprintf("%.4f", $doubleIndex);
+        $line = "expected[$i] = new double[]{$doubleIndexFormatted, $value};";
+        say $line;
+        $i+=1;
+        $doubleIndex+=0.1;
+	}
+}
+
+sub trim($) {
+	my $string = shift;
+	$string =~ s/^\s+//;
+	$string =~ s/\s+$//;
+	return $string;
 }

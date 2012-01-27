@@ -157,6 +157,7 @@ public class SigmoidalMembershipFunctionTest extends BaseMembershipFunctionTest<
 		expected[98] = new double[]{9.8000, 1.0000};
 		expected[99] = new double[]{9.9000, 1.0000};
 		expected[100] = new double[]{10.0000, 1.0000};
+		
 	}
 
 	/**
@@ -178,7 +179,7 @@ public class SigmoidalMembershipFunctionTest extends BaseMembershipFunctionTest<
 		int i = 0;
 		for(double x = 0.0 ; x <= 10.0 ; x+=0.1) {
 			double y = Double.parseDouble(nf.format(mf.evaluate(x)));
-			assertEquals(Double.valueOf(y), Double.valueOf(expected[i][1]));
+			assertEquals(Double.valueOf(expected[i][1]), Double.valueOf(y));
 			i++;
 		}
 	}

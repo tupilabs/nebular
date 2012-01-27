@@ -53,7 +53,7 @@ public class DifferentialSigmoidalMembershipFunctionTest extends BaseMembershipF
 		mf = makeMembershipFunction();
 		
 		/*
-		 * Results from Matlab psigmf.
+		 * Results from Matlab dsigmf.
 		 * 
 		 * x=0:0.1:10;
 		 * y=dsigmf(x, [5 2 5 7]);
@@ -180,7 +180,7 @@ public class DifferentialSigmoidalMembershipFunctionTest extends BaseMembershipF
 		int i = 0;
 		for(double x = 0.0 ; x <= 10.0 ; x+=0.1) {
 			double y = Double.parseDouble(nf.format(mf.evaluate(x)));
-			assertEquals(Double.valueOf(y), Double.valueOf(expected[i][1]));
+			assertEquals(Double.valueOf(expected[i][1]), Double.valueOf(y));
 			i++;
 		}
 	}

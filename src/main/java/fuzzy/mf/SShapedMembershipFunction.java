@@ -51,7 +51,6 @@ public class SShapedMembershipFunction implements MembershipFunction, Serializab
 			return 1.0;
 		}
 		
-		// TODO: find out what happens in Matlab when the value is out of range
 		return 0.0;
 	}
 	
