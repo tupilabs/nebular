@@ -29,6 +29,17 @@ import org.junit.Test;
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
  */
+<<<<<<< HEAD
+public class GaussianMembershipFunctionTest extends BaseMembershipFunctionTest<GaussianMembershipFunction> {
+
+	protected GaussianMembershipFunction mf;
+	
+	private final double sigma = 2.0;
+	private final double c = 5.0;
+	
+	private final double[][] expected = new double[101][2];
+	
+=======
 public class GaussianMembershipFunctionTest extends
 		BaseMembershipFunctionTest<GaussianMembershipFunction> {
 
@@ -39,17 +50,32 @@ public class GaussianMembershipFunctionTest extends
 
 	private final double[][] expected = new double[101][2];
 
+>>>>>>> b17d9256b7d0e513dbc7bc2a689b5dcc119d5ee1
 	@Override
 	protected GaussianMembershipFunction makeMembershipFunction() {
 		return new GaussianMembershipFunction(sigma, c);
 	}
+<<<<<<< HEAD
+	
+=======
 
+>>>>>>> b17d9256b7d0e513dbc7bc2a689b5dcc119d5ee1
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
 		mf = makeMembershipFunction();
+<<<<<<< HEAD
+		
+		/*
+		 * Results from Matlab psigmf.
+		 * 
+		 * x=0:0.1:10;
+		 * y=gaussmf(x,[2 5]);
+		 */
+		// TODO test data
+=======
 
 		/*
 		 * Results from Matlab gaussmf.
@@ -158,6 +184,7 @@ public class GaussianMembershipFunctionTest extends
 		expected[99] = new double[] { 9.9000, 0.0497 };
 		expected[100] = new double[] { 10.0000, 0.0439 };
 
+>>>>>>> b17d9256b7d0e513dbc7bc2a689b5dcc119d5ee1
 	}
 
 	/**
@@ -169,8 +196,12 @@ public class GaussianMembershipFunctionTest extends
 	}
 
 	/**
+<<<<<<< HEAD
+	 * Test method for {@link fuzzy.mf.GaussianMembershipFunction#evaluate(java.lang.Double)}.
+=======
 	 * Test method for
 	 * {@link fuzzy.mf.GaussianMembershipFunction#evaluate(java.lang.Double)}.
+>>>>>>> b17d9256b7d0e513dbc7bc2a689b5dcc119d5ee1
 	 */
 	@Test
 	public void testEvaluate() {
@@ -178,9 +209,15 @@ public class GaussianMembershipFunctionTest extends
 		nf.setMaximumFractionDigits(4);
 		nf.setRoundingMode(RoundingMode.HALF_UP);
 		int i = 0;
+<<<<<<< HEAD
+		for(double x = 0.0 ; x <= 10.0 ; x+=0.1) {
+			double y = Double.parseDouble(nf.format(mf.evaluate(x)));
+			assertEquals(Double.valueOf(y), Double.valueOf(expected[i][1]));
+=======
 		for (double x = 0.0; x <= 10.0; x += 0.1) {
 			double y = Double.parseDouble(nf.format(mf.evaluate(x)));
 			assertEquals(Double.valueOf(expected[i][1]), Double.valueOf(y));
+>>>>>>> b17d9256b7d0e513dbc7bc2a689b5dcc119d5ee1
 			i++;
 		}
 	}

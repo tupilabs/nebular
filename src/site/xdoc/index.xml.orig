@@ -18,6 +18,58 @@
 <document>
   <properties>
     <title>Overview</title>
+<<<<<<< HEAD
+    <author email="brunodepaulak AT yahoo DOT com DOT br">Bruno P. Kinoshita</author>
+  </properties>
+
+  <body>
+    <section name="nebular: Java Fuzzy Logic API">
+      <p>
+         Nebular is a <em>fuzzy logic</em> API written in pure Java. 
+         It contains pre-defined membership functions such as sigmoidal, 
+         gaussian, pi-shaped among others.
+      </p>
+      <p>
+         A fuzzy set is a set whose elements have certain degree of membership. 
+         In classical sets (or bivalent, or crisps) an element belongs or not 
+         to the set. In fuzzy sets, membership functions define the degree to 
+         which an element belongs to certain set.   
+      </p>
+      <p>
+         See the <a href="/examples.html">examples</a> for examples on how to 
+         create a fuzzy set using a membership function in nebular. Or see  
+         the User Guide for details on each membership. 
+         function.
+      </p>
+      <p>
+         nebular uses <a href="http://commons.apache.org/sandbox/functor/">
+         Apache Commons Functor</a> to create membership functions using 
+         functional programming. This way, a user can extend nebular by 
+         creating a <em>functor</em> (usually a <em>UnaryFunction</em>). 
+         nebular relies on <a href="http://commons.apache.org/math/">Apache 
+         Commons Math</a> for some of the pre-defined membership functions. 
+      </p>
+    </section>
+    
+	<section name="Releases">
+	    <subsection name="nebular 0.1 Release (January 2012)">
+	      <p>This is the first official nebular release. The following 
+	      membership functions are supported in this version.</p>
+	      <ul>
+	       <li><a href="userguide/dsigmf.html">Differential sigmoidal membership function</a></li>
+	       <li><a href="userguide/gaussmf.html">Gaussian membership function</a></li>
+	       <li><a href="userguide/gbellmf.html">Generalized bell-shaped membership function</a></li>
+	       <li><a href="userguide/pimf.html">PI-shaped membership function</a></li>
+	       <li><a href="userguide/psigmf.html">Product sigmoidal membership function</a></li>
+	       <li><a href="userguide/sigmf.html">Sigmoidal membership function</a></li>
+	       <li><a href="userguide/smf.html">S-shaped membership function</a></li>
+	       <li><a href="userguide/trapmf.html">Trapezoidal membership function</a></li>
+	       <li><a href="userguide/tmf.html">Triangular membership function</a></li>
+	       <li><a href="userguide/zmf.html">Z-shaped membership function</a></li>
+	      </ul>
+	    </subsection>
+	</section>
+=======
     <author email="dev AT commons DOT apache DOT org">Apache Commons Development Team</author>
     <author email="rwaldhoff AT apache DOT org">Rodney Waldhoff</author>
   </properties>
@@ -84,6 +136,7 @@
       This is the first official Apache Commons-Functor release.
     </subsection>
 </section>
+>>>>>>> b17d9256b7d0e513dbc7bc2a689b5dcc119d5ee1
 
   </body>
 </document>

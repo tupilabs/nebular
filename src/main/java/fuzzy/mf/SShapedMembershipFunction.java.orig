@@ -18,43 +18,46 @@ import java.io.Serializable;
 import org.apache.commons.math.util.FastMath;
 
 /**
- * Z-Shaped Membership Function. Equivalent to Matlab 
- * <a href="http://www.mathworks.com/help/toolbox/fuzzy/zmf.html">zmf</a> 
+ * S-Shaped Membership Function. Equivalent to Matlab 
+ * <a href="http://www.mathworks.com/help/toolbox/fuzzy/smf.html">smf</a> 
  * function.
  * 
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
  */
-public class ZShapedMembershipFunction implements MembershipFunction, Serializable {
+public class SShapedMembershipFunction implements MembershipFunction, Serializable {
 
 	/**
      * serialVersionUID declaration.
      */
-	private static final long serialVersionUID = -4104449517678613139L;
+	private static final long serialVersionUID = -4171080765970704081L;
 	
 	private final double a;
 	private final double b;
 	
-	public ZShapedMembershipFunction(double a, double b) {
+	public SShapedMembershipFunction(double a, double b) {
 		this.a = a;
 		this.b = b;
 	}
 	
 	public Double evaluate(Double x) {
 		if(x <= a) {
-			return 1.0;
-		} else if(a <= x && x <= ((a+b)/2)) {
-			return 1-(2 * FastMath.pow(((x-a)/(b-a)), 2));
-		} else if(((a+b)/2) <= x && x <= b) {
-			return 2 * FastMath.pow(((x-b)/(b-a)), 2);
-		} else if(x >= b) {
 			return 0.0;
+		} else if(a <= x && x <= ((a+b)/2)) {
+			return 2 * FastMath.pow((x-a)/(b-a), 2);
+		} else if((a+b)/2 <= x && x <= b) {
+			return 1 - (2 * FastMath.pow((x-b)/(b-a), 2));
+		} else if(x >= b) {
+			return 1.0;
 		}
 		
+<<<<<<< HEAD
 		// TODO: find out what happens in Matlab when the value is out of range
+=======
+>>>>>>> b17d9256b7d0e513dbc7bc2a689b5dcc119d5ee1
 		return 0.0;
 	}
-
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
@@ -66,10 +69,10 @@ public class ZShapedMembershipFunction implements MembershipFunction, Serializab
 		if(obj == this) {
 			return true;
 		}
-		if(!(obj instanceof ZShapedMembershipFunction)) {
+		if(!(obj instanceof SShapedMembershipFunction)) {
 			return false;
 		}
-		final ZShapedMembershipFunction that = (ZShapedMembershipFunction)obj;
+		final SShapedMembershipFunction that = (SShapedMembershipFunction)obj;
 		return this.a == that.a && this.b == that.b;
 	}
 	
@@ -78,7 +81,7 @@ public class ZShapedMembershipFunction implements MembershipFunction, Serializab
 	 */
 	@Override
 	public int hashCode() {
-		int hash = "ZShapedMembershipFunction".hashCode();
+		int hash = "SShapedMembershipFunction".hashCode();
 		hash <<= 2;
 		hash ^= (int)this.a;
 		hash <<= 2;
@@ -91,7 +94,7 @@ public class ZShapedMembershipFunction implements MembershipFunction, Serializab
 	 */
 	@Override
 	public String toString() {
-		return "Z-Shaped Membership Function ["+this.a+" "+this.b+"]";
+		return "S-Shaped Membership Function ["+this.a+" "+this.b+"]";
 	}
-	
+
 }
