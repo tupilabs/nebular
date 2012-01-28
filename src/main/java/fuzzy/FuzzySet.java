@@ -14,10 +14,10 @@
 package fuzzy;
 
 import java.io.Serializable;
+import java.util.AbstractSet;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.Set;
 
 import fuzzy.mf.MembershipFunction;
 
@@ -42,21 +42,65 @@ import fuzzy.mf.MembershipFunction;
  * Each element is stored in the collection of elements wrapped in another 
  * objects that stores the original value, plus the membership degree.
  * </p>
- * @param <A> the Fuzzy element
  * @since 0.1
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  */
-public class FuzzySet<A> implements Set<Element<A>>, Serializable {
+public class FuzzySet extends AbstractSet<FuzzySet.Element> implements Serializable {
 
 	private static final long serialVersionUID = -4847002337204078159L;
 
-	private final MembershipFunction<A> membershipFunction;
+	private transient MembershipFunction membershipFunction;
 	
-	private final Collection<Element<A>> elements;
+	private transient Collection<Element> elements;
 	
-	public FuzzySet(MembershipFunction<A> membershipFunction) {
+	/**
+     * Save the state of this <tt>HashSet</tt> instance to a stream (that is,
+     * serialize it).
+     *
+     * @serialData The capacity of the backing <tt>HashMap</tt> instance
+     *             (int), and its load factor (float) are emitted, followed by
+     *             the size of the set (the number of elements it contains)
+     *             (int), followed by all of its elements (each an Object) in
+     *             no particular order.
+     */
+    private void writeObject(java.io.ObjectOutputStream s)
+        throws java.io.IOException {
+        s.defaultWriteObject();
+
+        s.writeInt(elements.size());
+
+        s.writeObject(membershipFunction);
+        
+        // Write out all elements in the proper order.
+        Iterator<Element> it = elements.iterator();
+        while(it.hasNext()) {
+        	s.writeObject(it.next());
+        }
+    }
+
+    /**
+     * Reconstitute the <tt>HashSet</tt> instance from a stream (that is,
+     * deserialize it).
+     */
+    private void readObject(java.io.ObjectInputStream s)
+        throws java.io.IOException, ClassNotFoundException {
+        s.defaultReadObject();
+
+        int size = s.readInt();
+        elements = new ArrayList<Element>(size);
+
+        membershipFunction = (MembershipFunction) s.readObject();
+        
+        // Read in all elements in the proper order.
+        for (int i=0; i<size; i++) {
+            Element element = (Element)s.readObject();
+            elements.add(element);
+        }
+    }
+	
+	public FuzzySet(MembershipFunction membershipFunction) {
 		this.membershipFunction = membershipFunction;
-		elements = new ArrayList<Element<A>>();
+		elements = new ArrayList<Element>();
 	}
 	
 	/**
@@ -64,7 +108,7 @@ public class FuzzySet<A> implements Set<Element<A>>, Serializable {
 	 * 
 	 * @return membership function
 	 */
-	public MembershipFunction<A> getMembershipFunction() {
+	public MembershipFunction getMembershipFunction() {
 		return this.membershipFunction;
 	}
 
@@ -85,20 +129,18 @@ public class FuzzySet<A> implements Set<Element<A>>, Serializable {
 	/* (non-Javadoc)
 	 * @see java.util.Set#contains(java.lang.Object)
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public boolean contains(Object o) {
-		try {
-			A anotherA = (A)o;
-			return elements.contains(new Element(o, this.membershipFunction.evaluate(anotherA)));
-		} catch (ClassCastException cce) {
-			return false;
+		if(o instanceof Element) {
+			Element anotherElement = (Element)o;
+			return elements.contains(anotherElement);
 		}
+		return false;
 	}
 
 	/* (non-Javadoc)
 	 * @see java.util.Set#iterator()
 	 */
-	public Iterator<Element<A>> iterator() {
+	public Iterator<Element> iterator() {
 		return elements.iterator();
 	}
 
@@ -119,7 +161,7 @@ public class FuzzySet<A> implements Set<Element<A>>, Serializable {
 	/* (non-Javadoc)
 	 * @see java.util.Set#add(java.lang.Object)
 	 */
-	public boolean add(Element<A> e) {
+	public boolean add(Element e) {
 		return elements.add(e);
 	}
 
@@ -140,7 +182,7 @@ public class FuzzySet<A> implements Set<Element<A>>, Serializable {
 	/* (non-Javadoc)
 	 * @see java.util.Set#addAll(java.util.Collection)
 	 */
-	public boolean addAll(Collection<? extends Element<A>> c) {
+	public boolean addAll(Collection<? extends Element> c) {
 		return elements.addAll(c);
 	}
 
@@ -164,51 +206,78 @@ public class FuzzySet<A> implements Set<Element<A>>, Serializable {
 	public void clear() {
 		elements.clear();
 	}
-
-}
-
-/**
- * A Fuzzy Set element. This is a wrapper for a fuzzy set element.  
- * 
- * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 0.1
- */
-class Element<A> implements Serializable {
-
-	private static final long serialVersionUID = -2610505335269904685L;
-	
-	private final A entry;
-	private final Double degree;
 	
 	/**
-	 * @param entry a fuzzy set element
-	 * @param degree the membership degree of the element
+	 * A Fuzzy Set element. This is a wrapper for a fuzzy set element.  
+	 * 
+	 * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+	 * @since 0.1
 	 */
-	public Element(A entry, Double degree) {
-		this.entry = entry;
-		this.degree = degree;
+	public static class Element implements Serializable {
+
+		private static final long serialVersionUID = -2610505335269904685L;
+		
+		private final Object entry;
+		private final double degree;
+		
+		/**
+		 * @param entry a fuzzy set element
+		 * @param degree the membership degree of the element
+		 */
+		public Element(Object entry, double degree) {
+			this.entry = entry;
+			this.degree = degree;
+		}
+		
+		/**
+		 * @return the entry
+		 */
+		public Object getEntry() {
+			return entry;
+		}
+		
+		/**
+		 * @return the degree
+		 */
+		public double getDegree() {
+			return degree;
+		}
+		
+		/* (non-Javadoc)
+		 * @see java.lang.Object#equals(java.lang.Object)
+		 */
+		@Override
+		public boolean equals(Object obj) {
+			if(obj == null) {
+				return false;
+			}
+			if(obj == this) {
+				return true;
+			}
+			if(!(obj instanceof Element)) {
+				return false;
+			}
+			final Element that = (Element)obj;
+			if(this.degree == that.degree) {
+				if(this.entry != null) {
+					return this.entry.equals(that.entry);
+				}
+				return true;
+			}
+			return false;
+		}
+		
+		public int hashCode() {
+			int hash = "Element".hashCode();
+			hash <<= 2;
+			hash ^= (int)this.degree;
+			if(this.entry != null) {
+				hash <<= 2;
+				hash ^= this.entry.hashCode();
+			}
+			return hash;
+		};
+		
 	}
-	
-	/**
-	 * @return the entry
-	 */
-	public A getEntry() {
-		return entry;
-	}
-	
-	/**
-	 * @return the degree
-	 */
-	public Double getDegree() {
-		return degree;
-	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		return this.entry == null ? false : this.entry.equals(obj);
-	}
-	
+
 }

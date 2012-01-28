@@ -24,25 +24,23 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for Product Sigmoidal Membership Function.
+ * Tests for S-Shaped Membership Function.
  * 
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
  */
-public class ProductSigmoidalMembershipFunctionTest extends BaseMembershipFunctionTest<ProductSigmoidalMembershipFunction> {
+public class SShapedMembershipFunctionTest extends BaseMembershipFunctionTest<SShapedMembershipFunction> {
 
-	protected ProductSigmoidalMembershipFunction mf;
+	protected SShapedMembershipFunction mf;
 	
-	private final double a1 = 2.0;
-	private final double c1 = 3.0;
-	private final double a2 = -5.0;
-	private final double c2 = 8.0;
+	private final double a = 1.0;
+	private final double b = 8.0;
 	
 	private final double[][] expected = new double[101][2];
 	
 	@Override
-	protected ProductSigmoidalMembershipFunction makeMembershipFunction() {
-		return new ProductSigmoidalMembershipFunction(a1, c1, a2, c2);
+	protected SShapedMembershipFunction makeMembershipFunction() {
+		return new SShapedMembershipFunction(a, b);
 	}
 	
 	/**
@@ -56,7 +54,7 @@ public class ProductSigmoidalMembershipFunctionTest extends BaseMembershipFuncti
 		 * Results from Matlab psigmf.
 		 * 
 		 * x=0:0.1:10;
-		 * y=psigmf(x,[2 3 -5 8]);
+		 * y=smf(x,[1 8]);
 		 */
 		// TODO test data
 	}
@@ -68,9 +66,9 @@ public class ProductSigmoidalMembershipFunctionTest extends BaseMembershipFuncti
 	public void tearDown() throws Exception {
 		mf = null;
 	}
-
+	
 	/**
-	 * Test method for {@link fuzzy.mf.ProductSigmoidalMembershipFunction#evaluate(java.lang.Double)}.
+	 * Test method for {@link fuzzy.mf.SShapedMembershipFunction#evaluate(java.lang.Double)}.
 	 */
 	@Test
 	public void testEvaluate() {
@@ -84,5 +82,5 @@ public class ProductSigmoidalMembershipFunctionTest extends BaseMembershipFuncti
 			i++;
 		}
 	}
-
+	
 }

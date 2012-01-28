@@ -18,72 +18,56 @@
 <document>
   <properties>
     <title>Overview</title>
-    <author email="dev AT commons DOT apache DOT org">Apache Commons Development Team</author>
-    <author email="rwaldhoff AT apache DOT org">Rodney Waldhoff</author>
+    <author email="brunodepaulak AT yahoo DOT com DOT br">Bruno P. Kinoshita</author>
   </properties>
 
   <body>
-    <section name="Commons Functor: Function Objects for Java">
+    <section name="nebular: Java Fuzzy Logic API">
       <p>
-         A <em>functor</em> is a function that can be manipulated 
-         as an object, or an object representing a single, generic
+         Nebular is a <em>fuzzy logic</em> API written in pure Java. 
+         It contains pre-defined membership functions such as sigmoidal, 
+         gaussian, pi-shaped among others.
+      </p>
+      <p>
+         A fuzzy set is a set whose elements have certain degree of membership. 
+         In classical sets (or bivalent, or crisps) an element belongs or not 
+         to the set. In fuzzy sets, membership functions define the degree to 
+         which an element belongs to certain set.   
+      </p>
+      <p>
+         See the <a href="/examples.html">examples</a> for examples on how to 
+         create a fuzzy set using a membership function in nebular. Or see  
+         the User Guide for details on each membership. 
          function.
       </p>
       <p>
-         Functors support and encourage a number of powerful programming 
-         techniques including:
-      </p>
-      <ul>
-         <li>programming in a functional style</li>
-         <li>higher order functions</li>
-         <li>internal iterators</li>
-         <li>reuse and specialization through composition rather than inheritance and overloading</li>
-         <li>generic "callback" or "extension point" APIs</li>
-         <li>generic "filters" or predicate APIs</li>
-         <li>
-            many "behavioral" design patterns, such as 
-            Visitor, Strategy, Chain of Responsibility, etc.
-         </li>
-      </ul>
-      <p>
-         See the <a href="examples.html">examples</a> for more information on some of 
-         these techniques.
+         nebular uses <a href="http://commons.apache.org/sandbox/functor/">
+         Apache Commons Functor</a> to create membership functions using 
+         functional programming. This way, a user can extend nebular by 
+         creating a <em>functor</em> (usually a <em>UnaryFunction</em>). 
+         nebular relies on <a href="http://commons.apache.org/math/">Apache 
+         Commons Math</a> for some of the pre-defined membership functions. 
       </p>
     </section>
     
-    
-    <section name="Overview">
-      <p>
-         <emphasis>Commons Functor</emphasis> defines three general types of
-         functors:
-      </p>
-      <dl>
-        <dt>predicates</dt>
-        <dd>functors that return a <code>boolean</code> value</dd>
-        <dt>functions</dt>
-        <dd>functors that return an <code>Object</code> value</dd>
-        <dt>procedures</dt>
-        <dd>functors that don't return anything</dd>
-      </dl>
-      <p>
-        The root 
-        <code><a href="apidocs/org/apache/commons/functor/package-summary.html">functor</a></code>
-        package defines three signatures for each functor type--taking zero, one or 
-        two <code>Object</code> arguments.
-      </p>
-      <p>
-        The 
-        <a href="apidocs/index.html">remaining packages</a>
-        provide common functor implementations, adapters and utilities.
-      </p>
-    </section>
-    
-    
-<section name="Releases">
-    <subsection name="Functor 1.0 Release (October 2011)">
-      This is the first official Apache Commons-Functor release.
-    </subsection>
-</section>
+	<section name="Releases">
+	    <subsection name="nebular 0.1 Release (January 2012)">
+	      <p>This is the first official nebular release. The following 
+	      membership functions are supported in this version.</p>
+	      <ul>
+	       <li><a href="userguide/dsigmf.html">Differential sigmoidal membership function</a></li>
+	       <li><a href="userguide/gaussmf.html">Gaussian membership function</a></li>
+	       <li><a href="userguide/gbellmf.html">Generalized bell-shaped membership function</a></li>
+	       <li><a href="userguide/pimf.html">PI-shaped membership function</a></li>
+	       <li><a href="userguide/psigmf.html">Product sigmoidal membership function</a></li>
+	       <li><a href="userguide/sigmf.html">Sigmoidal membership function</a></li>
+	       <li><a href="userguide/smf.html">S-shaped membership function</a></li>
+	       <li><a href="userguide/trapmf.html">Trapezoidal membership function</a></li>
+	       <li><a href="userguide/tmf.html">Triangular membership function</a></li>
+	       <li><a href="userguide/zmf.html">Z-shaped membership function</a></li>
+	      </ul>
+	    </subsection>
+	</section>
 
   </body>
 </document>

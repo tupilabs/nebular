@@ -15,18 +15,48 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<project name="Nebular">
-  <bannerRight>
-    <name>Nebular</name>
+<project name="nebular">
+
+  <publishDate position="right"/>
+  
+  <version position="left"/>
+  
+  <poweredBy>
+    <logo name="Maven" href="http://maven.apache.org/"
+          img="http://maven.apache.org/images/logos/maven-feather.png"/>
+  </poweredBy>
+  
+  <bannerLeft>
+    <name>nebular</name>
     <src>/images/nebular-logo-white.png</src>
     <href>/index.html</href>
-  </bannerRight>
+  </bannerLeft>
+  
   <body>
-    <menu name="Nebular">
+    <menu name="nebular">
       <item name="Overview" href="/index.html" />
       <item name="Examples" href="/examples.html" />
-      <item name="Javadoc" href="apidocs/index.html" />
-      <item name="Downloads" href="/download_nebular.cgi" />
+      <item name="Javadoc" href="/apidocs/index.html" />
+      <item name="Downloads" href="http://sourceforge.net/projects/nebular/files/" />
     </menu>
+    
+    <menu name="User guide">
+      <item name="Creating fuzzy sets" href="/userguide/fuzzysets.html" />
+      <item name="Membership functions" collapse="false">
+        <item name="Differential sigmoidal membership function" href="/userguide/dsigmf.html" />
+        <item name="Gaussian membership function" href="/userguide/gaussmf.html" />
+        <item name="Generalized bell-shaped sigmoidal membership function" href="/userguide/gbellmf.html" />
+        <item name="PI-shaped membership function" href="/userguide/pimf.html" />
+        <item name="Product sigmoidal membership function" href="/userguide/psigmf.html" />
+        <item name="Sigmoidal membership function" href="/userguide/sigmf.html" />
+        <item name="S-shaped membership function" href="/userguide/smf.html" />
+        <item name="Trapezoidal membership function" href="/userguide/trapmf.html" />
+        <item name="Triangular membership function" href="/userguide/trimf.html" />
+        <item name="Z-shaped membership function" href="/userguide/zmf.html" />
+      </item>
+    </menu>
+     
+    <menu ref="reports" />
   </body>
+  
 </project>
