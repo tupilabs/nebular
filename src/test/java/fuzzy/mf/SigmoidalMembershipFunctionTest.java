@@ -179,11 +179,7 @@ public class SigmoidalMembershipFunctionTest extends BaseMembershipFunctionTest<
 		int i = 0;
 		for(double x = 0.0 ; x <= 10.0 ; x+=0.1) {
 			double y = Double.parseDouble(nf.format(mf.evaluate(x)));
-<<<<<<< HEAD
-			assertEquals(Double.valueOf(y), Double.valueOf(expected[i][1]));
-=======
 			assertEquals(Double.valueOf(expected[i][1]), Double.valueOf(y));
->>>>>>> b17d9256b7d0e513dbc7bc2a689b5dcc119d5ee1
 			i++;
 		}
 	}

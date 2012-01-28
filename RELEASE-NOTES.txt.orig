@@ -14,31 +14,17 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 -->
-<<<<<<< HEAD
 
 
                                   nebular
                                 Version 0.1
-=======
-$Id: RELEASE-NOTES.txt 1183729 2011-10-15 21:32:32Z simonetripodi $
-
-
-                          Commons Functor Package
-                                Version 1.0
->>>>>>> b17d9256b7d0e513dbc7bc2a689b5dcc119d5ee1
                                Release Notes
 
 
 INTRODUCTION
 ============
 
-<<<<<<< HEAD
 This is the first nebular release.
-=======
-This is the first Apache Commons Functor release.
-The Apache Commons Functor library defines common functor and functor-related interfaces,
-implementations, and utilities.
->>>>>>> b17d9256b7d0e513dbc7bc2a689b5dcc119d5ee1
 
 IMPORTANT NOTES
 ================
