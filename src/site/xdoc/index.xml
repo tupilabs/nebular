@@ -24,7 +24,7 @@
   <body>
     <section name="nebular: Java Fuzzy Logic API">
       <p>
-         Nebular is a <em>fuzzy logic</em> API written in pure Java. 
+         nebular is a <em>fuzzy logic</em> API written in pure Java. 
          It contains pre-defined membership functions such as sigmoidal, 
          gaussian, pi-shaped among others.
       </p>
@@ -51,7 +51,7 @@
     </section>
     
 	<section name="Releases">
-	    <subsection name="nebular 0.1 Release (January 2012)">
+	    <subsection name="nebular 0.1 Release (March 2012)">
 	      <p>This is the first official nebular release. The following 
 	      membership functions are supported in this version.</p>
 	      <ul>

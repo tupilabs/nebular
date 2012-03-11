@@ -26,7 +26,7 @@ import org.apache.commons.math.analysis.function.Sigmoid;
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
  */
-public class DifferentialSigmoidalMembershipFunction implements MembershipFunction, Serializable {
+public class DifferentialSigmoidalMembershipFunction implements MembershipFunction<Double>, Serializable {
 
 	/**
      * serialVersionUID declaration.

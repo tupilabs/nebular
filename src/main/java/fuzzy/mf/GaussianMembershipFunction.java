@@ -25,7 +25,7 @@ import org.apache.commons.math.util.FastMath;
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
  */
-public class GaussianMembershipFunction implements MembershipFunction, Serializable {
+public class GaussianMembershipFunction implements MembershipFunction<Double>, Serializable {
 
 	// TODO Revisit this class later, and see if we can use math Gaussian
 	//protected final Gaussian gaussian;

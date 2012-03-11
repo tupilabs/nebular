@@ -17,15 +17,16 @@
 -->
 <document>
   <properties>
-    <title>Examples</title>
+    <title>Creating fuzzy sets</title>
     <author email="brunodepaulak AT yahoo DOT com DOT br">Bruno P. Kinoshita</author>
   </properties>
 
   <body>
-    <section name="Examples">
+    <section name="Fuzzy sets">
       <p>
-         We've begun to develop some example code that demonstrates the use and
-         utility of the Functor component.
+         Fuzzy sets are collections of fuzzy elements. Each fuzzy set contains 
+         a membership function which acts on the fuzzy elements giving them 
+         
       </p>
       <p>
          In order to keep the examples in sync with the rest of the code,         

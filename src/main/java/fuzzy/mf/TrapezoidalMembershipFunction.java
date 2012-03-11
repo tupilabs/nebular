@@ -23,7 +23,7 @@ import java.io.Serializable;
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
  */
-public class TrapezoidalMembershipFunction implements MembershipFunction, Serializable {
+public class TrapezoidalMembershipFunction implements MembershipFunction<Double>, Serializable {
 
 	/**
      * serialVersionUID declaration.

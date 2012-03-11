@@ -25,7 +25,7 @@ import org.apache.commons.math.util.FastMath;
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
  */
-public class GeneralizedBellShapedMembershipFunction implements MembershipFunction, Serializable {
+public class GeneralizedBellShapedMembershipFunction implements MembershipFunction<Double>, Serializable {
 
 	/**
      * serialVersionUID declaration.

@@ -32,7 +32,7 @@ import org.junit.Test;
  * @since 0.1
  * @param <T> Type of Membership Function
  */
-public abstract class BaseMembershipFunctionTest<T extends MembershipFunction> {
+public abstract class BaseMembershipFunctionTest<T extends MembershipFunction<?>> {
 
 	/**
 	 * Creates a membership function for tests.
