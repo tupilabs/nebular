@@ -25,8 +25,9 @@ import org.apache.commons.functor.UnaryFunction;
  * 
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
+ * @param <T> unary function parameter value.
  */
-public interface MembershipFunction extends UnaryFunction<Double, Double> {
+public interface MembershipFunction<T> extends UnaryFunction<T, Double> {
 
 	/**
      * Returns a human readable description of this membership function.
@@ -51,7 +52,7 @@ public interface MembershipFunction extends UnaryFunction<Double, Double> {
      * note that the default Object implementation
      * does in fact adhere to the functor <code>equals</code> contract.
      * </p>
-     * @param that the object to compare this membership function to
+     * @param obj the object to compare this membership function to
      * @see #hashCode
      * @return <code>true</code> iff the given object implements
      *         this same membership function interface, and is known to produce 
