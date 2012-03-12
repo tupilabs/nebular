@@ -24,148 +24,51 @@
   <body>
     <section name="Examples">
       <p>
-         We've begun to develop some example code that demonstrates the use and
-         utility of the Functor component.
+         nebular provides basic fuzzy membership functions, that can be used 
+         with Java collections to create fuzzy sets.
       </p>
       <p>
-         In order to keep the examples in sync with the rest of the code,         
-         each example is written as a <a href="http://junit.org/">JUnit</a> 
-         <code>TestCase</code>.  The example programs are executed along with 
-         all the other unit tests, and can be invoked via <code>mvn test</code> 
-         once you've set up Maven as described in the 
-         <a href="building.html">build instructions</a>.
+         In the example below, we will see how to create a sigmoidal 
+         membership function and store its elements and their respective 
+         membership values in a HashMap.
       </p>
       <p>
-         If you're not familiar with JUnit, don't worry. An understanding of 
-         JUnit isn't important for an understanding of these examples, and 
-         we'll walk you through the relevant bits anyway.
+        <pre><![CDATA[
+SigmoidalMembershipFunction mf = new SigmoidalMembershipFunction(0.5, 1.5);
+Map<Double, Double> map = new LinkedHashMap<Double, Double>();
+
+for(double i = 0.0; i <= 2.0 ; i+=0.01) {
+    map.put(i, mf.evaluate(i));
+}
+
+NumberFormat nf = NumberFormat.getInstance();
+nf.setMinimumFractionDigits(2);
+nf.setMaximumFractionDigits(2);
+for(Map.Entry<Double, Double> entry : map.entrySet()) {
+    System.out.println("i="+nf.format(entry.getKey())+", degree="+nf.format(entry.getValue()));
+}]]></pre>
       </p>
       <p>
-         Two things you'll want to know about JUnit are (a) all the methods
-         annotated with "@Test" will be executed automatically by the 
-         test runner and (b) there are various "assert" methods present in 
-         org.junit.Assert that can be used to make assertions about the Objects 
-         being tested.  If any assertion fails, the JUnit framework will count 
-         (and report) this as a test failure.
+        The output is a map containing the initial values and its membership 
+        degrees, calculated using the sigmoidal membership function.
       </p>
-      <p>You can run a specific test case or sub-suite in Maven by invoking</p>
-      <pre>mvn -e -X -Dtest==&lt;fully-specified-test-case-name&gt; test</pre>
-      <p>For example, to run the Quicksort example, invoke</p>
-      <pre>mvn -e -X -Dtest=org.apache.commons.functor.example.QuicksortExample test</pre>
-      <p>To run all the examples, invoke:</p>
-      <pre>mvn -e -X -Dtest==&lt;fully-specified-package-name.*&gt; test</pre>    
       <p>
-         Each example is has descriptive prose mixed right in with the source, as 
-         <code>/* C++ style */</code> comments.
+        <pre>
+i=0.00, degree=0.32
+i=0.01, degree=0.32
+i=0.02, degree=0.32
+i=0.03, degree=0.32
+i=0.04, degree=0.33
+...
+...
+...
+i=1.95, degree=0.56
+i=1.96, degree=0.56
+i=1.97, degree=0.56
+i=1.98, degree=0.56
+i=1.99, degree=0.56
+        </pre>
       </p>
-      <subsection name="Code Katas">        
-        <p>
-          "Pragmatic" Dave Thomas has been 
-          <a href="http://pragprog.com/pragdave/">blogging</a> 
-          a series of programming exercises he calls 
-          <a href="http://pragprog.com/pragdave/Practices/Kata">Code Katas</a>.
-          These exercises are intended to provide "practice sessions" that allow
-          programmers to hone their craft.  The notion is borrowed from the 
-          practice of Karate, where, in Dave's words 
-          "a kata is an exercise where you repeat a form many, many times, 
-          making little improvements in each".
-        </p>
-        <p>
-          Here we use several of Dave's Code Katas to explore the
-          Commons-Functor library.
-        </p>
-        <dl>
-          <dt><a href="http://svn.apache.org/viewvc/commons/proper/functor/trunk/src/test/java/org/apache/commons/functor/example/kata/one/">Kata One: Supermarket Pricing</a></dt>
-          <dd>
-            Dave's <a href="http://pragprog.com/pragdave/Practices/Kata/KataOne.rdoc,v">Kata One</a> asks how
-            one might implement supermarket pricing rules, like "three for a dollar" or "buy two get one free".
-            By encapsulating tiny bits of logic, functors provide a useful solution to this problem, as 
-            illustrated in the 
-            <a href="http://svn.apache.org/repos/asf/commons/proper/functor/trunk/src/test/java/org/apache/commons/functor/example/kata/one/SupermarketPricingExample.java">SupermarketPricingExample</a>.
-          </dd>
-
-          <dt><a href="http://svn.apache.org/viewvc/commons/proper/functor/trunk/src/test/java/org/apache/commons/functor/example/kata/two/">Kata Two: Binary Chop</a></dt>
-          <dd>
-            <a href="http://pragprog.com/pragdave/Practices/Kata/KataTwo.rdoc,v">Kata Two</a> asks us
-            to create several different implementations of the binary search algorithm, which once you
-            get past three or four implementations, is more difficult that it sounds.            
-            <a href="http://svn.apache.org/repos/asf/commons/proper/functor/trunk/src/test/java/org/apache/commons/functor/example/kata/two/TestBinaryChop.java">TestBinaryChop</a>
-            presents several implementations, with functor and non-functor variations.
-          </dd>
-
-
-          <dt><a href="http://svn.apache.org/viewvc/commons/proper/functor/trunk/src/test/java/org/apache/commons/functor/example/kata/four/">Kata Four: Data Munging</a></dt>
-          <dd>
-            <a href="http://pragprog.com/pragdave/Practices/Kata/KataFour.doc,v">Kata Four</a> asks us
-            to explore extreme reuse.  Our
-            <a href="http://svn.apache.org/repos/asf/commons/proper/functor/trunk/src/test/java/org/apache/commons/functor/example/kata/four/DataMunger.java">DataMunger</a>
-            allows for very small implementations of the 
-            <a href="http://svn.apache.org/repos/asf/commons/proper/functor/trunk/src/test/java/org/apache/commons/functor/example/kata/four/TestWeather.java">weather</a>
-            and
-            <a href="http://svn.apache.org/repos/asf/commons/proper/functor/trunk/src/test/java/org/apache/commons/functor/example/kata/four/TestSoccer.java">soccer (football)</a>
-            parsers.
-          </dd>
-
-        </dl>
-      </subsection>      
-      
-      <subsection name="Generators">        
-        <p>
-          The <a href="http://svn.apache.org/viewvc/commons/proper/functor/trunk/src/test/java/org/apache/commons/functor/example/lines/">lines</a>
-          package demonstrates a functional approach to IO using Generators and the Algorithms class.
-        </p>
-      </subsection>      
-      
-      <subsection name="Reuse Through Composition">
-         <p>
-            The Functor package, and more generally, a functional approach
-            to program design, supports a powerful technique for balancing 
-            behavior specialization and code reuse.
-         </p>
-         <p>
-            Traditional Object Oriented design suggests inheritence as a
-            mechanism code reuse, and method overloading as a mechanism for
-            specialization.  For example, one defines a general purpose, perhaps
-            even abstract class, say <i>AbstractList</i>, and then extend or 
-            specialize this parent via subclasses, inheriting some behaviors 
-            and overloading others.
-         </p>
-         <p>
-            Functors encourage another, complementary approach to code reuse
-            and behavior specialiazation: composition.  Following a compositional
-            design, we create a number of simple objects and then combine them to 
-            create more complex behaviors.  For example, the 
-            <a href="http://commons.apache.org/pool/">Commons Pool</a> 
-            component defines an <code>ObjectPool</code> type that maintains
-            a collection of pooled objects, but delegates to a 
-            <code>PoolableObjectFactory</code> to create, validate and destroy 
-            the objects to be pooled.  Arbitrary <code>ObjectPool</code> 
-            implementations can be composed with arbitrary 
-            <code>PoolableObjectFactory</code>
-            implementations in order to create new types of pools.
-         </p>
-         <p>
-            The 
-            <a href="http://svn.apache.org/repos/asf/commons/proper/functor/trunk/src/test/java/org/apache/commons/functor/example/FlexiMapExample.java">FlexiMap example</a> 
-            applies this design to <code>java.util.Map</code>, demonstrating how 
-            "pluggable" functors can be applied to a generic <code>Map</code> structure in order
-            to introduce new behaviors.           
-         </p>
-         <p>
-            The 
-            <a href="http://svn.apache.org/repos/asf/commons/proper/functor/trunk/src/test/java/org/apache/commons/functor/example/map">map</a>
-            package is a more complete example of this, implementing a number of the Commons-Collections Maps
-            derived from a base 
-            <a href="http://svn.apache.org/repos/asf/commons/proper/functor/trunk/src/test/java/org/apache/commons/functor/example/map/FunctoredMap.java">FunctoredMap</a>.
-         </p>
-      </subsection>      
-      <subsection name="A Quicksort Implementation">        
-        <p>
-          The <a href="http://svn.apache.org/repos/asf/commons/proper/functor/trunk/src/test/java/org/apache/commons/functor/example/QuicksortExample.java">Quicksort example</a>
-          presents an implementation of the Quicksort sorting algorithm written in a functional programming
-          style using Commons Functor.
-        </p>
-      </subsection>      
     </section>
   </body>
 </document>

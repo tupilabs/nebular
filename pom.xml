@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>net.sf.nebular</groupId>
+	<groupId>fuzzy</groupId>
 	<artifactId>nebular</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<name>nebular</name>
@@ -76,7 +76,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.7</version>
-				<!-- configuration>
+				<configuration>
 					<doclet>gr.spinellis.umlgraph.doclet.UmlGraphDoc</doclet>
 					<docletArtifact>
 						<groupId>gr.spinellis</groupId>
@@ -99,7 +99,7 @@
 						-nodefonttagname
 						"Trebuchet MS"
 					</additionalparam>
-				</configuration -->
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -168,7 +168,7 @@
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-javadoc-plugin</artifactId>
 							<version>2.7</version>
-							<!-- configuration>
+							<configuration>
 								<doclet>gr.spinellis.umlgraph.doclet.UmlGraphDoc</doclet>
 								<docletArtifact>
 									<groupId>gr.spinellis</groupId>
@@ -192,7 +192,7 @@
 									-nodefonttagname
 									"Trebuchet MS"
 								</additionalparam>
-							</configuration -->
+							</configuration>
 						</plugin>
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
@@ -213,6 +213,18 @@
 							<groupId>org.codehaus.mojo</groupId>
 							<artifactId>cobertura-maven-plugin</artifactId>
 						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-changes-plugin</artifactId>
+							<version>2.6</version>
+							<reportSets>
+								<reportSet>
+									<reports>
+										<report>changes-report</report>
+									</reports>
+								</reportSet>
+							</reportSets>
+						</plugin>
 					</reportPlugins>
 				</configuration>
 			</plugin>
@@ -230,10 +242,8 @@
 		</dependency>
 		<dependency>
             <groupId>org.apache.commons</groupId>
-            <artifactId>commons-math</artifactId>
-            <version>3.0-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/commons-math-3.0-SNAPSHOT.jar</systemPath>
+            <artifactId>commons-math3</artifactId>
+            <version>3.0</version>
         </dependency>
 		<!-- Testing -->
 		<dependency>
@@ -248,5 +258,19 @@
 			<version>3.0.1</version>
 		</dependency>
 	</dependencies>
+	
+	<profiles>
+	   <profile>
+            <id>release-site</id>
+            <activation>
+            </activation>
+            <distributionManagement>
+                <site>
+                    <id>nebular.sf.net</id>
+                    <url>scp://shell.sourceforge.net/home/project-web/nebular/htdocs/</url>
+                </site>
+            </distributionManagement>
+        </profile>
+    </profiles>
 
 </project>

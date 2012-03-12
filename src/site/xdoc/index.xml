@@ -22,7 +22,7 @@
   </properties>
 
   <body>
-    <section name="nebular: Java Fuzzy Logic API">
+    <section name="nebular: a pure Java Fuzzy Logic API">
       <p>
          nebular is a <em>fuzzy logic</em> API written in pure Java. 
          It contains pre-defined membership functions such as sigmoidal, 
@@ -55,17 +55,29 @@
 	      <p>This is the first official nebular release. The following 
 	      membership functions are supported in this version.</p>
 	      <ul>
-	       <li><a href="userguide/dsigmf.html">Differential sigmoidal membership function</a></li>
-	       <li><a href="userguide/gaussmf.html">Gaussian membership function</a></li>
-	       <li><a href="userguide/gbellmf.html">Generalized bell-shaped membership function</a></li>
-	       <li><a href="userguide/pimf.html">PI-shaped membership function</a></li>
-	       <li><a href="userguide/psigmf.html">Product sigmoidal membership function</a></li>
-	       <li><a href="userguide/sigmf.html">Sigmoidal membership function</a></li>
-	       <li><a href="userguide/smf.html">S-shaped membership function</a></li>
-	       <li><a href="userguide/trapmf.html">Trapezoidal membership function</a></li>
-	       <li><a href="userguide/tmf.html">Triangular membership function</a></li>
-	       <li><a href="userguide/zmf.html">Z-shaped membership function</a></li>
+	       <li>Differential sigmoidal membership function</li>
+	       <li>Gaussian membership function</li>
+	       <li>Generalized bell-shaped membership function</li>
+	       <li>PI-shaped membership function</li>
+	       <li>Product sigmoidal membership function</li>
+	       <li>Sigmoidal membership function</li>
+	       <li>S-shaped membership function</li>
+	       <li>Trapezoidal membership function</li>
+	       <li>Triangular membership function</li>
+	       <li>Z-shaped membership function</li>
 	      </ul>
+	      <!--ul>
+           <li><a href="userguide/dsigmf.html">Differential sigmoidal membership function</a></li>
+           <li><a href="userguide/gaussmf.html">Gaussian membership function</a></li>
+           <li><a href="userguide/gbellmf.html">Generalized bell-shaped membership function</a></li>
+           <li><a href="userguide/pimf.html">PI-shaped membership function</a></li>
+           <li><a href="userguide/psigmf.html">Product sigmoidal membership function</a></li>
+           <li><a href="userguide/sigmf.html">Sigmoidal membership function</a></li>
+           <li><a href="userguide/smf.html">S-shaped membership function</a></li>
+           <li><a href="userguide/trapmf.html">Trapezoidal membership function</a></li>
+           <li><a href="userguide/tmf.html">Triangular membership function</a></li>
+           <li><a href="userguide/zmf.html">Z-shaped membership function</a></li>
+          </ul-->
 	    </subsection>
 	</section>
 

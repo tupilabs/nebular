@@ -30,6 +30,7 @@
     <name>nebular</name>
     <src>/images/nebular-logo-white.png</src>
     <href>/index.html</href>
+    <alt>nebular fuzzy API</alt>
   </bannerLeft>
   
   <body>
@@ -40,8 +41,7 @@
       <item name="Downloads" href="http://sourceforge.net/projects/nebular/files/" />
     </menu>
     
-    <menu name="User guide">
-      <item name="Creating fuzzy sets" href="/userguide/fuzzysets.html" />
+    <!-- menu name="User guide">
       <item name="Membership functions" collapse="false">
         <item name="Differential sigmoidal membership function" href="/userguide/dsigmf.html" />
         <item name="Gaussian membership function" href="/userguide/gaussmf.html" />
@@ -54,9 +54,15 @@
         <item name="Triangular membership function" href="/userguide/trimf.html" />
         <item name="Z-shaped membership function" href="/userguide/zmf.html" />
       </item>
-    </menu>
+    </menu -->
      
     <menu ref="reports" />
   </body>
+  
+  <skin>
+      <groupId>org.apache.maven.skins</groupId>
+      <artifactId>maven-fluido-skin</artifactId>
+      <version>1.1</version>
+  </skin>
   
 </project>

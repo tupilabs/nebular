@@ -16,7 +16,7 @@ package fuzzy.mf;
 import java.io.IOException;
 import java.io.Serializable;
 
-import org.apache.commons.math.analysis.function.Sigmoid;
+import org.apache.commons.math3.analysis.function.Sigmoid;
 
 /**
  * Differential Sigmoidal Membership Function. Equivalent to Matlab 

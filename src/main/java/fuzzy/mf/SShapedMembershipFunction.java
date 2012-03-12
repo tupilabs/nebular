@@ -15,7 +15,7 @@ package fuzzy.mf;
 
 import java.io.Serializable;
 
-import org.apache.commons.math.util.FastMath;
+import org.apache.commons.math3.util.FastMath;
 
 /**
  * S-Shaped Membership Function. Equivalent to Matlab 
