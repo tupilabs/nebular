@@ -1,0 +1,7 @@
+
+- Include defuzzycation algorithms: http://en.wikipedia.org/wiki/Defuzzification
+- Include charts
+- Include bellman-zadeh
+- Include combination models (mandani, standard additive mode, ...)
+- Update site and docs
+
