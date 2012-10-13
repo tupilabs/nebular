@@ -290,4 +290,8 @@
 		</profile>
 	</profiles>
 
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>https://buildhive.cloudbees.com/job/tupilabs/job/nebular/</url>
+	</ciManagement>
 </project>
