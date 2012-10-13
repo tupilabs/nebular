@@ -33,9 +33,7 @@ import org.apache.commons.lang3.Validate;
  *
  * @see org.apache.commons.functor.core.IsEqual
  * @param <T> the binary predicate input types
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Rodney Waldhoff
- *
+ * @version $Revision: 1365328 $ $Date: 2012-07-24 19:19:23 -0300 (Tue, 24 Jul 2012) $
  */
 public final class IsEquivalent<T> implements BinaryPredicate<T, T>, Serializable {
 
@@ -47,7 +45,7 @@ public final class IsEquivalent<T> implements BinaryPredicate<T, T>, Serializabl
     /**
      * serialVersionUID declaration.
      */
-    private static final long serialVersionUID = -6392784113015793664L;
+    private static final long serialVersionUID = 1884411899682486777L;
 
     /**
      * The wrapped comparator.
@@ -59,7 +57,7 @@ public final class IsEquivalent<T> implements BinaryPredicate<T, T>, Serializabl
      */
     @SuppressWarnings("unchecked")
     public IsEquivalent() {
-        this(ComparableComparator.INSTANCE);
+        this((Comparator<? super T>) ComparableComparator.INSTANCE);
     }
 
     /**
@@ -99,9 +97,6 @@ public final class IsEquivalent<T> implements BinaryPredicate<T, T>, Serializabl
      */
     public boolean equals(IsEquivalent<?> that) {
         if (null != that) {
-            if (null == comparator) {
-                return null == that.comparator;
-            }
             return comparator.equals(that.comparator);
         }
         return false;
@@ -134,7 +129,7 @@ public final class IsEquivalent<T> implements BinaryPredicate<T, T>, Serializabl
      */
     @SuppressWarnings("unchecked")
     public static <T extends Comparable<?>> IsEquivalent<T> instance() {
-        return new IsEquivalent<T>(ComparableComparator.INSTANCE);
+        return new IsEquivalent<T>((Comparator<? super T>) ComparableComparator.INSTANCE);
     }
 
     /**

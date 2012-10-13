@@ -39,8 +39,7 @@ import org.apache.commons.lang3.Validate;
  * @param <L> the left argument type.
  * @param <R> the right argument type.
  * @param <T> the returned value type.
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1365377 $ $Date: 2012-07-24 21:59:23 -0300 (Tue, 24 Jul 2012) $
  */
 public final class BinaryProcedureBinaryFunction<L, R, T> implements BinaryFunction<L, R, T>, Serializable {
     /**
@@ -81,7 +80,7 @@ public final class BinaryProcedureBinaryFunction<L, R, T> implements BinaryFunct
      * @return boolean
      */
     public boolean equals(BinaryProcedureBinaryFunction<?, ?, ?> that) {
-        return null != that && (null == procedure ? null == that.procedure : procedure.equals(that.procedure));
+        return null != that && procedure.equals(that.procedure);
     }
 
     /**
@@ -90,9 +89,7 @@ public final class BinaryProcedureBinaryFunction<L, R, T> implements BinaryFunct
     @Override
     public int hashCode() {
         int hash = "BinaryProcedureBinaryFunction".hashCode();
-        if (null != procedure) {
-            hash ^= procedure.hashCode();
-        }
+        hash ^= procedure.hashCode();
         return hash;
     }
 
@@ -121,7 +118,7 @@ public final class BinaryProcedureBinaryFunction<L, R, T> implements BinaryFunct
      *         if the given <code>BinaryFunction</code> is <code>null</code>
      */
     public static <L, R, T> BinaryProcedureBinaryFunction<L, R, T> adapt(
-    		BinaryProcedure<? super L, ? super R> procedure) {
+            BinaryProcedure<? super L, ? super R> procedure) {
         return null == procedure ? null : new BinaryProcedureBinaryFunction<L, R, T>(procedure);
     }
 

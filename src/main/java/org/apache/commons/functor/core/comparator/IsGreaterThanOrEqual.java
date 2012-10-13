@@ -32,8 +32,7 @@ import org.apache.commons.lang3.Validate;
  * a {@link Comparable Comparable} <code>Comparator</code> is used.
  *
  * @param <T> the binary predicate input types
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1365328 $ $Date: 2012-07-24 19:19:23 -0300 (Tue, 24 Jul 2012) $
  */
 public final class IsGreaterThanOrEqual<T> implements BinaryPredicate<T, T>, Serializable {
 
@@ -46,7 +45,7 @@ public final class IsGreaterThanOrEqual<T> implements BinaryPredicate<T, T>, Ser
     /**
      * serialVersionUID declaration.
      */
-    private static final long serialVersionUID = 5262405026444050167L;
+    private static final long serialVersionUID = 1550544203070228570L;
 
     /**
      * The wrapped comparator.
@@ -59,7 +58,7 @@ public final class IsGreaterThanOrEqual<T> implements BinaryPredicate<T, T>, Ser
      */
     @SuppressWarnings("unchecked")
     public IsGreaterThanOrEqual() {
-        this(ComparableComparator.INSTANCE);
+        this((Comparator<? super T>) ComparableComparator.INSTANCE);
     }
 
     /**
@@ -99,9 +98,6 @@ public final class IsGreaterThanOrEqual<T> implements BinaryPredicate<T, T>, Ser
      */
     public boolean equals(IsGreaterThanOrEqual<?> that) {
         if (null != that) {
-            if (null == comparator) {
-                return null == that.comparator;
-            }
             return comparator.equals(that.comparator);
         }
         return false;

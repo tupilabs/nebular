@@ -36,8 +36,7 @@ import org.apache.commons.lang3.Validate;
  * an instance whose delegates are not
  * <code>Serializable</code> will result in an exception.
  *
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Matt Benson
+ * @version $Revision: 1365377 $ $Date: 2012-07-24 21:59:23 -0300 (Tue, 24 Jul 2012) $
  */
 public final class FullyBoundPredicate implements Predicate, Serializable {
 
@@ -90,7 +89,7 @@ public final class FullyBoundPredicate implements Predicate, Serializable {
      * @return boolean
      */
     public boolean equals(FullyBoundPredicate that) {
-        return null != that && (null == predicate ? null == that.predicate : predicate.equals(that.predicate))
+        return null != that && predicate.equals(that.predicate)
                 && (null == left ? null == that.left : left.equals(that.left))
                 && (null == right ? null == that.right : right.equals(that.right));
     }
@@ -101,10 +100,8 @@ public final class FullyBoundPredicate implements Predicate, Serializable {
     @Override
     public int hashCode() {
         int hash = "FullyBoundPredicate".hashCode();
-        if (null != predicate) {
-            hash <<= 2;
-            hash ^= predicate.hashCode();
-        }
+        hash <<= 2;
+        hash ^= predicate.hashCode();
         hash <<= 2;
         if (null != left) {
             hash ^= left.hashCode();

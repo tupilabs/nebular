@@ -38,8 +38,7 @@ import org.apache.commons.lang3.Validate;
  *
  * @param <A> the argument type.
  * @param <T> the returned value type.
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1365377 $ $Date: 2012-07-24 21:59:23 -0300 (Tue, 24 Jul 2012) $
  */
 public final class RightBoundFunction<A, T> implements UnaryFunction<A, T>, Serializable {
     /**
@@ -86,7 +85,7 @@ public final class RightBoundFunction<A, T> implements UnaryFunction<A, T>, Seri
      */
     public boolean equals(RightBoundFunction<?, ?> that) {
         return null != that
-                && (null == function ? null == that.function : function.equals(that.function))
+                && function.equals(that.function)
                 && (null == param ? null == that.param : param.equals(that.param));
     }
 
@@ -96,10 +95,8 @@ public final class RightBoundFunction<A, T> implements UnaryFunction<A, T>, Seri
     @Override
     public int hashCode() {
         int hash = "RightBoundFunction".hashCode();
-        if (null != function) {
-            hash <<= 2;
-            hash ^= function.hashCode();
-        }
+        hash <<= 2;
+        hash ^= function.hashCode();
         if (null != param) {
             hash <<= 2;
             hash ^= param.hashCode();

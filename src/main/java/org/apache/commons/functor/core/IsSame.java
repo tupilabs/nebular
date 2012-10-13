@@ -27,8 +27,7 @@ import org.apache.commons.functor.adapter.RightBoundPredicate;
  *
  * @param <L> the left argument type.
  * @param <R> the right argument type.
- * @version $Revision: 1187618 $ $Date: 2011-10-21 23:16:16 -0200 (Fri, 21 Oct 2011) $
- * @author Matt Benson
+ * @version $Revision: 1345136 $ $Date: 2012-06-01 09:47:06 -0300 (Fri, 01 Jun 2012) $
  */
 public final class IsSame<L, R> implements BinaryPredicate<L, R>, Serializable {
     // static attributes

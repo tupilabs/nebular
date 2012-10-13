@@ -31,7 +31,7 @@ import org.apache.commons.functor.generator.Generator;
  * elements have been expended.
  *
  * @param <T> the returned evaluation type.
- * @version $Revision: 1187618 $ $Date: 2011-10-21 23:16:16 -0200 (Fri, 21 Oct 2011) $
+ * @version $Revision: 1344796 $ $Date: 2012-05-31 13:12:39 -0300 (Thu, 31 May 2012) $
  */
 public class FoldRight<T> implements UnaryFunction<Generator<T>, T>, BinaryFunction<Generator<T>, T, T>, Serializable {
 
@@ -166,6 +166,14 @@ public class FoldRight<T> implements UnaryFunction<Generator<T>, T>, BinaryFunct
     @Override
     public int hashCode() {
         return "FoldRight".hashCode() << 2 ^ function.hashCode();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return "FoldRight<" + function + ">";
     }
 
 }

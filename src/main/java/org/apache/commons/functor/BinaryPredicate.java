@@ -26,8 +26,7 @@ package org.apache.commons.functor;
  * @param <L> the left argument type.
  * @param <R> the right argument type.
  * @since 1.0
- * @version $Revision: 1156735 $ $Date: 2011-08-11 15:57:48 -0300 (Thu, 11 Aug 2011) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1345136 $ $Date: 2012-06-01 09:47:06 -0300 (Fri, 01 Jun 2012) $
  */
 public interface BinaryPredicate<L, R> extends BinaryFunctor<L, R> {
     /**

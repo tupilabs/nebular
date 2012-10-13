@@ -27,8 +27,7 @@ import org.apache.commons.lang3.Validate;
  * {@link BinaryFunction} interface.
  *
  * @param <T> the binary function input types
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1364676 $ $Date: 2012-07-23 12:21:25 -0300 (Mon, 23 Jul 2012) $
  */
 public final class ComparatorFunction<T> implements BinaryFunction<T, T, Integer>, Serializable {
 
@@ -103,6 +102,6 @@ public final class ComparatorFunction<T> implements BinaryFunction<T, T, Integer
      */
     @SuppressWarnings("unchecked")
     public static <T> ComparatorFunction<T> instance() {
-        return new ComparatorFunction<T>(ComparableComparator.INSTANCE);
+        return new ComparatorFunction<T>((Comparator<? super T>) ComparableComparator.INSTANCE);
     }
 }

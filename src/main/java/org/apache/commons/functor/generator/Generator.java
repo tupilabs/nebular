@@ -23,9 +23,7 @@ import org.apache.commons.functor.UnaryProcedure;
  * to each in a series of argument Objects.
  *
  * @param <E> the type of elements held in this generator.
- * @version $Revision: 1160786 $ $Date: 2011-08-23 13:40:12 -0300 (Tue, 23 Aug 2011) $
- * @author Jason Horman (jason@jhorman.org)
- * @author Rodney Waldhoff
+ * @version $Revision: 1376354 $ $Date: 2012-08-23 00:04:55 -0300 (Thu, 23 Aug 2012) $
  */
 public interface Generator<E> {
     /**
@@ -33,17 +31,6 @@ public interface Generator<E> {
      * @param proc UnaryProcedure to run
      */
     void run(UnaryProcedure<? super E> proc);
-
-    /**
-     * Stop the generator. Will stop the wrapped generator if one was set.
-     */
-    void stop();
-
-    /**
-     * Check if the generator is stopped.
-     * @return true if stopped
-     */
-    boolean isStopped();
 
     /**
      * Transforms this generator using the passed in
@@ -57,10 +44,11 @@ public interface Generator<E> {
 
     /**
      * Same as to(new CollectionTransformer(collection)).
+     * @param <C> the returned collection type.
      * @param collection Collection to which my elements should be added
      * @return <code>collection</code>
      */
-    Collection<? super E> to(Collection<? super E> collection);
+    <C extends Collection<? super E>> C to(C collection);
 
     /**
      * Same as to(new CollectionTransformer()).

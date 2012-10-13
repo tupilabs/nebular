@@ -34,8 +34,7 @@ import org.apache.commons.lang3.Validate;
  * </p>
  * @param <L> the left argument type.
  * @param <R> the right argument type.
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1365329 $ $Date: 2012-07-24 19:34:23 -0300 (Tue, 24 Jul 2012) $
  */
 public final class BinaryNot<L, R> implements BinaryPredicate<L, R>, Serializable {
     /**
@@ -82,7 +81,7 @@ public final class BinaryNot<L, R> implements BinaryPredicate<L, R>, Serializabl
      * @return boolean
      */
     public boolean equals(BinaryNot<?, ?> that) {
-        return null != that && (null == predicate ? null == that.predicate : predicate.equals(that.predicate));
+        return null != that && predicate.equals(that.predicate);
     }
 
     /**
@@ -91,9 +90,7 @@ public final class BinaryNot<L, R> implements BinaryPredicate<L, R>, Serializabl
     @Override
     public int hashCode() {
         int hash = "BinaryNot".hashCode();
-        if (null != predicate) {
-            hash ^= predicate.hashCode();
-        }
+        hash ^= predicate.hashCode();
         return hash;
     }
 

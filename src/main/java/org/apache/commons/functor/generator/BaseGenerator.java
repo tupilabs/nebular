@@ -25,57 +25,13 @@ import org.apache.commons.functor.generator.util.CollectionTransformer;
  *
  * @param <E> the type of elements held in this generator.
  * @since 1.0
- * @version $Revision: 1188397 $ $Date: 2011-10-24 19:40:54 -0200 (Mon, 24 Oct 2011) $
- * @author  Jason Horman (jason@jhorman.org)
+ * @version $Revision: 1376354 $ $Date: 2012-08-23 00:04:55 -0300 (Thu, 23 Aug 2012) $
  */
 public abstract class BaseGenerator<E> implements Generator<E> {
 
-    /** A generator can wrap another generator. */
-    private final Generator<?> wrappedGenerator;
-
-    /** Set to true when the generator is {@link #stop stopped}. */
-    private boolean stopped = false;
-
     /** Create a new generator. */
     public BaseGenerator() {
-        this(null);
-    }
-
-    /**
-     * A generator can wrap another generator. When wrapping generators you
-     * should use probably this constructor since doing so will cause the
-     * {@link #stop} method to stop the wrapped generator as well.
-     * @param generator Generator to wrap
-     */
-    public BaseGenerator(Generator<?> generator) {
-        this.wrappedGenerator = generator;
-    }
-
-    /**
-     * Get the generator that is being wrapped.
-     * @return Generator
-     */
-    protected Generator<?> getWrappedGenerator() {
-        return wrappedGenerator;
-    }
-
-    /**
-     * {@inheritDoc}
-     * Stop the generator. Will stop the wrapped generator if one was set.
-     */
-    public void stop() {
-        if (wrappedGenerator != null) {
-            wrappedGenerator.stop();
-        }
-        stopped = true;
-    }
-
-    /**
-     * {@inheritDoc}
-     * Check if the generator is stopped.
-     */
-    public boolean isStopped() {
-        return stopped;
+        super();
     }
 
     /**
@@ -92,16 +48,15 @@ public abstract class BaseGenerator<E> implements Generator<E> {
      * {@inheritDoc}
      * Same as to(new CollectionTransformer(collection)).
      */
-    public final Collection<? super E> to(Collection<? super E> collection) {
-        return to(new CollectionTransformer<E>(collection));
+    public final <C extends Collection<? super E>> C to(C collection) {
+        return to(new CollectionTransformer<E, C>(collection));
     }
 
     /**
      * {@inheritDoc}
      * Same as to(new CollectionTransformer()).
      */
-    @SuppressWarnings("unchecked")
     public final Collection<E> toCollection() {
-        return (Collection<E>) to(new CollectionTransformer<E>());
+        return to(CollectionTransformer.<E> toCollection());
     }
 }

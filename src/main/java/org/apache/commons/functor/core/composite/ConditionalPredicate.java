@@ -38,8 +38,7 @@ import org.apache.commons.lang3.Validate;
  * an instance whose delegates are not all
  * <code>Serializable</code> will result in an exception.
  * </p>
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1365329 $ $Date: 2012-07-24 19:34:23 -0300 (Tue, 24 Jul 2012) $
  */
 public final class ConditionalPredicate implements Predicate, Serializable {
     /**
@@ -102,9 +101,9 @@ public final class ConditionalPredicate implements Predicate, Serializable {
      */
     public boolean equals(ConditionalPredicate that) {
         return null != that
-                && (null == ifPred ? null == that.ifPred : ifPred.equals(that.ifPred))
-                && (null == thenPred ? null == that.thenPred : thenPred.equals(that.thenPred))
-                && (null == elsePred ? null == that.elsePred : elsePred.equals(that.elsePred));
+                && ifPred.equals(that.ifPred)
+                && thenPred.equals(that.thenPred)
+                && elsePred.equals(that.elsePred);
     }
 
     /**
@@ -113,18 +112,12 @@ public final class ConditionalPredicate implements Predicate, Serializable {
     @Override
     public int hashCode() {
         int hash = "ConditionalPredicate".hashCode();
-        if (null != ifPred) {
-            hash <<= HASH_SHIFT;
-            hash ^= ifPred.hashCode();
-        }
-        if (null != thenPred) {
-            hash <<= HASH_SHIFT;
-            hash ^= thenPred.hashCode();
-        }
-        if (null != elsePred) {
-            hash <<= HASH_SHIFT;
-            hash ^= elsePred.hashCode();
-        }
+        hash <<= HASH_SHIFT;
+        hash ^= ifPred.hashCode();
+        hash <<= HASH_SHIFT;
+        hash ^= thenPred.hashCode();
+        hash <<= HASH_SHIFT;
+        hash ^= elsePred.hashCode();
         return hash;
     }
 

@@ -36,8 +36,7 @@ import org.apache.commons.lang3.Validate;
  * an instance whose delegates are not
  * <code>Serializable</code> will result in an exception.
  *
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Matt Benson
+ * @version $Revision: 1365377 $ $Date: 2012-07-24 21:59:23 -0300 (Tue, 24 Jul 2012) $
  */
 public final class FullyBoundProcedure implements Procedure, Serializable {
     /**
@@ -89,7 +88,7 @@ public final class FullyBoundProcedure implements Procedure, Serializable {
      * @return boolean
      */
     public boolean equals(FullyBoundProcedure that) {
-        return null != that && (null == procedure ? null == that.procedure : procedure.equals(that.procedure))
+        return null != that && procedure.equals(that.procedure)
                 && (null == left ? null == that.left : left.equals(that.left))
                 && (null == right ? null == that.right : right.equals(that.right));
     }
@@ -100,10 +99,8 @@ public final class FullyBoundProcedure implements Procedure, Serializable {
     @Override
     public int hashCode() {
         int hash = "FullyBoundProcedure".hashCode();
-        if (null != procedure) {
-            hash <<= 2;
-            hash ^= procedure.hashCode();
-        }
+        hash <<= 2;
+        hash ^= procedure.hashCode();
         hash <<= 2;
         if (null != left) {
             hash ^= left.hashCode();

@@ -25,9 +25,7 @@ import org.apache.commons.functor.adapter.IgnoreLeftFunction;
  * Holder class for a right-identity <code>BinaryFunction</code> (evaluates to the right argument) and a right-identity
  * <code>BinaryPredicate</code> (tests whether right <code>Boolean</code> argument equals <code>Boolean.TRUE</code>).
  *
- * @version $Revision: 1160415 $ $Date: 2011-08-22 17:14:38 -0300 (Mon, 22 Aug 2011) $
- * @author Rodney Waldhoff
- * @author Matt Benson
+ * @version $Revision: 1364767 $ $Date: 2012-07-23 16:36:08 -0300 (Mon, 23 Jul 2012) $
  */
 public final class RightIdentity {
 
@@ -41,8 +39,7 @@ public final class RightIdentity {
     /**
      * Right-identity predicate.
      */
-    public static final BinaryPredicate<Object, Boolean> PREDICATE =
-        BinaryFunctionBinaryPredicate.adapt(IgnoreLeftFunction.adapt(new Identity<Boolean>()));
+    public static final BinaryPredicate<Object, Boolean> PREDICATE = RightIdentity.<Object>predicate();
 
     // constructor
     // ------------------------------------------------------------------------

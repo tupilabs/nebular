@@ -14,10 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.commons.functor.generator;
+package org.apache.commons.functor.generator.loop;
 
 import org.apache.commons.functor.UnaryFunction;
 import org.apache.commons.functor.UnaryProcedure;
+import org.apache.commons.functor.generator.Generator;
 import org.apache.commons.lang3.Validate;
 
 /**
@@ -25,43 +26,40 @@ import org.apache.commons.lang3.Validate;
  *
  * @param <I> the type of elements held in the wrapped generator.
  * @param <E> the type of elements held in this generator.
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
+ * @version $Revision: 1376354 $ $Date: 2012-08-23 00:04:55 -0300 (Thu, 23 Aug 2012) $
  */
-public class TransformedGenerator<I, E> extends BaseGenerator<E> {
+public class TransformedGenerator<I, E> extends LoopGenerator<E> {
 
     /**
      * The UnaryFunction to apply to each element.
      */
     private final UnaryFunction<? super I, ? extends E> func;
 
+    // This is a special generator, that wraps a generator, but returns another one.
+    // So it breaks the interface contract, and we suppress the warnings when we cast
+    // the wrapped generator. This class has been marked as final, to avoid bogus
+    // specializations.
     /**
      * Create a new TransformedGenerator.
      * @param wrapped Generator to transform
      * @param func UnaryFunction to apply to each element
      */
+    @SuppressWarnings("unchecked")
     public TransformedGenerator(Generator<? extends I> wrapped, UnaryFunction<? super I, ? extends E> func) {
-        super(Validate.notNull(wrapped, "Generator argument was null"));
+        super((Generator<? extends E>) Validate.notNull(wrapped, "Generator argument was null"));
         this.func = Validate.notNull(func, "UnaryFunction argument was null");
     }
 
     /**
      * {@inheritDoc}
      */
+    @SuppressWarnings("unchecked")
     public void run(final UnaryProcedure<? super E> proc) {
-        getWrappedGenerator().run(new UnaryProcedure<I>() {
+        ((Generator<? extends I>) getWrappedGenerator()).run(new UnaryProcedure<I>() {
             public void run(I obj) {
                 proc.run(func.evaluate(obj));
             }
         });
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @SuppressWarnings("unchecked")
-    @Override
-    protected Generator<? extends I> getWrappedGenerator() {
-        return (Generator<? extends I>) super.getWrappedGenerator();
     }
 
     /**
@@ -86,7 +84,8 @@ public class TransformedGenerator<I, E> extends BaseGenerator<E> {
     public int hashCode() {
         int result = "TransformedGenerator".hashCode();
         result <<= 2;
-        result ^= getWrappedGenerator().hashCode();
+        Generator<?> gen = getWrappedGenerator();
+        result ^= gen.hashCode();
         result <<= 2;
         result ^= func.hashCode();
         return result;

@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.functor.UnaryPredicate;
-import org.apache.commons.lang3.Validate;
 
 /**
  * Abstract base class for {@link UnaryPredicate UnaryPredicates}
@@ -35,8 +34,7 @@ import org.apache.commons.lang3.Validate;
  * <code>Serializable</code> will result in an exception.
  * </p>
  * @param <A> the predicate argument type.
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1365329 $ $Date: 2012-07-24 19:34:23 -0300 (Tue, 24 Jul 2012) $
  */
 abstract class BaseUnaryPredicateList<A> implements UnaryPredicate<A>, Serializable {
 
@@ -115,7 +113,9 @@ abstract class BaseUnaryPredicateList<A> implements UnaryPredicate<A>, Serializa
      * @param p UnaryPredicate to add
      */
     protected void addUnaryPredicate(UnaryPredicate<? super A> p) {
-        list.add(Validate.notNull(p, "Cannot add null UnaryPredicate"));
+        if (p != null) {
+            list.add(p);
+        }
     }
 
     // protected

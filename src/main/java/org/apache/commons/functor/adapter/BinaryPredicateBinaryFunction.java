@@ -36,8 +36,7 @@ import org.apache.commons.functor.BinaryPredicate;
  *
  * @param <L> the left argument type.
  * @param <R> the right argument type.
- * @version $Revision: 1187618 $ $Date: 2011-10-21 23:16:16 -0200 (Fri, 21 Oct 2011) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1365377 $ $Date: 2012-07-24 21:59:23 -0300 (Tue, 24 Jul 2012) $
  */
 public final class BinaryPredicateBinaryFunction<L, R> implements BinaryFunction<L, R, Boolean>, Serializable {
     /**
@@ -83,7 +82,7 @@ public final class BinaryPredicateBinaryFunction<L, R> implements BinaryFunction
      * @return boolean
      */
     public boolean equals(BinaryPredicateBinaryFunction<?, ?> that) {
-        return null != that && (null == predicate ? null == that.predicate : predicate.equals(that.predicate));
+        return null != that && predicate.equals(that.predicate);
     }
 
     /**
@@ -92,9 +91,7 @@ public final class BinaryPredicateBinaryFunction<L, R> implements BinaryFunction
     @Override
     public int hashCode() {
         int hash = "BinaryPredicateBinaryFunction".hashCode();
-        if (null != predicate) {
-            hash ^= predicate.hashCode();
-        }
+        hash ^= predicate.hashCode();
         return hash;
     }
 

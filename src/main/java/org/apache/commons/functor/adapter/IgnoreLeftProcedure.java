@@ -38,8 +38,7 @@ import org.apache.commons.lang3.Validate;
  *
  * @param <L> the left argument type.
  * @param <R> the right argument type.
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1365377 $ $Date: 2012-07-24 21:59:23 -0300 (Tue, 24 Jul 2012) $
  */
 public final class IgnoreLeftProcedure<L, R> implements BinaryProcedure<L, R>, Serializable {
     /**
@@ -78,7 +77,7 @@ public final class IgnoreLeftProcedure<L, R> implements BinaryProcedure<L, R>, S
      * @return boolean
      */
     public boolean equals(IgnoreLeftProcedure<?, ?> that) {
-        return null != that && (null == procedure ? null == that.procedure : procedure.equals(that.procedure));
+        return null != that && procedure.equals(that.procedure);
     }
 
     /**
@@ -87,9 +86,7 @@ public final class IgnoreLeftProcedure<L, R> implements BinaryProcedure<L, R>, S
     @Override
     public int hashCode() {
         int hash = "IgnoreLeftProcedure".hashCode();
-        if (null != procedure) {
-            hash ^= procedure.hashCode();
-        }
+        hash ^= procedure.hashCode();
         return hash;
     }
 

@@ -12,23 +12,21 @@
  * limitations under the License.
  */
 
-package org.apache.commons.functor.generator;
+package org.apache.commons.functor.generator.loop;
+
+import java.util.Iterator;
 
 import org.apache.commons.functor.UnaryProcedure;
 import org.apache.commons.lang3.Validate;
 
-import java.util.Iterator;
-
 /**
- * Adapts an {@link Iterator} to the {@link Generator} interface.
+ * Adapts an {@link Iterator} to the {@link LoopGenerator} interface.
  *
  * @param <E> the type of elements held in this generator.
  * @since 1.0
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Jason Horman (jason@jhorman.org)
- * @author Rodney Waldhoff
+ * @version $Revision: 1376354 $ $Date: 2012-08-23 00:04:55 -0300 (Thu, 23 Aug 2012) $
  */
-public final class IteratorToGeneratorAdapter<E> extends BaseGenerator<E> {
+public final class IteratorToGeneratorAdapter<E> extends LoopGenerator<E> {
     // instance variables
     //-----------------------------------------------------
 

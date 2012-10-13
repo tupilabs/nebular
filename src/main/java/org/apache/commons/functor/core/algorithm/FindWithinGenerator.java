@@ -28,7 +28,7 @@ import org.apache.commons.functor.generator.Generator;
  * Return the first Object in a {@link Generator} matching a {@link UnaryPredicate}.
  *
  * @param <E> the arguments type.
- * @version $Revision: 1187618 $ $Date: 2011-10-21 23:16:16 -0200 (Fri, 21 Oct 2011) $
+ * @version $Revision: 1344796 $ $Date: 2012-05-31 13:12:39 -0300 (Thu, 31 May 2012) $
  */
 public final class FindWithinGenerator<E>
     implements BinaryFunction<Generator<? extends E>, UnaryPredicate<? super E>, E>, Serializable {
@@ -154,6 +154,14 @@ public final class FindWithinGenerator<E>
         int result = "FindWithinGenerator".hashCode();
         result ^= this.ifNone == null ? 0 : this.ifNone.hashCode();
         return result;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return "FindWithinGenerator<" + ifNone + "," + useIfNone + ">";
     }
 
     /**

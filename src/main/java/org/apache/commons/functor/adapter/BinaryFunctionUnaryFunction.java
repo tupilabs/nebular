@@ -25,8 +25,7 @@ import org.apache.commons.lang3.Validate;
  * It sounds nonsensical, but using Composite functions, can be made to do something useful.
  * @param <A> the argument type.
  * @param <T> the returned value type.
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1345136 $ $Date: 2012-06-01 09:47:06 -0300 (Fri, 01 Jun 2012) $
  */
 public final class BinaryFunctionUnaryFunction<A, T> implements UnaryFunction<A, T> {
     /**

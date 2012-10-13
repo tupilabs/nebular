@@ -27,7 +27,7 @@ import org.apache.commons.functor.core.composite.UnaryAnd;
 /**
  * Adds a fluent filtering API to any {@link Iterable}.
  *
- * @version $Revision: 1188396 $ $Date: 2011-10-24 19:40:17 -0200 (Mon, 24 Oct 2011) $
+ * @version $Revision: 1344786 $ $Date: 2012-05-31 12:55:31 -0300 (Thu, 31 May 2012) $
  *
  * @param <T> the Iterable generic type
  */
@@ -76,7 +76,7 @@ public class FilteredIterable<T> implements Iterable<T> {
      * Create a new FilteredIterable.
      * @param iterable wrapped
      */
-    private FilteredIterable(Iterable<? extends T> iterable) {
+    protected FilteredIterable(Iterable<? extends T> iterable) {
         super();
         this.iterable = iterable;
     }
@@ -85,11 +85,11 @@ public class FilteredIterable<T> implements Iterable<T> {
      * {@inheritDoc}
      */
     public Iterator<T> iterator() {
-        UnaryPredicate<T> tempPredicate;
+        UnaryPredicate<T> predicateReference;
         synchronized (this) {
-            tempPredicate = predicate;
+            predicateReference = predicate;
         }
-        return FilteredIterator.filter(iterable.iterator(), tempPredicate);
+        return FilteredIterator.filter(iterable.iterator(), predicateReference);
     }
 
     /**

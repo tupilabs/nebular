@@ -24,8 +24,7 @@ package org.apache.commons.functor;
  * </p>
  *
  * @since 1.0
- * @version $Revision: 647290 $ $Date: 2008-04-11 17:08:44 -0300 (Fri, 11 Apr 2008) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1345136 $ $Date: 2012-06-01 09:47:06 -0300 (Fri, 01 Jun 2012) $
  */
 public interface Predicate extends NullaryFunctor {
     /**

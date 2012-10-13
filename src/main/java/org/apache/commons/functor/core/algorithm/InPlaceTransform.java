@@ -26,7 +26,7 @@ import org.apache.commons.functor.UnaryFunction;
  * Implements an in-place transformation of a ListIterator's contents.
  *
  * @param <T> the arguments type
- * @version $Revision: 1187618 $ $Date: 2011-10-21 23:16:16 -0200 (Fri, 21 Oct 2011) $
+ * @version $Revision: 1344796 $ $Date: 2012-05-31 13:12:39 -0300 (Thu, 31 May 2012) $
  */
 public final class InPlaceTransform<T>
     implements BinaryProcedure<ListIterator<T>, UnaryFunction<? super T, ? extends T>>, Serializable {
@@ -64,6 +64,14 @@ public final class InPlaceTransform<T>
     @Override
     public int hashCode() {
         return System.identityHashCode(INSTANCE);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return "InPlaceTransform";
     }
 
     /**

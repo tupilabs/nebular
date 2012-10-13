@@ -39,8 +39,7 @@ import org.apache.commons.lang3.Validate;
  * </p>
  * @param <L> the left argument type.
  * @param <R> the right argument type.
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1365329 $ $Date: 2012-07-24 19:34:23 -0300 (Tue, 24 Jul 2012) $
  */
 public class TransposedProcedure<L, R> implements BinaryProcedure<L, R>, Serializable {
     /**
@@ -87,7 +86,7 @@ public class TransposedProcedure<L, R> implements BinaryProcedure<L, R>, Seriali
      * @return boolean
      */
     public boolean equals(TransposedProcedure<?, ?> that) {
-        return null != that && (null == procedure ? null == that.procedure : procedure.equals(that.procedure));
+        return null != that && procedure.equals(that.procedure);
     }
 
     /**
@@ -96,9 +95,7 @@ public class TransposedProcedure<L, R> implements BinaryProcedure<L, R>, Seriali
     @Override
     public int hashCode() {
         int hash = "TransposedProcedure".hashCode();
-        if (null != procedure) {
-            hash ^= procedure.hashCode();
-        }
+        hash ^= procedure.hashCode();
         return hash;
     }
 

@@ -27,7 +27,7 @@ import org.apache.commons.functor.generator.Generator;
  * Tests whether a {@link Generator} contains an element that matches a {@link UnaryPredicate}.
  *
  * @param <T> the predicate argument type.
- * @version $Revision: 1187618 $ $Date: 2011-10-21 23:16:16 -0200 (Fri, 21 Oct 2011) $
+ * @version $Revision: 1344796 $ $Date: 2012-05-31 13:12:39 -0300 (Thu, 31 May 2012) $
  */
 public final class GeneratorContains<T> implements BinaryPredicate<Generator<? extends T>, UnaryPredicate<? super T>>,
         Serializable {
@@ -97,6 +97,14 @@ public final class GeneratorContains<T> implements BinaryPredicate<Generator<? e
     @Override
     public int hashCode() {
         return System.identityHashCode(INSTANCE);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return "GeneratorContains";
     }
 
     /**

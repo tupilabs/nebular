@@ -26,7 +26,7 @@ import org.apache.commons.functor.UnaryPredicate;
  * Remove elements from left Iterator that match right UnaryPredicate.
  *
  * @param <T> the procedure argument type.
- * @version $Revision: 1187618 $ $Date: 2011-10-21 23:16:16 -0200 (Fri, 21 Oct 2011) $
+ * @version $Revision: 1344796 $ $Date: 2012-05-31 13:12:39 -0300 (Thu, 31 May 2012) $
  */
 public final class RemoveMatching<T>
     implements BinaryProcedure<Iterator<? extends T>, UnaryPredicate<? super T>>, Serializable {
@@ -66,6 +66,14 @@ public final class RemoveMatching<T>
     @Override
     public int hashCode() {
         return System.identityHashCode(INSTANCE);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return "RemoveMatching";
     }
 
     /**

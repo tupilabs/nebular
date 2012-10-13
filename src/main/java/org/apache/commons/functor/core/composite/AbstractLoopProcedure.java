@@ -18,6 +18,7 @@ package org.apache.commons.functor.core.composite;
 
 import org.apache.commons.functor.Predicate;
 import org.apache.commons.functor.Procedure;
+import org.apache.commons.lang3.Validate;
 
 import java.io.Serializable;
 
@@ -25,9 +26,7 @@ import java.io.Serializable;
  * Abstract base class for {@link WhileDoProcedure} and {@link DoWhileProcedure}
  * used to implement loop procedures.
  * <p>
- * @version $Revision: 1187618 $ $Date: 2011-10-21 23:16:16 -0200 (Fri, 21 Oct 2011) $
- * @author Herve Quiroz
- * @author Rodney Waldhoff
+ * @version $Revision: 1365329 $ $Date: 2012-07-24 19:34:23 -0300 (Tue, 24 Jul 2012) $
  */
 public abstract class AbstractLoopProcedure implements Procedure, Serializable {
     /**
@@ -55,8 +54,8 @@ public abstract class AbstractLoopProcedure implements Procedure, Serializable {
      * @param action loop body
      */
     protected AbstractLoopProcedure(Predicate condition, Procedure action) {
-        this.condition = condition;
-        this.action = action;
+        this.condition = Validate.notNull(condition, "Predicate argument must not be null");
+        this.action = Validate.notNull(action, "Predicate argument must not be null");
     }
 
     /**
@@ -71,8 +70,8 @@ public abstract class AbstractLoopProcedure implements Procedure, Serializable {
             return false;
         }
         AbstractLoopProcedure that = (AbstractLoopProcedure) object;
-        return (null == getCondition() ? null == that.getCondition() : getCondition().equals(that.getCondition()))
-                && (null == getAction() ? null == that.getAction() : getAction().equals(that.getAction()));
+        return (getCondition().equals(that.getCondition())
+                && (getAction().equals(that.getAction())));
     }
 
     /**
@@ -98,13 +97,9 @@ public abstract class AbstractLoopProcedure implements Procedure, Serializable {
      */
     protected int hashCode(int hash) {
         hash <<= HASH_SHIFT;
-        if (null != getAction()) {
-            hash ^= getAction().hashCode();
-        }
+        hash ^= getAction().hashCode();
         hash <<= HASH_SHIFT;
-        if (null != getCondition()) {
-            hash ^= getCondition().hashCode();
-        }
+        hash ^= getCondition().hashCode();
         return hash;
     }
 

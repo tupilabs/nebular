@@ -22,7 +22,7 @@ import org.apache.commons.functor.Procedure;
 /**
  * Until-do algorithm (test before).
  *
- * @version $Revision: 1166329 $ $Date: 2011-09-07 16:33:48 -0300 (Wed, 07 Sep 2011) $
+ * @version $Revision: 1344796 $ $Date: 2012-05-31 13:12:39 -0300 (Thu, 31 May 2012) $
  */
 public class UntilDo extends PredicatedLoop {
 
@@ -47,5 +47,13 @@ public class UntilDo extends PredicatedLoop {
         while (!getTest().test()) {
             getBody().run();
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return "UntilDo<" + getTest() + "," + getBody() + ">";
     }
 }

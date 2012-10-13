@@ -24,8 +24,7 @@ import org.apache.commons.functor.UnaryProcedure;
 
 /**
  * Utility/fluent methods for creating composite functors.
- * @version $Revision: 1175833 $ $Date: 2011-09-26 09:37:35 -0300 (Mon, 26 Sep 2011) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1365329 $ $Date: 2012-07-24 19:34:23 -0300 (Tue, 24 Jul 2012) $
  */
 public final class Composite {
     // constructor - for beanish apis
@@ -150,7 +149,7 @@ public final class Composite {
      * @param <R> the output predicate right argument type.
      * @param <G> the input functions left argument type.
      * @param <H> the input functions right argument type.
- *   * @param <T> the function returned value type.
+     * @param <T> the function returned value type.
      * @param f BinaryFunction to apply to <i>output(</i><code>f</code><i>), output(</i><code>g</code><i>)</i>
      * @param g left UnaryFunction
      * @param h right UnaryFunction
@@ -168,7 +167,7 @@ public final class Composite {
      * @param <R> the output predicate right argument type.
      * @param <G> the input functions left argument type.
      * @param <H> the input functions right argument type.
- *   * @param <T> the function returned value type.
+     * @param <T> the function returned value type.
      * @param f BinaryFunction to apply to <i>output(</i><code>f</code><i>), output(</i><code>g</code><i>)</i>
      * @param g left BinaryFunction
      * @param h right BinaryFunction

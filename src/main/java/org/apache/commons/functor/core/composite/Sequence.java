@@ -37,8 +37,7 @@ import org.apache.commons.functor.Procedure;
  * an instance whose delegates are not all
  * <code>Serializable</code> will result in an exception.
  * </p>
- * @version $Revision: 1187618 $ $Date: 2011-10-21 23:16:16 -0200 (Fri, 21 Oct 2011) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1365329 $ $Date: 2012-07-24 19:34:23 -0300 (Tue, 24 Jul 2012) $
  */
 public class Sequence implements Procedure, Serializable {
 
@@ -98,7 +97,9 @@ public class Sequence implements Procedure, Serializable {
      * @return this
      */
     public final Sequence then(Procedure p) {
-        list.add(p);
+        if (p != null) {
+            list.add(p);
+        }
         return this;
     }
 

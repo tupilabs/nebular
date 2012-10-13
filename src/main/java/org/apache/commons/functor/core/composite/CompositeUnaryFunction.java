@@ -47,9 +47,7 @@ import org.apache.commons.lang3.Validate;
  * </p>
  * @param <A> the argument type.
  * @param <T> the returned value type.
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Rodney Waldhoff
- * @author Matt Benson
+ * @version $Revision: 1365329 $ $Date: 2012-07-24 19:34:23 -0300 (Tue, 24 Jul 2012) $
  */
 public class CompositeUnaryFunction<A, T> implements UnaryFunction<A, T>, Serializable {
 
@@ -88,8 +86,8 @@ public class CompositeUnaryFunction<A, T> implements UnaryFunction<A, T>, Serial
          */
         public Helper(UnaryFunction<? super X, ? extends T> following,
                 UnaryFunction<? super A, ? extends X> preceding) {
-            this.following = following;
-            this.preceding = preceding;
+            this.following = Validate.notNull(following, "UnaryFunction argument must not be null");
+            this.preceding = Validate.notNull(preceding, "UnaryFunction argument must not be null");
         }
 
         /**

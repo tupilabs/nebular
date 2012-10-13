@@ -38,8 +38,7 @@ import org.apache.commons.functor.UnaryProcedure;
  * <code>Serializable</code> will result in an exception.
  * </p>
  * @param <A> the argument type.
- * @version $Revision: 1187618 $ $Date: 2011-10-21 23:16:16 -0200 (Fri, 21 Oct 2011) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1363382 $ $Date: 2012-07-19 12:23:19 -0300 (Thu, 19 Jul 2012) $
  */
 public class UnarySequence<A> implements UnaryProcedure<A>, Serializable {
 
@@ -99,7 +98,9 @@ public class UnarySequence<A> implements UnaryProcedure<A>, Serializable {
      * @return this
      */
     public UnarySequence<A> then(UnaryProcedure<? super A> p) {
-        list.add(p);
+        if (p != null) {
+            list.add(p);
+        }
         return this;
     }
 

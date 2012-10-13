@@ -28,8 +28,7 @@ import org.apache.commons.lang3.Validate;
  * of the specified array or String.
  *
  * @param <A> the function argument type.
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1345136 $ $Date: 2012-06-01 09:47:06 -0300 (Fri, 01 Jun 2012) $
  */
 public final class Size<A> implements UnaryFunction<A, Integer>, Serializable {
 

@@ -34,8 +34,7 @@ import org.apache.commons.lang3.Validate;
  * an instance whose delegate is not
  * <code>Serializable</code> will result in an exception.
  *
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1365377 $ $Date: 2012-07-24 21:59:23 -0300 (Tue, 24 Jul 2012) $
  */
 public final class FunctionPredicate implements Predicate, Serializable {
 
@@ -78,7 +77,7 @@ public final class FunctionPredicate implements Predicate, Serializable {
      * @return boolean
      */
     public boolean equals(FunctionPredicate that) {
-        return null != that && (null == function ? null == that.function : function.equals(that.function));
+        return null != that && function.equals(that.function);
     }
 
     /**
@@ -87,9 +86,7 @@ public final class FunctionPredicate implements Predicate, Serializable {
     @Override
     public int hashCode() {
         int hash = "FunctionPredicate".hashCode();
-        if (null != function) {
-            hash ^= function.hashCode();
-        }
+        hash ^= function.hashCode();
         return hash;
     }
 

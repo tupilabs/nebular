@@ -39,8 +39,7 @@ import org.apache.commons.functor.UnaryPredicate;
  * <code>Serializable</code> will result in an exception.
  * </p>
  * @param <T> the returned value type.
- * @version $Revision: 1187620 $ $Date: 2011-10-21 23:18:52 -0200 (Fri, 21 Oct 2011) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1345136 $ $Date: 2012-06-01 09:47:06 -0300 (Fri, 01 Jun 2012) $
  */
 public final class Constant<T> implements Function<T>, UnaryFunction<Object, T>, BinaryFunction<Object, Object, T>,
         Predicate, UnaryPredicate<Object>, BinaryPredicate<Object, Object>, Serializable {

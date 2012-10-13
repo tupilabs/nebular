@@ -37,8 +37,7 @@ import org.apache.commons.lang3.Validate;
  * <code>Serializable</code> will result in an exception.
  *
  * @param <A> the argument type.
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1365377 $ $Date: 2012-07-24 21:59:23 -0300 (Tue, 24 Jul 2012) $
  */
 public final class LeftBoundProcedure<A> implements UnaryProcedure<A>, Serializable {
     /**
@@ -86,7 +85,7 @@ public final class LeftBoundProcedure<A> implements UnaryProcedure<A>, Serializa
      */
     public boolean equals(LeftBoundProcedure<?> that) {
         return null != that
-                && (null == procedure ? null == that.procedure : procedure.equals(that.procedure))
+                && procedure.equals(that.procedure)
                 && (null == param ? null == that.param : param.equals(that.param));
     }
 
@@ -96,10 +95,8 @@ public final class LeftBoundProcedure<A> implements UnaryProcedure<A>, Serializa
     @Override
     public int hashCode() {
         int hash = "LeftBoundProcedure".hashCode();
-        if (null != procedure) {
-            hash <<= 2;
-            hash ^= procedure.hashCode();
-        }
+        hash <<= 2;
+        hash ^= procedure.hashCode();
         if (null != param) {
             hash <<= 2;
             hash ^= param.hashCode();

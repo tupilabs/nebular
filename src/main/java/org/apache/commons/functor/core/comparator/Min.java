@@ -29,8 +29,7 @@ import org.apache.commons.lang3.Validate;
  * {@link BinaryFunction} interface.
  *
  * @param <T> the binary function arguments and return types.
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1364676 $ $Date: 2012-07-23 12:21:25 -0300 (Mon, 23 Jul 2012) $
  */
 public final class Min<T> implements BinaryFunction<T, T, T>, Serializable {
 
@@ -42,7 +41,7 @@ public final class Min<T> implements BinaryFunction<T, T, T>, Serializable {
     /**
      * serialVersionUID declaration.
      */
-    private static final long serialVersionUID = 9190170976707323848L;
+    private static final long serialVersionUID = -3538911698805767997L;
 
     /**
      * The wrapped comparator.
@@ -54,7 +53,7 @@ public final class Min<T> implements BinaryFunction<T, T, T>, Serializable {
      */
     @SuppressWarnings("unchecked")
     public Min() {
-        this(ComparableComparator.instance());
+        this((Comparator<T>) ComparableComparator.INSTANCE);
     }
 
     /**

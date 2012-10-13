@@ -41,8 +41,7 @@ import org.apache.commons.lang3.Validate;
  * @param <L> the left argument type.
  * @param <R> the right argument type.
  * @param <T> the returned value type.
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1365329 $ $Date: 2012-07-24 19:34:23 -0300 (Tue, 24 Jul 2012) $
  */
 public class TransposedFunction<L, R, T> implements BinaryFunction<L, R, T>, Serializable {
     /**
@@ -90,7 +89,7 @@ public class TransposedFunction<L, R, T> implements BinaryFunction<L, R, T>, Ser
      * @return boolean
      */
     public final boolean equals(TransposedFunction<?, ?, ?> that) {
-        return null != that && (null == function ? null == that.function : function.equals(that.function));
+        return null != that && function.equals(that.function);
     }
 
     /**
@@ -99,9 +98,7 @@ public class TransposedFunction<L, R, T> implements BinaryFunction<L, R, T>, Ser
     @Override
     public int hashCode() {
         int hash = "TransposedFunction".hashCode();
-        if (null != function) {
-            hash ^= function.hashCode();
-        }
+        hash ^= function.hashCode();
         return hash;
     }
 

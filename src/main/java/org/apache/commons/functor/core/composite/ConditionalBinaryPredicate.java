@@ -40,8 +40,7 @@ import org.apache.commons.lang3.Validate;
  * </p>
  * @param <L> the left argument type.
  * @param <R> the right argument type.
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1365329 $ $Date: 2012-07-24 19:34:23 -0300 (Tue, 24 Jul 2012) $
  */
 public final class ConditionalBinaryPredicate<L, R> implements BinaryPredicate<L, R>, Serializable {
     /**
@@ -106,9 +105,9 @@ public final class ConditionalBinaryPredicate<L, R> implements BinaryPredicate<L
      */
     public boolean equals(ConditionalBinaryPredicate<?, ?> that) {
         return null != that
-                && (null == ifPred ? null == that.ifPred : ifPred.equals(that.ifPred))
-                && (null == thenPred ? null == that.thenPred : thenPred.equals(that.thenPred))
-                && (null == elsePred ? null == that.elsePred : elsePred.equals(that.elsePred));
+                && ifPred.equals(that.ifPred)
+                && thenPred.equals(that.thenPred)
+                && elsePred.equals(that.elsePred);
     }
 
     /**
@@ -117,18 +116,12 @@ public final class ConditionalBinaryPredicate<L, R> implements BinaryPredicate<L
     @Override
     public int hashCode() {
         int hash = "ConditionalBinaryPredicate".hashCode();
-        if (null != ifPred) {
-            hash <<= HASH_SHIFT;
-            hash ^= ifPred.hashCode();
-        }
-        if (null != thenPred) {
-            hash <<= HASH_SHIFT;
-            hash ^= thenPred.hashCode();
-        }
-        if (null != elsePred) {
-            hash <<= HASH_SHIFT;
-            hash ^= elsePred.hashCode();
-        }
+        hash <<= HASH_SHIFT;
+        hash ^= ifPred.hashCode();
+        hash <<= HASH_SHIFT;
+        hash ^= thenPred.hashCode();
+        hash <<= HASH_SHIFT;
+        hash ^= elsePred.hashCode();
         return hash;
     }
 

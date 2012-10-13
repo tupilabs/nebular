@@ -25,8 +25,7 @@ package org.apache.commons.functor;
  *
  * @param <A> the argument type.
  * @since 1.0
- * @version $Revision: 1156741 $ $Date: 2011-08-11 16:03:45 -0300 (Thu, 11 Aug 2011) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1345136 $ $Date: 2012-06-01 09:47:06 -0300 (Fri, 01 Jun 2012) $
  */
 public interface UnaryProcedure<A> extends UnaryFunctor<A> {
     /**

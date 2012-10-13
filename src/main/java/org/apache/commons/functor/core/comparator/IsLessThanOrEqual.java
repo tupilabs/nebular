@@ -32,8 +32,7 @@ import org.apache.commons.lang3.Validate;
  * a {@link Comparable Comparable} <code>Comparator</code> is used.
  *
  * @param <T> the binary predicate input types
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1365328 $ $Date: 2012-07-24 19:19:23 -0300 (Tue, 24 Jul 2012) $
  */
 public final class IsLessThanOrEqual<T> implements BinaryPredicate<T, T>, Serializable {
 
@@ -45,7 +44,7 @@ public final class IsLessThanOrEqual<T> implements BinaryPredicate<T, T>, Serial
     /**
      * serialVersionUID declaration.
      */
-    private static final long serialVersionUID = -7270189005780457145L;
+    private static final long serialVersionUID = -5791636848361450563L;
 
     /**
      * The wrapped comparator.
@@ -58,7 +57,7 @@ public final class IsLessThanOrEqual<T> implements BinaryPredicate<T, T>, Serial
      */
     @SuppressWarnings("unchecked")
     public IsLessThanOrEqual() {
-        this(ComparableComparator.INSTANCE);
+        this((Comparator<? super T>) ComparableComparator.INSTANCE);
     }
 
     /**
@@ -98,9 +97,6 @@ public final class IsLessThanOrEqual<T> implements BinaryPredicate<T, T>, Serial
      */
     public boolean equals(IsLessThanOrEqual<?> that) {
         if (null != that) {
-            if (null == comparator) {
-                return null == that.comparator;
-            }
             return comparator.equals(that.comparator);
         }
         return false;

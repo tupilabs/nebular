@@ -29,8 +29,7 @@ import org.apache.commons.functor.adapter.IgnoreRightPredicate;
  * is <code>null</code>.
  *
  * @param <A> the argument type.
- * @version $Revision: 1187618 $ $Date: 2011-10-21 23:16:16 -0200 (Fri, 21 Oct 2011) $
- * @author Rodney Waldhoff
+ * @version $Revision: 1345136 $ $Date: 2012-06-01 09:47:06 -0300 (Fri, 01 Jun 2012) $
  */
 public final class IsNull<A> implements UnaryPredicate<A>, Serializable {
 

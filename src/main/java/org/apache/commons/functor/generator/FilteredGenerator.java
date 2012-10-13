@@ -26,12 +26,17 @@ import org.apache.commons.lang3.Validate;
  * that are matched by a specified UnaryPredicate.
  *
  * @param <E> the type of elements held in this generator.
- * @version $Revision: 1234990 $ $Date: 2012-01-23 19:18:10 -0200 (Mon, 23 Jan 2012) $
+ * @version $Revision: 1376354 $ $Date: 2012-08-23 00:04:55 -0300 (Thu, 23 Aug 2012) $
  */
 public class FilteredGenerator<E> extends BaseGenerator<E> {
 
     /**
-     * The wrapped generator.
+     * A generator can wrap another generator.
+     * */
+    private Generator<? extends E> wrappedGenerator;
+
+    /**
+     * The predicate used to filter.
      */
     private final UnaryPredicate<? super E> pred;
 
@@ -41,7 +46,7 @@ public class FilteredGenerator<E> extends BaseGenerator<E> {
      * @param pred filtering UnaryPredicate
      */
     public FilteredGenerator(Generator<? extends E> wrapped, UnaryPredicate<? super E> pred) {
-        super(Validate.notNull(wrapped, "Generator argument was null"));
+        this.wrappedGenerator = Validate.notNull(wrapped, "Generator argument was null");
         this.pred = Validate.notNull(pred, "UnaryPredicate argument was null");
     }
 
@@ -53,12 +58,11 @@ public class FilteredGenerator<E> extends BaseGenerator<E> {
     }
 
     /**
-     * {@inheritDoc}
+     * Gets the wrapped generator.
+     * @return the wrapped Generator.
      */
-    @SuppressWarnings("unchecked")
-    @Override
     protected Generator<? extends E> getWrappedGenerator() {
-        return (Generator<? extends E>) super.getWrappedGenerator();
+        return this.wrappedGenerator;
     }
 
     /**
@@ -84,9 +88,9 @@ public class FilteredGenerator<E> extends BaseGenerator<E> {
         int result = "FilteredGenerator".hashCode();
         result <<= 2;
         Generator<?> gen = getWrappedGenerator();
-        result ^= gen == null ? 0 : gen.hashCode();
+        result ^= gen.hashCode();
         result <<= 2;
-        result ^= pred == null ? 0 : pred.hashCode();
+        result ^= pred.hashCode();
         return result;
     }
 }
