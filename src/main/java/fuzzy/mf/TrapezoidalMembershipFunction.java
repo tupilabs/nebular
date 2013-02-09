@@ -19,8 +19,7 @@ import java.io.Serializable;
  * Trapezoidal Shaped Membership Function. Equivalent to Matlab 
  * <a href="http://www.mathworks.com/help/toolbox/fuzzy/trapmf.html">trapmf</a> 
  * function.
- * 
- * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ *
  * @since 0.1
  */
 public class TrapezoidalMembershipFunction implements MembershipFunction<Double>, Serializable {

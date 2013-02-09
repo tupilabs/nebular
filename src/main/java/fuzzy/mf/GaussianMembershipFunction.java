@@ -21,8 +21,7 @@ import org.apache.commons.math3.util.FastMath;
  * Gaussian Membership Function. Equivalent to Matlab 
  * <a href="http://www.mathworks.com/help/toolbox/fuzzy/gaussmf.html">gaussmf</a> 
  * function. 
- * 
- * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ *
  * @since 0.1
  */
 public class GaussianMembershipFunction implements MembershipFunction<Double>, Serializable {

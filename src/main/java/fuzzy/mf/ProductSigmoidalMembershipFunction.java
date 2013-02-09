@@ -22,8 +22,7 @@ import org.apache.commons.math3.analysis.function.Sigmoid;
  * Product Sigmoidal Membership Function. Equivalent to Matlab 
  * <a href="http://www.mathworks.com/help/toolbox/fuzzy/psigmf.html">psigmf</a> 
  * function. 
- * 
- * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ *
  * @since 0.1
  */
 public class ProductSigmoidalMembershipFunction implements MembershipFunction<Double>, Serializable {

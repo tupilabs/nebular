@@ -21,8 +21,7 @@ import org.apache.commons.math3.util.FastMath;
  * Z-Shaped Membership Function. Equivalent to Matlab 
  * <a href="http://www.mathworks.com/help/toolbox/fuzzy/zmf.html">zmf</a> 
  * function.
- * 
- * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ *
  * @since 0.1
  */
 public class ZShapedMembershipFunction implements MembershipFunction<Double>, Serializable {

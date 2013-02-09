@@ -1,5 +1,6 @@
 package fuzzy.df;
 
+import org.apache.commons.functor.BinaryFunction;
 import org.apache.commons.functor.generator.range.NumericRange;
 
 import fuzzy.mf.MembershipFunction;
@@ -9,7 +10,7 @@ import fuzzy.mf.MembershipFunction;
  * applied to a numeric range. Its output is always a crisp value.
  * @param <T> numeric type used in this defuzzification function
  */
-public interface DefuzzificationFunction<T extends Number & Comparable<T>> {
+public interface DefuzzificationFunction<T extends Number & Comparable<T>> extends BinaryFunction<NumericRange<T>, MembershipFunction<T>, Double> {
 
     /**
      * Defuzzifies the result of a membership function applied to a numeric
@@ -29,6 +30,6 @@ public interface DefuzzificationFunction<T extends Number & Comparable<T>> {
      * @param mf membership function applied to numeric range
      * @return crisp result
      */
-    double defuzzify(NumericRange<T> x, MembershipFunction<T> mf);
+    Double evaluate(NumericRange<T> x, MembershipFunction<T> mf);
 
 }

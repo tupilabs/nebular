@@ -21,8 +21,7 @@ import org.apache.commons.math3.util.FastMath;
  * Triangular Membership Function. Equivalent to Matlab 
  * <a href="http://www.mathworks.com/help/toolbox/fuzzy/trimf.html">trimf</a> 
  * function. 
- * 
- * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ *
  * @since 0.1
  */
 public class TriangularMembershipFunction implements MembershipFunction<Double>, Serializable {

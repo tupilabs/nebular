@@ -13,6 +13,41 @@
  */
 package fuzzy.df;
 
-public class BisectorDefuzzificationFunction {
+import java.util.ArrayList;
+import java.util.Collection;
+
+import org.apache.commons.functor.generator.range.NumericRange;
+
+import fuzzy.internal.functions.Sum;
+import fuzzy.mf.MembershipFunction;
+
+public class BisectorDefuzzificationFunction<T extends Number & Comparable<T>> implements DefuzzificationFunction<T> {
+
+    /**
+     * {@inheritDoc}
+     * @throws IllegalArgumentException if total area is zero
+     */
+    public Double evaluate(NumericRange<T> x, MembershipFunction<T> mf) {
+        ArrayList<T> values = new ArrayList<T>(x.toCollection());
+        Collection<Double> fuzzyValues = new ArrayList<Double>();
+        for (T crispValue : x.toCollection()) {
+            fuzzyValues.add(mf.evaluate(crispValue));
+        }
+        double totalArea = Sum.of(fuzzyValues);
+        if (totalArea == 0)
+            throw new IllegalArgumentException(
+                    "Total area is zero in bisector defuzzification!");
+        double result = 0.0;
+        double temp = 0.0;
+        for (int i = 0; i < values.size() ; ++i) {
+            T value = values.get(i);
+            result = value.doubleValue();
+            temp = temp + mf.evaluate(value);
+            if(temp >= (totalArea/2)) {
+                break;
+            }
+        }
+        return result;
+    }
 
 }

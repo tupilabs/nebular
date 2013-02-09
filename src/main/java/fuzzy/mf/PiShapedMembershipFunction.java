@@ -21,8 +21,7 @@ import org.apache.commons.math3.util.FastMath;
  * PI Shaped Membership Function. Equivalent to Matlab 
  * <a href="http://www.mathworks.com/help/toolbox/fuzzy/pimf.html">pimf</a> 
  * function. 
- * 
- * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ *
  * @since 0.1
  */
 public class PiShapedMembershipFunction implements MembershipFunction<Double>, Serializable {

@@ -21,8 +21,7 @@ import org.apache.commons.math3.util.FastMath;
  * S-Shaped Membership Function. Equivalent to Matlab 
  * <a href="http://www.mathworks.com/help/toolbox/fuzzy/smf.html">smf</a> 
  * function.
- * 
- * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ *
  * @since 0.1
  */
 public class SShapedMembershipFunction implements MembershipFunction<Double>, Serializable {

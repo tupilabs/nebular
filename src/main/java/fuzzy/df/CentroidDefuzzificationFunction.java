@@ -37,9 +37,9 @@ public class CentroidDefuzzificationFunction<T extends Number & Comparable<T>> i
 
     /**
      * {@inheritDoc}
-     * @throws IllegalArgumentException if the area is zero
+     * @throws IllegalArgumentException if total area is zero
      */
-    public double defuzzify(NumericRange<T> x, MembershipFunction<T> mf) {
+    public Double evaluate(NumericRange<T> x, MembershipFunction<T> mf) {
         Collection<Double> fuzzyValues = new ArrayList<Double>();
         for (T crispValue : x.toCollection()) {
             fuzzyValues.add(mf.evaluate(crispValue));

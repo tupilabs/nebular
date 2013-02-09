@@ -13,7 +13,9 @@
  */
 
 /**
+ * <p>
  * For internal use only. Contains functions used in mf, df, rules or other
  * packages.
+ * </p>
  */
 package fuzzy.internal.functions;
