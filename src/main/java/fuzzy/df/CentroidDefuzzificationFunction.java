@@ -1,20 +1,47 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an 
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
+ * either express or implied. See the License for the specific language 
+ * governing permissions and limitations under the License.
+ */
 package fuzzy.df;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.apache.commons.functor.Function;
-import org.apache.commons.functor.generator.range.BoundType;
-import org.apache.commons.functor.generator.range.DoubleRange;
+import org.apache.commons.functor.generator.range.NumericRange;
 
+import fuzzy.internal.functions.Product;
+import fuzzy.internal.functions.Sum;
 import fuzzy.mf.MembershipFunction;
-import fuzzy.mf.TrapezoidalMembershipFunction;
 
-public class CentroidDefuzzificationFunction {
+/**
+ * Centroid defuzzification function.
+ * <p>
+ * Also known as <strong>center of gravity</strong> or <strong>center of
+ * area</p> defuzzication function. Created by <strong>Sugeno</strong> in
+ * 1985, is the most used technique and very accurate.
+ * <p>
+ * TODO: add details about implementation, serialization and thread-safety
+ * TODO: add example
+ * @param <T> numeric type used in this defuzzification function
+ */
+public class CentroidDefuzzificationFunction<T extends Number & Comparable<T>> implements DefuzzificationFunction<T> {
 
-    public double defuzzify(DoubleRange x, MembershipFunction<Double> mf) {
+    /**
+     * {@inheritDoc}
+     * @throws IllegalArgumentException if the area is zero
+     */
+    public double defuzzify(NumericRange<T> x, MembershipFunction<T> mf) {
         Collection<Double> fuzzyValues = new ArrayList<Double>();
-        for (double crispValue : x.toCollection()) {
+        for (T crispValue : x.toCollection()) {
             fuzzyValues.add(mf.evaluate(crispValue));
         }
         double totalArea = Sum.of(fuzzyValues);
@@ -25,73 +52,6 @@ public class CentroidDefuzzificationFunction {
         double sum2 = Sum.of(product);
         double out = sum2 / totalArea;
         return out;
-    }
-    
-    /* --- Functions --- */
-    
-    private static class Sum implements Function<Double> {
-        private Collection<Double> x;
-        
-        public Sum(Collection<Double> x) {
-            this.x = x;
-        }
-        
-        public Double evaluate() {
-            double result = 0.0;
-            for (double value : x) {
-                result += value;
-            }
-            return result;
-        }
-        
-        public static double of(Collection<Double> x) {
-            return new Sum(x).evaluate();
-        }
-    }
-
-    private static class Product implements Function<Collection<Double>> {
-
-        private Collection<Double> x;
-        private MembershipFunction<Double> mf;
-
-        public Product(Collection<Double> x, MembershipFunction<Double> mf) {
-            this.x = x;
-            this.mf = mf;
-        }
-
-        public Collection<Double> evaluate() {
-            Collection<Double> result = new ArrayList<Double>();
-            for (double value : x) {
-                double fuzzyValue = mf.evaluate(value);
-                result.add(value * fuzzyValue);
-            }
-            return result;
-        }
-
-        public static Collection<Double> of(Collection<Double> x,
-                MembershipFunction<Double> mf) {
-            return new Product(x, mf).evaluate();
-        }
-
-    }
-
-    public static void main4(String[] args) {
-        MembershipFunction<Double> trapmf = new TrapezoidalMembershipFunction(
-                -10, -8, -4, 7);
-        DoubleRange x = new DoubleRange(1.0, BoundType.CLOSED, 2.0, BoundType.CLOSED, 1.0);
-//        for (Double d : Product.of(x.toCollection(), trapmf)) {
-//            System.out.printf("%.4f ", d);
-//        }
-        System.out.printf("%.4f", Sum.of(Product.of(x.toCollection(), trapmf)));
-    }
-    
-    public static void main2(String[] args) {
-        MembershipFunction<Double> trapmf = new TrapezoidalMembershipFunction(
-                -10, -8, -4, 7);
-        DoubleRange x = new DoubleRange(1.0, BoundType.CLOSED, 2.0, BoundType.CLOSED, 1.0);
-        for (Double d : Product.of(x.toCollection(), trapmf)) {
-            System.out.printf("%.4f ", d);
-        }
     }
 
 }
