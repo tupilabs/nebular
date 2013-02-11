@@ -21,10 +21,16 @@ import org.apache.commons.functor.generator.range.NumericRange;
 import fuzzy.internal.functions.Sum;
 import fuzzy.mf.MembershipFunction;
 
-public class BisectorDefuzzificationFunction<T extends Number & Comparable<T>> implements DefuzzificationFunction<T> {
-
+/**
+ * Bisector defuzzification function.
+ *
+ * @param <T>
+ */
+public class BisectorDefuzzificationFunction<T extends Number & Comparable<T>>
+        implements DefuzzificationFunction<T> {
     /**
      * {@inheritDoc}
+     *
      * @throws IllegalArgumentException if total area is zero
      */
     public Double evaluate(NumericRange<T> x, MembershipFunction<T> mf) {
@@ -39,15 +45,14 @@ public class BisectorDefuzzificationFunction<T extends Number & Comparable<T>> i
                     "Total area is zero in bisector defuzzification!");
         double result = 0.0;
         double temp = 0.0;
-        for (int i = 0; i < values.size() ; ++i) {
+        for (int i = 0; i < values.size(); ++i) {
             T value = values.get(i);
             result = value.doubleValue();
             temp = temp + mf.evaluate(value);
-            if(temp >= (totalArea/2)) {
+            if (temp >= (totalArea / 2)) {
                 break;
             }
         }
         return result;
     }
-
 }

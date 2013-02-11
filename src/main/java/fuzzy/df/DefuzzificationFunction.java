@@ -8,10 +8,11 @@ import fuzzy.mf.MembershipFunction;
 /**
  * A defuzzification function. Operates over the result of a membership funciton
  * applied to a numeric range. Its output is always a crisp value.
+ *
  * @param <T> numeric type used in this defuzzification function
  */
-public interface DefuzzificationFunction<T extends Number & Comparable<T>> extends BinaryFunction<NumericRange<T>, MembershipFunction<T>, Double> {
-
+public interface DefuzzificationFunction<T extends Number & Comparable<T>>
+        extends BinaryFunction<NumericRange<T>, MembershipFunction<T>, Double> {
     /**
      * Defuzzifies the result of a membership function applied to a numeric
      * range.
@@ -31,5 +32,4 @@ public interface DefuzzificationFunction<T extends Number & Comparable<T>> exten
      * @return crisp result
      */
     Double evaluate(NumericRange<T> x, MembershipFunction<T> mf);
-
 }

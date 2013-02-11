@@ -11,10 +11,22 @@
  * either express or implied. See the License for the specific language 
  * governing permissions and limitations under the License.
  */
+package fuzzy.internal.functions;
 
-/**
- * <p>
- * Basic Defuzzification Functions.
- * </p>
- */
-package fuzzy.df;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import org.apache.commons.functor.UnaryProcedure;
+
+public class MapAbs implements UnaryProcedure<Double> {
+    private Collection<Double> col;
+    public MapAbs() {
+        col = new ArrayList<Double>();
+    }
+    public void run(Double obj) {
+        col.add(Math.abs(obj));
+    }
+    public Collection<Double> getCol() {
+        return col;
+    }
+}

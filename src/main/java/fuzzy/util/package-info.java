@@ -14,7 +14,7 @@
 
 /**
  * <p>
- * Basic Defuzzification Functions.
+ * Utility classes.
  * </p>
  */
-package fuzzy.df;
+package fuzzy.util;

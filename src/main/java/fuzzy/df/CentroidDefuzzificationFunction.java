@@ -25,18 +25,21 @@ import fuzzy.mf.MembershipFunction;
 /**
  * Centroid defuzzification function.
  * <p>
- * Also known as <strong>center of gravity</strong> or <strong>center of
- * area</p> defuzzication function. Created by <strong>Sugeno</strong> in
- * 1985, is the most used technique and very accurate.
+ * Also known as <strong>center of gravity</strong> or <strong>center of area
+ * </p>
+ * defuzzication function. Created by <strong>Sugeno</strong> in 1985, is the
+ * most used technique and very accurate.
  * <p>
- * TODO: add details about implementation, serialization and thread-safety
- * TODO: add example
+ * TODO: add details about implementation, serialization and thread-safety TODO:
+ * add example
+ *
  * @param <T> numeric type used in this defuzzification function
  */
-public class CentroidDefuzzificationFunction<T extends Number & Comparable<T>> implements DefuzzificationFunction<T> {
-
+public class CentroidDefuzzificationFunction<T extends Number & Comparable<T>>
+        implements DefuzzificationFunction<T> {
     /**
      * {@inheritDoc}
+     *
      * @throws IllegalArgumentException if total area is zero
      */
     public Double evaluate(NumericRange<T> x, MembershipFunction<T> mf) {
@@ -53,5 +56,4 @@ public class CentroidDefuzzificationFunction<T extends Number & Comparable<T>> i
         double out = sum2 / totalArea;
         return out;
     }
-
 }
