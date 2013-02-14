@@ -35,16 +35,16 @@
 	</organization>
 
 	<scm>
-		<connection>scm:git:git://git.code.sf.net/p/nebular/code</connection>
-		<developerConnection>scm:git:ssh://kinow@git.code.sf.net/p/nebular/code</developerConnection>
-		<url>https://kinow@git.code.sf.net/p/nebular/code</url>
+		<connection>scm:git:git://github.com/tupilabs/nebular.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:tupilabs/nebular.git</developerConnection>
+		<url>https://github.com/tupilabs/nebular</url>
 	</scm>
 
 	<inceptionYear>2011</inceptionYear>
 
 	<issueManagement>
 		<system>SourceForge.net Tickets</system>
-		<url>https://sourceforge.net/p/nebular/tickets/</url>
+		<url>https://github.com/tupilabs/nebular/issues</url>
 	</issueManagement>
 
 	<developers>
