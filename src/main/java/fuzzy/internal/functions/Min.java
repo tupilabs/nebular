@@ -17,14 +17,32 @@ import java.util.Collection;
 
 import org.apache.commons.functor.Function;
 
+/**
+ * Returns the minimum value in a collection. In case the collection is empty it
+ * returns 0.0 (double).
+ *
+ * @param <T> numeric type
+ */
 public class Min<T extends Number & Comparable<T>> implements Function<Double> {
 
+	/**
+	 * Collection.
+	 */
     private final Collection<T> col;
 
+    /**
+     * Constructor with arguments.
+     *
+     * @param col a collection
+     */
     public Min(Collection<T> col) {
         this.col = col;
     }
 
+    /*
+     * (non-Javadoc)
+     * @see org.apache.commons.functor.Function#evaluate()
+     */
     public Double evaluate() {
         double min = 0.0;
         boolean first = true;
@@ -37,6 +55,12 @@ public class Min<T extends Number & Comparable<T>> implements Function<Double> {
         return min;
     }
 
+    /**
+     * Returns the minimum value found in a collection.
+     *
+     * @param col a collection
+     * @return minimum value
+     */
     public static <T extends Number & Comparable<T>> double of(Collection<T> col) {
         return new Min<T>(col).evaluate();
     }

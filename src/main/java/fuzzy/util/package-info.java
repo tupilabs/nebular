@@ -14,7 +14,9 @@
 
 /**
  * <p>
- * Utility classes.
+ * Fuzzy utility classes. Although part of the public API, classes in this
+ * package are not part of nebular core API, and may be changed more
+ * frequently.
  * </p>
  */
 package fuzzy.util;

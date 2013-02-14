@@ -18,25 +18,45 @@ import java.util.Collection;
 import org.apache.commons.functor.Function;
 
 /**
- * Sum function.
+ * Returns the sum of all elements of a collection. In case the collection is empty it
+ * returns 0.0 (double).
  *
- * @param <T> numeric type used in this function
+ * @param <T> numeric type
  */
 public final class Sum<T extends Number & Comparable<T>> implements Function<Double> {
-    private Collection<T> x;
-    
-    public Sum(Collection<T> x) {
-        this.x = x;
+
+	/**
+	 * A collection.
+	 */
+    private Collection<T> col;
+
+    /**
+     * Constructor with arguments.
+     *
+     * @param col a collection
+     */
+    public Sum(Collection<T> col) {
+        this.col = col;
     }
-    
+
+    /*
+     * (non-Javadoc)
+     * @see org.apache.commons.functor.Function#evaluate()
+     */
     public Double evaluate() {
         double result = 0.0;
-        for (T value : x) {
+        for (T value : col) {
             result += value.doubleValue();
         }
         return result;
     }
-    
+
+    /**
+     * Returns the sum of all elements of a collection.
+     *
+     * @param col a collection
+     * @return sum
+     */
     public static <T extends Number & Comparable<T>> double of(Collection<T> x) {
         return new Sum<T>(x).evaluate();
     }

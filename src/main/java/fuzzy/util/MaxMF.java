@@ -22,11 +22,19 @@ import org.apache.commons.functor.BinaryFunction;
 import fuzzy.mf.MembershipFunction;
 
 /**
- * Gets the max values from a membership function. Returns a map which the
- * key is the the crisp value and the value its fuzzy value.
+ * Gets the maximum values of a membership function applied over a collection.
+ * Returns a map which the key is the the crisp value and the value its
+ * fuzzy value.
+ *
+ * @param <T> numeric type
  */
 public class MaxMF<T extends Number & Comparable<T>> implements BinaryFunction<Collection<T>, MembershipFunction<T>, Map<Double, Double>> {
-    public Map<Double, Double> evaluate(Collection<T> x,
+
+	/*
+	 * (non-Javadoc)
+	 * @see org.apache.commons.functor.BinaryFunction#evaluate(java.lang.Object, java.lang.Object)
+	 */
+	public Map<Double, Double> evaluate(Collection<T> x,
             MembershipFunction<T> mf) {
         Map<Double, Double> max = new HashMap<Double, Double>();
         double maxValue = 0.0;
@@ -45,8 +53,16 @@ public class MaxMF<T extends Number & Comparable<T>> implements BinaryFunction<C
         return max;
     }
 
-    public static <T extends Number & Comparable<T>> Map<Double, Double> of(Collection<T> x,
+	/**
+	 * Returns the maximum values of a membership function applied over a collection.
+	 *
+	 * @param col a collection
+	 * @param mf membership function
+	 * @return maximum values of a membership function applied over a collection
+	 */
+    public static <T extends Number & Comparable<T>> Map<Double, Double> of(Collection<T> col,
             MembershipFunction<T> mf) {
-        return new MaxMF<T>().evaluate(x, mf);
+        return new MaxMF<T>().evaluate(col, mf);
     }
+
 }

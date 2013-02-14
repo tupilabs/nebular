@@ -18,14 +18,38 @@ import java.util.Collection;
 
 import org.apache.commons.functor.UnaryProcedure;
 
-public class MapAbs implements UnaryProcedure<Double> {
+/**
+ * Returns the absolute values of a collection.
+ *
+ * @param <T> numeric type
+ */
+public class MapAbs<T extends Number & Comparable<T>> implements UnaryProcedure<T> {
+
+	/**
+	 * A collection.
+	 */
     private Collection<Double> col;
+
+    /**
+     * Default constructor.
+     */
     public MapAbs() {
         col = new ArrayList<Double>();
     }
-    public void run(Double obj) {
-        col.add(Math.abs(obj));
+
+    /*
+     * (non-Javadoc)
+     * @see org.apache.commons.functor.UnaryProcedure#run(java.lang.Object)
+     */
+    public void run(T obj) {
+        col.add(Math.abs(obj.doubleValue()));
     }
+
+    /**
+     * Gets the collection with absolute values.
+     * 
+     * @return collection with absolute values
+     */
     public Collection<Double> getCol() {
         return col;
     }

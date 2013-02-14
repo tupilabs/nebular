@@ -15,12 +15,13 @@ package fuzzy.df;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 import org.apache.commons.functor.generator.range.NumericRange;
 
-import fuzzy.internal.functions.Product;
 import fuzzy.internal.functions.Sum;
 import fuzzy.mf.MembershipFunction;
+import fuzzy.util.CrispFuzzyProduct;
 
 /**
  * <p>
@@ -50,7 +51,7 @@ public class CentroidDefuzzificationFunction<T extends Number & Comparable<T>>
 	 * @throws IllegalArgumentException if total area is zero
 	 */
 	public Double evaluate(NumericRange<T> x, MembershipFunction<T> mf) {
-		ArrayList<T> values = new ArrayList<T>(x.toCollection());
+		Collection<T> values = Collections.unmodifiableCollection(x.toCollection());
 		Collection<Double> fuzzyValues = new ArrayList<Double>();
 		for (T crispValue : values) {
 			fuzzyValues.add(mf.evaluate(crispValue));
@@ -59,7 +60,7 @@ public class CentroidDefuzzificationFunction<T extends Number & Comparable<T>>
 		if (totalArea == 0)
 			throw new IllegalArgumentException(
 					"Total area is zero in centroid defuzzification!");
-		Collection<Double> product = Product.of(x.toCollection(), mf);
+		Collection<Double> product = CrispFuzzyProduct.of(x.toCollection(), mf);
 		double sum2 = Sum.of(product);
 		double out = sum2 / totalArea;
 		return out;
