@@ -18,11 +18,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-
 import org.junit.Test;
 
 /**
@@ -54,21 +49,6 @@ public abstract class BaseMembershipFunctionTest<T extends MembershipFunction<?>
 		} else {
 			assertFalse("equals must be symmetric", other.equals(obj));
 		}
-	}
-	
-	@Test
-	public void testSerializeDeserializeThenCompare() throws Exception {
-		Object obj = makeMembershipFunction();
-        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-        ObjectOutputStream out = new ObjectOutputStream(buffer);
-        out.writeObject(obj);
-        out.close();
-
-        ObjectInputStream in = new ObjectInputStream(new ByteArrayInputStream(buffer.toByteArray()));
-        Object dest = in.readObject();
-        in.close();
-        assertEquals("obj != deserialize(serialize(obj))",obj,dest);
-        assertEquals("obj.hash != deserialize(serialize(obj.hash))",obj.hashCode(),dest.hashCode());
 	}
 	
 	@Test
