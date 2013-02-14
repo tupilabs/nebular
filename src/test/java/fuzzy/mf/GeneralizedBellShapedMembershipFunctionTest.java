@@ -26,8 +26,8 @@ import org.junit.Test;
 /**
  * Tests for Generalized Bell-Shaped Membership Function.
  * 
- * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
+ * @see GeneralizedBellShapedMembershipFunction
  */
 public class GeneralizedBellShapedMembershipFunctionTest extends BaseMembershipFunctionTest<GeneralizedBellShapedMembershipFunction> {
 

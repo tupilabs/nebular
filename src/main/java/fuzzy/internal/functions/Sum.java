@@ -22,6 +22,7 @@ import org.apache.commons.functor.Function;
  * returns 0.0 (double).
  *
  * @param <T> numeric type
+ * @since 0.2
  */
 public final class Sum<T extends Number & Comparable<T>> implements Function<Double> {
 

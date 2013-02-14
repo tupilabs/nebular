@@ -26,8 +26,8 @@ import org.junit.Test;
 /**
  * Tests for Sigmoidal Membership Function.
  * 
- * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
+ * @see SigmoidalMembershipFunction
  */
 public class SigmoidalMembershipFunctionTest extends BaseMembershipFunctionTest<SigmoidalMembershipFunction> {
 

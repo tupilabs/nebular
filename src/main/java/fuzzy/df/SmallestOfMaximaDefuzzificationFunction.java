@@ -25,6 +25,10 @@ import fuzzy.mf.MembershipFunction;
 import fuzzy.util.MaxMF;
 
 /**
+ * Smallest Of Maxima defuzzification function. Equivalent to Matlab
+ * <a href="http://www.mathworks.com/products/demos/shipping/fuzzy/defuzzdm.html#4">som</a>
+ * defuzzification function.
+ *
  * <p>
  * Uses the smallest maximum fuzzy value.
  * </p>
@@ -34,10 +38,11 @@ import fuzzy.util.MaxMF;
  * </p>
  *
  * @param <T> numeric type used in this defuzzification function
+ * @since 0.2
  */
-public class SmallestOfMaximaDefuzzificationFunction implements
-        DefuzzificationFunction<Double> {
-    public Double evaluate(NumericRange<Double> x, MembershipFunction<Double> mf) {
+public class SmallestOfMaximaDefuzzificationFunction<T extends Number & Comparable<T>> implements
+        DefuzzificationFunction<T> {
+    public Double evaluate(NumericRange<T> x, MembershipFunction<T> mf) {
         Collection<Double> maximumValues = MaxMF.of(x.toCollection(), mf)
                 .keySet();
         IteratorToGeneratorAdapter<Double> adapter = IteratorToGeneratorAdapter
@@ -47,4 +52,39 @@ public class SmallestOfMaximaDefuzzificationFunction implements
         Collection<Double> absMaximumValues = ((MapAbs<Double>) proc).getCol();
         return Min.of(absMaximumValues);
     }
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(obj == this) {
+			return true;
+		}
+		if(!(obj instanceof SmallestOfMaximaDefuzzificationFunction)) {
+			return false;
+		}
+		return true;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override	
+	public int hashCode() {
+		int hash = "SmallestOfMaximaDefuzzificationFunction".hashCode();
+		return hash;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Smallest Of Maxima Defuzzification Function";
+	}
+
 }

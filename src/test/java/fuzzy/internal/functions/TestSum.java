@@ -22,7 +22,10 @@ import java.util.Collections;
 import org.junit.Test;
 
 /**
- * Tests for {@link Sum}
+ * Tests for Sum function.
+ * 
+ * @since 0.2
+ * @see Sum
  */
 public class TestSum {
 

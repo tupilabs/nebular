@@ -26,7 +26,7 @@ import org.junit.Test;
 /**
  * Tests for Z-Shaped Membership Function.
  * 
- * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ * @see ZShapedMembershipFunction
  * @since 0.1
  */
 public class ZShapedMembershipFunctionTest extends BaseMembershipFunctionTest<ZShapedMembershipFunction> {

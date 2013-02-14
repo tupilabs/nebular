@@ -25,7 +25,10 @@ import fuzzy.mf.MembershipFunction;
 import fuzzy.mf.TrapezoidalMembershipFunction;
 
 /**
- * Tests for {@link MaxMF}
+ * Tests for Max Membership Function.
+ * 
+ * @since 0.2
+ * @see MaxMF
  */
 public class TestMaxMF {
 

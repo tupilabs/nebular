@@ -22,6 +22,10 @@ import fuzzy.internal.functions.Sum;
 import fuzzy.mf.MembershipFunction;
 
 /**
+ * Bisector defuzzification function. Equivalent to Matlab
+ * <a href="http://www.mathworks.com/products/demos/shipping/fuzzy/defuzzdm.html#3">bisector</a>
+ * defuzzification function.
+ *
  * <p>
  * The bisector is the vertical line that will divide the region into two
  * sub-regions of equal area. It is sometimes, but not always coincident with
@@ -33,6 +37,7 @@ import fuzzy.mf.MembershipFunction;
  * </p>
  *
  * @param <T> numeric type used in this defuzzification function
+ * @since 0.2
  */
 public class BisectorDefuzzificationFunction<T extends Number & Comparable<T>>
         implements DefuzzificationFunction<T> {
@@ -63,4 +68,39 @@ public class BisectorDefuzzificationFunction<T extends Number & Comparable<T>>
         }
         return result;
     }
+
+    /* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(obj == this) {
+			return true;
+		}
+		if(!(obj instanceof BisectorDefuzzificationFunction)) {
+			return false;
+		}
+		return true;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		int hash = "BisectorDefuzzificationFunction".hashCode();
+		return hash;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Bisector Defuzzification Function";
+	}
+
 }

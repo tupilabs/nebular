@@ -26,8 +26,8 @@ import org.junit.Test;
 /**
  * Tests for S-Shaped Membership Function.
  * 
- * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
+ * @see SShapedMembershipFunction
  */
 public class SShapedMembershipFunctionTest extends BaseMembershipFunctionTest<SShapedMembershipFunction> {
 

@@ -22,6 +22,7 @@ import org.apache.commons.functor.UnaryProcedure;
  * Returns the absolute values of a collection.
  *
  * @param <T> numeric type
+ * @since 0.2
  */
 public class MapAbs<T extends Number & Comparable<T>> implements UnaryProcedure<T> {
 

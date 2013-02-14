@@ -22,7 +22,10 @@ import java.util.Collections;
 import org.junit.Test;
 
 /**
- * Tests for {@link Max}
+ * Tests for Max function.
+ * 
+ * @since 0.2
+ * @see Max
  */
 public class TestMax {
 

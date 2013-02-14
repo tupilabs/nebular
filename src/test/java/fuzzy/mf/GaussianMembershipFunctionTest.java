@@ -26,8 +26,8 @@ import org.junit.Test;
 /**
  * Tests for Gaussian Membership Function.
  * 
- * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
+ * @see GaussianMembershipFunction
  */
 public class GaussianMembershipFunctionTest extends
 		BaseMembershipFunctionTest<GaussianMembershipFunction> {

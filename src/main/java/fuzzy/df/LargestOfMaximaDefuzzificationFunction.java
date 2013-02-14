@@ -25,6 +25,10 @@ import fuzzy.mf.MembershipFunction;
 import fuzzy.util.MaxMF;
 
 /**
+ * Largest Of Maxima defuzzification function. Equivalent to Matlab
+ * <a href="http://www.mathworks.com/products/demos/shipping/fuzzy/defuzzdm.html#4">lom</a>
+ * defuzzification function.
+ *
  * <p>
  * Uses the largest maximum fuzzy value.
  * </p>
@@ -34,6 +38,7 @@ import fuzzy.util.MaxMF;
  * </p>
  *
  * @param <T> numeric type used in this defuzzification function
+ * @since 0.2
  */
 public class LargestOfMaximaDefuzzificationFunction<T extends Number & Comparable<T>>
         implements DefuzzificationFunction<T> {
@@ -47,4 +52,39 @@ public class LargestOfMaximaDefuzzificationFunction<T extends Number & Comparabl
         Collection<Double> absMaximumValues = ((MapAbs<Double>) proc).getCol();
         return Max.of(absMaximumValues);
     }
+
+    /* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(obj == this) {
+			return true;
+		}
+		if(!(obj instanceof LargestOfMaximaDefuzzificationFunction)) {
+			return false;
+		}
+		return true;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override	
+	public int hashCode() {
+		int hash = "LargestOfMaximaDefuzzificationFunction".hashCode();
+		return hash;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Largest Of Maxima Defuzzification Function";
+	}
+
 }

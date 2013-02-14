@@ -24,6 +24,10 @@ import fuzzy.mf.MembershipFunction;
 import fuzzy.util.CrispFuzzyProduct;
 
 /**
+ * Centroid defuzzification function. Equivalent to Matlab
+ * <a href="http://www.mathworks.com/products/demos/shipping/fuzzy/defuzzdm.html#2">centroid</a>
+ * defuzzification function.
+ *
  * <p>
  * Also known as <strong>center of gravity</strong> or <strong>center of
  * area</strong> defuzzication function, created by <strong>Sugeno</strong> in
@@ -42,6 +46,7 @@ import fuzzy.util.CrispFuzzyProduct;
  * </p>
  *
  * @param <T> numeric type used in this defuzzification function
+ * @since 0.2
  */
 public class CentroidDefuzzificationFunction<T extends Number & Comparable<T>>
 		implements DefuzzificationFunction<T> {
@@ -65,4 +70,39 @@ public class CentroidDefuzzificationFunction<T extends Number & Comparable<T>>
 		double out = sum2 / totalArea;
 		return out;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(obj == this) {
+			return true;
+		}
+		if(!(obj instanceof CentroidDefuzzificationFunction)) {
+			return false;
+		}
+		return true;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override	
+	public int hashCode() {
+		int hash = "CentroidDefuzzificationFunction".hashCode();
+		return hash;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Centroid Defuzzification Function";
+	}
+
 }

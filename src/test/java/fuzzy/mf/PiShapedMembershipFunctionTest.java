@@ -26,8 +26,8 @@ import org.junit.Test;
 /**
  * Tests for PI-Shaped Membership Function.
  * 
- * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
+ * @see PiShapedMembershipFunction
  */
 public class PiShapedMembershipFunctionTest extends BaseMembershipFunctionTest<PiShapedMembershipFunction> {
 

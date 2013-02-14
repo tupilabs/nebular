@@ -19,7 +19,10 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * Tests for {@link MapAbs}
+ * Tests for Map Absolute values procedure.
+ * 
+ * @since 0.2
+ * @see MapAbs
  */
 public class TestMapAbs {
 

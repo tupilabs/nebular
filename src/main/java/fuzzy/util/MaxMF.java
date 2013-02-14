@@ -27,6 +27,7 @@ import fuzzy.mf.MembershipFunction;
  * fuzzy value.
  *
  * @param <T> numeric type
+ * @since 0.2
  */
 public class MaxMF<T extends Number & Comparable<T>> implements BinaryFunction<Collection<T>, MembershipFunction<T>, Map<Double, Double>> {
 

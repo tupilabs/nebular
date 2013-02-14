@@ -25,7 +25,10 @@ import fuzzy.mf.GeneralizedBellShapedMembershipFunction;
 import fuzzy.mf.MembershipFunction;
 
 /**
- * Tests for {@link CrispFuzzyProduct}
+ * Tests for Crisp Fuzzy Product.
+ * 
+ * @since 0.2
+ * @see CrispFuzzyProduct
  */
 public class TestCrispFuzzyProduct {
 

@@ -10,6 +10,7 @@ import fuzzy.mf.MembershipFunction;
  * applied to a numeric range. Its output is always a crisp value.
  *
  * @param <T> numeric type used in this defuzzification function
+ * @since 0.2
  */
 public interface DefuzzificationFunction<T extends Number & Comparable<T>>
 		extends BinaryFunction<NumericRange<T>, MembershipFunction<T>, Double> {

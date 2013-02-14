@@ -22,6 +22,10 @@ import fuzzy.mf.MembershipFunction;
 import fuzzy.util.MaxMF;
 
 /**
+ * Mean Of Maxima defuzzification function. Equivalent to Matlab
+ * <a href="http://www.mathworks.com/products/demos/shipping/fuzzy/defuzzdm.html#4">mom</a>
+ * defuzzification function.
+ *
  * <p>
  * Uses the mean of maximum fuzzy value.
  * </p>
@@ -31,6 +35,7 @@ import fuzzy.util.MaxMF;
  * </p>
  *
  * @param <T> numeric type used in this defuzzification function
+ * @since 0.2
  */
 public class MeanOfMaximaDefuzzificationFunction implements
         DefuzzificationFunction<Double> {
@@ -53,4 +58,39 @@ public class MeanOfMaximaDefuzzificationFunction implements
             return r;
         }
     }
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(obj == this) {
+			return true;
+		}
+		if(!(obj instanceof MeanOfMaximaDefuzzificationFunction)) {
+			return false;
+		}
+		return true;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override	
+	public int hashCode() {
+		int hash = "MeanOfMaximaDefuzzificationFunction".hashCode();
+		return hash;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Mean Of Maxima Defuzzification Function";
+	}
+
 }

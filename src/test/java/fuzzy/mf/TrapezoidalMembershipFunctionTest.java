@@ -26,8 +26,8 @@ import org.junit.Test;
 /**
  * Tests for Trapezoidal Membership Function.
  * 
- * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
+ * @see TrapezoidalMembershipFunction
  */
 public class TrapezoidalMembershipFunctionTest extends BaseMembershipFunctionTest<TrapezoidalMembershipFunction> {
 

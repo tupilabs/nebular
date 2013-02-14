@@ -23,9 +23,8 @@ import org.junit.Test;
 /**
  * Base test for Membership Functions.
  * 
- * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @since 0.1
  * @param <T> Type of Membership Function
+ * @since 0.1
  */
 public abstract class BaseMembershipFunctionTest<T extends MembershipFunction<?>> {
 
@@ -49,6 +48,8 @@ public abstract class BaseMembershipFunctionTest<T extends MembershipFunction<?>
 		} else {
 			assertFalse("equals must be symmetric", other.equals(obj));
 		}
+		
+		assertFalse(obj.equals(Boolean.FALSE));
 	}
 	
 	@Test

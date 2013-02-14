@@ -26,6 +26,7 @@ import fuzzy.mf.MembershipFunction;
  * equivalent fuzzy result.
  *
  * @param <T> numeric type
+ * @since 0.2
  */
 public final class CrispFuzzyProduct<T extends Number & Comparable<T>> implements Function<Collection<Double>> {
 

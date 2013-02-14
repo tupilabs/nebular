@@ -22,7 +22,10 @@ import java.util.Collections;
 import org.junit.Test;
 
 /**
- * Tests for {@link Min}
+ * Tests for Min function.
+ * 
+ * @since 0.2
+ * @see Min
  */
 public class TestMin {
 
