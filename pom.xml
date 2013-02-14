@@ -121,7 +121,9 @@
 				<configuration>
 					<instrumentation>
 						<ignores />
-						<excludes />
+						<excludes>
+						  <exclude>org/apache/**/*.class</exclude>
+						</excludes>
 					</instrumentation>
 				</configuration>
 			</plugin>

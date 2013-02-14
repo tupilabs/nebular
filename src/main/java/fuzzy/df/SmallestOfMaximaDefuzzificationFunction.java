@@ -42,9 +42,9 @@ public class SmallestOfMaximaDefuzzificationFunction implements
                 .keySet();
         IteratorToGeneratorAdapter<Double> adapter = IteratorToGeneratorAdapter
                 .<Double> adapt(maximumValues.iterator());
-        UnaryProcedure<Double> proc = new MapAbs();
+        UnaryProcedure<Double> proc = new MapAbs<Double>();
         adapter.run(proc);
-        Collection<Double> absMaximumValues = ((MapAbs) proc).getCol();
+        Collection<Double> absMaximumValues = ((MapAbs<Double>) proc).getCol();
         return Min.of(absMaximumValues);
     }
 }

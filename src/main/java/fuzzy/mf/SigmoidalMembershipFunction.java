@@ -13,8 +13,6 @@
  */
 package fuzzy.mf;
 
-import java.io.IOException;
-
 import org.apache.commons.math3.analysis.function.Sigmoid;
 
 /**
@@ -34,19 +32,6 @@ public class SigmoidalMembershipFunction implements MembershipFunction<Double> {
 	private final double a;
 	private final double c;
 	
-	private final double lowAsymptote;
-	private final double highAsymptote;
-	
-	public void writeObject(java.io.ObjectOutputStream out) throws IOException {
-		out.defaultWriteObject();
-	}
-	
-	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException {
-		in.defaultReadObject();
-		
-		sigmoid = new Sigmoid(lowAsymptote, highAsymptote);
-	}
-	
 	public SigmoidalMembershipFunction(double a, double c) {
 		this(DEFAULT_LOW_ASYMPTOTE, DEFAULT_HIGH_ASYMPTOTE, a, c);
 	}
@@ -55,9 +40,6 @@ public class SigmoidalMembershipFunction implements MembershipFunction<Double> {
 		sigmoid = new Sigmoid(lowAsymptote, highAsymptote);
 		this.a = a;
 		this.c = c;
-		
-		this.lowAsymptote = lowAsymptote;
-		this.highAsymptote = highAsymptote;
 	}
 	
 	public Double evaluate(Double x) {
