@@ -13,8 +13,6 @@
  */
 package fuzzy.mf;
 
-import java.io.Serializable;
-
 import org.apache.commons.math3.util.FastMath;
 
 /**
@@ -24,15 +22,10 @@ import org.apache.commons.math3.util.FastMath;
  *
  * @since 0.1
  */
-public class GaussianMembershipFunction implements MembershipFunction<Double>, Serializable {
+public class GaussianMembershipFunction implements MembershipFunction<Double> {
 
 	// TODO Revisit this class later, and see if we can use math Gaussian
 	//protected final Gaussian gaussian;
-	
-	/**
-     * serialVersionUID declaration.
-     */
-	private static final long serialVersionUID = 5531867246630240033L;
 	
 	private final double sigma;
 	private final double c;

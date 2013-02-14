@@ -25,7 +25,15 @@ import fuzzy.mf.MembershipFunction;
 import fuzzy.util.MaxMF;
 
 /**
- * Largest of maxima defuzzification function.
+ * <p>
+ * Uses the largest maximum fuzzy value.
+ * </p>
+ *
+ * <p>
+ * This class is <strong>thread safe</strong>.
+ * </p>
+ *
+ * @param <T> numeric type used in this defuzzification function
  */
 public class LargestOfMaximaDefuzzificationFunction<T extends Number & Comparable<T>>
         implements DefuzzificationFunction<T> {

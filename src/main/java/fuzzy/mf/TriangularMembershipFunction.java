@@ -13,8 +13,6 @@
  */
 package fuzzy.mf;
 
-import java.io.Serializable;
-
 import org.apache.commons.math3.util.FastMath;
 
 /**
@@ -24,13 +22,8 @@ import org.apache.commons.math3.util.FastMath;
  *
  * @since 0.1
  */
-public class TriangularMembershipFunction implements MembershipFunction<Double>, Serializable {
+public class TriangularMembershipFunction implements MembershipFunction<Double> {
 
-	/**
-     * serialVersionUID declaration.
-     */
-	private static final long serialVersionUID = 7696291193049536862L;
-	
 	private final double a;
 	private final double b;
 	private final double c;

@@ -22,9 +22,17 @@ import fuzzy.internal.functions.Sum;
 import fuzzy.mf.MembershipFunction;
 
 /**
- * Bisector defuzzification function.
+ * <p>
+ * The bisector is the vertical line that will divide the region into two
+ * sub-regions of equal area. It is sometimes, but not always coincident with
+ * the centroid line.
+ * </p>
  *
- * @param <T>
+ * <p>
+ * This class is <strong>thread safe</strong>.
+ * </p>
+ *
+ * @param <T> numeric type used in this defuzzification function
  */
 public class BisectorDefuzzificationFunction<T extends Number & Comparable<T>>
         implements DefuzzificationFunction<T> {
@@ -36,7 +44,7 @@ public class BisectorDefuzzificationFunction<T extends Number & Comparable<T>>
     public Double evaluate(NumericRange<T> x, MembershipFunction<T> mf) {
         ArrayList<T> values = new ArrayList<T>(x.toCollection());
         Collection<Double> fuzzyValues = new ArrayList<Double>();
-        for (T crispValue : x.toCollection()) {
+        for (T crispValue : values) {
             fuzzyValues.add(mf.evaluate(crispValue));
         }
         double totalArea = Sum.of(fuzzyValues);

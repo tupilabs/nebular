@@ -13,7 +13,6 @@
  */
 package fuzzy.mf;
 
-import java.io.Serializable;
 
 /**
  * Trapezoidal Shaped Membership Function. Equivalent to Matlab 
@@ -22,13 +21,8 @@ import java.io.Serializable;
  *
  * @since 0.1
  */
-public class TrapezoidalMembershipFunction implements MembershipFunction<Double>, Serializable {
+public class TrapezoidalMembershipFunction implements MembershipFunction<Double> {
 
-	/**
-     * serialVersionUID declaration.
-     */
-	private static final long serialVersionUID = 6694250592149329781L;
-	
 	private final double a;
 	private final double b;
 	private final double c;

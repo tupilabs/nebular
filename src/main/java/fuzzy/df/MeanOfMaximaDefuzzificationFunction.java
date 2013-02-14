@@ -22,7 +22,15 @@ import fuzzy.mf.MembershipFunction;
 import fuzzy.util.MaxMF;
 
 /**
- * Mean of maxima defuzzification function.
+ * <p>
+ * Uses the mean of maximum fuzzy value.
+ * </p>
+ *
+ * <p>
+ * This class is <strong>thread safe</strong>.
+ * </p>
+ *
+ * @param <T> numeric type used in this defuzzification function
  */
 public class MeanOfMaximaDefuzzificationFunction implements
         DefuzzificationFunction<Double> {

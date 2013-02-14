@@ -14,7 +14,6 @@
 package fuzzy.mf;
 
 import java.io.IOException;
-import java.io.Serializable;
 
 import org.apache.commons.math3.analysis.function.Sigmoid;
 
@@ -25,13 +24,8 @@ import org.apache.commons.math3.analysis.function.Sigmoid;
  *
  * @since 0.1
  */
-public class SigmoidalMembershipFunction implements MembershipFunction<Double>, Serializable {
+public class SigmoidalMembershipFunction implements MembershipFunction<Double> {
 
-	/**
-     * serialVersionUID declaration.
-     */
-	private static final long serialVersionUID = 5146360927589542693L;
-	
 	protected final static double DEFAULT_LOW_ASYMPTOTE = 0.0;
 	protected final static double DEFAULT_HIGH_ASYMPTOTE = 1.0;
 	

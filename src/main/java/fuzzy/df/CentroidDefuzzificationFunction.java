@@ -23,37 +23,45 @@ import fuzzy.internal.functions.Sum;
 import fuzzy.mf.MembershipFunction;
 
 /**
- * Centroid defuzzification function.
  * <p>
- * Also known as <strong>center of gravity</strong> or <strong>center of area
+ * Also known as <strong>center of gravity</strong> or <strong>center of
+ * area</strong> defuzzication function, created by <strong>Sugeno</strong> in
+ * 1985, is the most used technique and very accurate.
  * </p>
- * defuzzication function. Created by <strong>Sugeno</strong> in 1985, is the
- * most used technique and very accurate.
+ *
  * <p>
- * TODO: add details about implementation, serialization and thread-safety TODO:
- * add example
+ * The resulting value is computed using the formula:
+ * {@literal sum ( product ( x, mf ) ) / total_area } where x is the input crisp
+ * range, mf a membership function and total_area is the sum of all the fuzzy
+ * values (evaluated range).
+ * </p>
+ *
+ * <p>
+ * This class is <strong>thread safe</strong>.
+ * </p>
  *
  * @param <T> numeric type used in this defuzzification function
  */
 public class CentroidDefuzzificationFunction<T extends Number & Comparable<T>>
-        implements DefuzzificationFunction<T> {
-    /**
-     * {@inheritDoc}
-     *
-     * @throws IllegalArgumentException if total area is zero
-     */
-    public Double evaluate(NumericRange<T> x, MembershipFunction<T> mf) {
-        Collection<Double> fuzzyValues = new ArrayList<Double>();
-        for (T crispValue : x.toCollection()) {
-            fuzzyValues.add(mf.evaluate(crispValue));
-        }
-        double totalArea = Sum.of(fuzzyValues);
-        if (totalArea == 0)
-            throw new IllegalArgumentException(
-                    "Total area is zero in centroid defuzzification!");
-        Collection<Double> product = Product.of(x.toCollection(), mf);
-        double sum2 = Sum.of(product);
-        double out = sum2 / totalArea;
-        return out;
-    }
+		implements DefuzzificationFunction<T> {
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @throws IllegalArgumentException if total area is zero
+	 */
+	public Double evaluate(NumericRange<T> x, MembershipFunction<T> mf) {
+		ArrayList<T> values = new ArrayList<T>(x.toCollection());
+		Collection<Double> fuzzyValues = new ArrayList<Double>();
+		for (T crispValue : values) {
+			fuzzyValues.add(mf.evaluate(crispValue));
+		}
+		double totalArea = Sum.of(fuzzyValues);
+		if (totalArea == 0)
+			throw new IllegalArgumentException(
+					"Total area is zero in centroid defuzzification!");
+		Collection<Double> product = Product.of(x.toCollection(), mf);
+		double sum2 = Sum.of(product);
+		double out = sum2 / totalArea;
+		return out;
+	}
 }
