@@ -38,7 +38,7 @@
 
 	<scm>
 		<connection>scm:git:git://github.com/tupilabs/nebular.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com:tupilabs/nebular.git</developerConnection>
+		<developerConnection>scm:git:git@github.com:tupilabs/nebular.git</developerConnection>
 		<url>https://github.com/tupilabs/nebular</url>
 	</scm>
     
