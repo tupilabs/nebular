@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.sf.nebular</groupId>
 	<artifactId>nebular</artifactId>
-	<version>0.3-SNAPSHOT</version>
+	<version>0.3</version>
 	<name>nebular</name>
 	<description>A fuzzy API in Java</description>
 
