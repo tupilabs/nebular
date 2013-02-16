@@ -20,6 +20,8 @@
 	</properties>
 
 	<url>http://nebular.sf.net</url>
+    
+    <inceptionYear>2011</inceptionYear>
 
 	<licenses>
 		<license>
@@ -39,8 +41,11 @@
 		<developerConnection>scm:git:ssh://git@github.com:tupilabs/nebular.git</developerConnection>
 		<url>https://github.com/tupilabs/nebular</url>
 	</scm>
-
-	<inceptionYear>2011</inceptionYear>
+    
+    <ciManagement>
+        <system>Jenkins</system>
+        <url>https://buildhive.cloudbees.com/job/tupilabs/job/nebular/</url>
+    </ciManagement>
 
 	<issueManagement>
 		<system>SourceForge.net Tickets</system>
@@ -49,7 +54,7 @@
 
 	<developers>
 		<developer>
-			<email>brunodepaulak@yahoo.com.br</email>
+			<email>kinow@apache.org</email>
 			<id>kinow</id>
 			<name>Bruno P. Kinoshita</name>
 			<timezone>-3</timezone>
@@ -292,8 +297,4 @@
 		</profile>
 	</profiles>
 
-	<ciManagement>
-		<system>Jenkins</system>
-		<url>https://buildhive.cloudbees.com/job/tupilabs/job/nebular/</url>
-	</ciManagement>
 </project>
