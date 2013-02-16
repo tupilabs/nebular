@@ -1,0 +1,18 @@
+Download
+
+* Maven artifact
+
+  If you are using Maven then you can add a dependency to nebular. 
+
++---+
+<dependency>
+  <groupid>net.sf.nebular</groupid>
+  <artifactid>nebular</artifactid>
+  <version>${project.version}</version>
+</dependency>
++---+
+
+  You can also browse Maven public central repository to get nebular jar.
+  
+  {{{http://repo1.maven.org/maven2/net/sf/nebular/nebular/${project.version}}nebular at Maven 
+  central repository}}

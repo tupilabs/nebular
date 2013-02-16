@@ -18,11 +18,12 @@
 <document>
   <properties>
     <title>Examples</title>
-    <author email="brunodepaulak AT yahoo DOT com DOT br">Bruno P. Kinoshita</author>
+    <author email="kinow AT apache DOT org">Bruno P. Kinoshita</author>
   </properties>
 
   <body>
     <section name="Examples">
+      <h3>Fuzzification</h3>
       <p>
          nebular provides basic fuzzy membership functions, that can be used 
          with Java collections to create fuzzy sets.
@@ -69,6 +70,26 @@ i=1.98, degree=0.56
 i=1.99, degree=0.56
         </pre>
       </p>
+      <h3>Defuzzification</h3>
+      <p>
+        nebular has also functions for defuzzification, used to extract a crisp 
+        value from a fuzzy set. Below example demonstrates how to use the 
+        centroid defuzzification function, applied over a range of doubles and a 
+        trapezoidal membership function.
+      </p>
+      <p>
+        <pre><![CDATA[NumericRange<Double> x = new DoubleRange(-10.0, 10.0, 0.1);
+MembershipFunction<Double> mf = new TrapezoidalMembershipFunction(-5.0, -3.0, 0.0, 4.0);
+DefuzzificationFunction<Double> df = new CentroidDefuzzificationFunction<Double>();
+double out = df.evaluate(x, mf);
+System.out.printf("The defuzzified output is %.4f", out);]]></pre>
+      </p>
+      <p>
+        Running the example above will produce the following output.
+      </p>
+      <p>
+        <pre>The defuzzified output is -0.9167</pre>
+      </p>      
     </section>
   </body>
 </document>

@@ -18,7 +18,7 @@
 <document>
   <properties>
     <title>Overview</title>
-    <author email="brunodepaulak AT yahoo DOT com DOT br">Bruno P. Kinoshita</author>
+    <author email="kinow AT apache DOT org">Bruno P. Kinoshita</author>
   </properties>
 
   <body>
@@ -41,16 +41,31 @@
          function.
       </p>
       <p>
-         nebular uses <a href="http://commons.apache.org/sandbox/functor/">
+         nebular uses <a href="http://commons.apache.org/functor/">
          Apache Commons Functor</a> to create membership functions using 
          functional programming. This way, a user can extend nebular by 
-         creating a <em>functor</em> (usually a <em>UnaryFunction</em>). 
+         creating his own <em>functions</em>). 
          nebular relies on <a href="http://commons.apache.org/math/">Apache 
-         Commons Math</a> for some of the pre-defined membership functions. 
+         Commons Math</a> for some of its fuzzy calculations. 
       </p>
     </section>
     
 	<section name="Releases">
+        <subsection name="nebular 0.3 Release (February 2013)">
+          <p>This release adds defuzzificaiton to nebular. The following 
+          functions were implemented.</p>
+          <ul>
+           <li>Centroid defuzzification function</li>
+           <li>Bisector defuzzification function</li>
+           <li>Smallest Of Maxima defuzzification function</li>
+           <li>Mean Of Maxima defuzzification function</li>
+           <li>Largest Of Maxima defuzzification function</li>
+          </ul>
+        </subsection>
+        <subsection name="nebular 0.2 Release (May 2012)">
+          <p>This released updated Apache Commons Functor classes, to guarantee 
+          that nebular functions can work well with functional programming.</p>
+        </subsection>
 	    <subsection name="nebular 0.1 Release (March 2012)">
 	      <p>This is the first official nebular release. The following 
 	      membership functions are supported in this version.</p>
