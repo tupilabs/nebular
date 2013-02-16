@@ -29,7 +29,7 @@ import org.junit.Test;
  * @since 0.1
  * @see GeneralizedBellShapedMembershipFunction
  */
-public class GeneralizedBellShapedMembershipFunctionTest extends BaseMembershipFunctionTest<GeneralizedBellShapedMembershipFunction> {
+public class TestGeneralizedBellShapedMembershipFunction extends BaseMembershipFunctionTest<GeneralizedBellShapedMembershipFunction> {
 
 	protected GeneralizedBellShapedMembershipFunction mf;
 	

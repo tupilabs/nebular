@@ -29,7 +29,7 @@ import org.junit.Test;
  * @since 0.1
  * @see PiShapedMembershipFunction
  */
-public class PiShapedMembershipFunctionTest extends BaseMembershipFunctionTest<PiShapedMembershipFunction> {
+public class TestPiShapedMembershipFunction extends BaseMembershipFunctionTest<PiShapedMembershipFunction> {
 
 	protected PiShapedMembershipFunction mf;
 	

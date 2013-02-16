@@ -35,7 +35,7 @@ public class TriangularMembershipFunction implements MembershipFunction<Double> 
 	}
 	
 	public Double evaluate(Double x) {
-		return FastMath.max(FastMath.min(((x-a)/(b-a)), ((c-x)/(c-b))), 0.0);
+		return FastMath.max(FastMath.min((x-a)/(b-a), (c-x)/(c-b)), 0.0);
 	}
 	
 	/* (non-Javadoc)

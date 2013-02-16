@@ -30,14 +30,20 @@ public class Max<T extends Number & Comparable<T>> implements Function<Double> {
 	 * Collection.
 	 */
     private final Collection<T> col;
+    /**
+     * Whether use the absolute value of elements or not.
+     */
+    private final boolean abs;
 
     /**
      * Constructor with arguments.
      *
      * @param col a collection
+     * @param abs whether to use absolute values or not
      */
-    public Max(Collection<T> col) {
+    public Max(Collection<T> col, boolean abs) {
         this.col = col;
+        this.abs = abs;
     }
 
     /*
@@ -45,25 +51,34 @@ public class Max<T extends Number & Comparable<T>> implements Function<Double> {
      * @see org.apache.commons.functor.Function#evaluate()
      */
     public Double evaluate() {
+        double out = 0.0;
         double max = 0.0;
         boolean first = true;
-        for (T value : col) {
-            if (first || value.doubleValue() > max) {
-                max = value.doubleValue();
+        for (T elem : col) {
+            final double value;
+            if (abs) {
+                value = Math.abs(elem.doubleValue());
+            } else {
+                value = elem.doubleValue();
+            }
+            if (first || value > max) {
+                max = value;
+                out = elem.doubleValue();
                 first = false;
             }
         }
-        return max;
+        return out;
     }
 
     /**
      * Returns the maximum value found in a collection.
      *
      * @param col a collection
+     * @param abs whether to use absolute values or not
      * @return maximum value
      */
-    public static <T extends Number & Comparable<T>> double of(Collection<T> col) {
-        return new Max<T>(col).evaluate();
+    public static <T extends Number & Comparable<T>> double of(Collection<T> col, boolean abs) {
+        return new Max<T>(col, abs).evaluate();
     }
 
 }

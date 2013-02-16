@@ -29,7 +29,7 @@ import org.junit.Test;
  * @since 0.1
  * @see TrapezoidalMembershipFunction
  */
-public class TrapezoidalMembershipFunctionTest extends BaseMembershipFunctionTest<TrapezoidalMembershipFunction> {
+public class TestTrapezoidalMembershipFunction extends BaseMembershipFunctionTest<TrapezoidalMembershipFunction> {
 
 	protected TrapezoidalMembershipFunction mf;
 	

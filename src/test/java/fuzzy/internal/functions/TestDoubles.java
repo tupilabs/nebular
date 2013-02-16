@@ -13,39 +13,31 @@
  */
 package fuzzy.internal.functions;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 
 import org.junit.Test;
 
 /**
- * Tests for Min function.
+ * Tests for Doubles utility class.
  * 
  * @since 0.2
- * @see Min
+ * @see Doubles
  */
-public class TestMin {
+public class TestDoubles {
 
 	@Test
-	public void testMin() {
+	public void testDoubles() {
 		Collection<Double> list = Arrays.asList(-1.0, 1.0, 2.0, 3.5);
-		Double r = Min.of(list, false);
-		assertEquals(Double.valueOf(-1.0), r);
+		assertTrue(Arrays.equals(new double[]{-1.0, 1.0, 2.0, 3.5}, Doubles.toArray(list)));
 	}
 	
 	@Test
-	public void testMinEmpty() {
-		Double r = Min.of(Collections.<Double>emptyList(), false);
-		assertEquals(Double.valueOf(0.0), r);
-	}
-
-    @Test
-    public void testMinAbs() {
-        Collection<Double> list = Arrays.asList(-10.0, -1.0, -0.5, 1.0, 2.0, 3.5);
-        Double r = Min.of(list, true);
-        assertEquals(Double.valueOf(-0.5), r);
+    public void testDoublesEmpty() {
+        Collection<Double> list = Arrays.asList();
+        assertTrue(Arrays.equals(new double[0], Doubles.toArray(list)));
     }
+
 }

@@ -29,7 +29,7 @@ import org.junit.Test;
  * @since 0.1
  * @see SShapedMembershipFunction
  */
-public class SShapedMembershipFunctionTest extends BaseMembershipFunctionTest<SShapedMembershipFunction> {
+public class TestSShapedMembershipFunction extends BaseMembershipFunctionTest<SShapedMembershipFunction> {
 
 	protected SShapedMembershipFunction mf;
 	

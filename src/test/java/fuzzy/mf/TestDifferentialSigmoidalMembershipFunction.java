@@ -29,7 +29,7 @@ import org.junit.Test;
  * @since 0.1
  * @see DifferentialSigmoidalMembershipFunction
  */
-public class DifferentialSigmoidalMembershipFunctionTest extends BaseMembershipFunctionTest<DifferentialSigmoidalMembershipFunction> {
+public class TestDifferentialSigmoidalMembershipFunction extends BaseMembershipFunctionTest<DifferentialSigmoidalMembershipFunction> {
 
 	protected DifferentialSigmoidalMembershipFunction mf;
 	

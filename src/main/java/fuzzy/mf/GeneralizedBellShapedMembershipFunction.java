@@ -35,7 +35,7 @@ public class GeneralizedBellShapedMembershipFunction implements MembershipFuncti
 	}
 	
 	public Double evaluate(Double x) {
-		return (1/(1+FastMath.pow(FastMath.abs((x-c)/a), (2*b))));
+		return 1/(1+FastMath.pow(FastMath.abs((x-c)/a), 2*b));
 	}
 	
 	/* (non-Javadoc)

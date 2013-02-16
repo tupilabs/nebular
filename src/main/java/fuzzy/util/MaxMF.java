@@ -13,6 +13,9 @@
  */
 package fuzzy.util;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +34,22 @@ import fuzzy.mf.MembershipFunction;
  */
 public class MaxMF<T extends Number & Comparable<T>> implements BinaryFunction<Collection<T>, MembershipFunction<T>, Map<Double, Double>> {
 
+    public static final int DEFAULT_PRECISION = 4; // same as Matlab
+    public static final RoundingMode DEFAULT_ROUNDING_MODE = RoundingMode.HALF_UP;
+    
+    private final int precision;
+    private final RoundingMode roundingMode;
+    
+    public MaxMF() {
+        precision = DEFAULT_PRECISION;
+        roundingMode = DEFAULT_ROUNDING_MODE;
+    }
+    
+    public MaxMF(int precision, RoundingMode roundingMode) {
+        this.precision = precision;
+        this.roundingMode = roundingMode;
+    }
+    
 	/*
 	 * (non-Javadoc)
 	 * @see org.apache.commons.functor.BinaryFunction#evaluate(java.lang.Object, java.lang.Object)
@@ -38,17 +57,17 @@ public class MaxMF<T extends Number & Comparable<T>> implements BinaryFunction<C
 	public Map<Double, Double> evaluate(Collection<T> x,
             MembershipFunction<T> mf) {
         Map<Double, Double> max = new HashMap<Double, Double>();
-        double maxValue = 0.0;
+        BigDecimal maxValue = BigDecimal.valueOf(0.0);
         boolean first = true;
         for(T value : x) {
-            double temp = mf.evaluate(value);
-            if (first || temp > maxValue) {
+            BigDecimal temp = new BigDecimal(mf.evaluate(value), new MathContext(precision, roundingMode));
+            if (first || temp.compareTo(maxValue) > 0) {
                 first = false;
                 maxValue = temp;
                 max.clear();
-                max.put(value.doubleValue(), temp);
-            } else if (temp == maxValue) {
-                max.put(value.doubleValue(), temp);
+                max.put(value.doubleValue(), temp.doubleValue());
+            } else if (temp.compareTo(maxValue) == 0) {
+                max.put(value.doubleValue(), temp.doubleValue());
             } // else ignore since it's less than the maximum value
         }
         return max;

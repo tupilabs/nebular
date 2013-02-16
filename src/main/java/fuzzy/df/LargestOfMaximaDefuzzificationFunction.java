@@ -15,11 +15,8 @@ package fuzzy.df;
 
 import java.util.Collection;
 
-import org.apache.commons.functor.UnaryProcedure;
-import org.apache.commons.functor.generator.loop.IteratorToGeneratorAdapter;
 import org.apache.commons.functor.generator.range.NumericRange;
 
-import fuzzy.internal.functions.MapAbs;
 import fuzzy.internal.functions.Max;
 import fuzzy.mf.MembershipFunction;
 import fuzzy.util.MaxMF;
@@ -42,15 +39,15 @@ import fuzzy.util.MaxMF;
  */
 public class LargestOfMaximaDefuzzificationFunction<T extends Number & Comparable<T>>
         implements DefuzzificationFunction<T> {
+
+    /*
+     * (non-Javadoc)
+     * @see fuzzy.df.DefuzzificationFunction#evaluate(org.apache.commons.functor.generator.range.NumericRange, fuzzy.mf.MembershipFunction)
+     */
     public Double evaluate(NumericRange<T> x, MembershipFunction<T> mf) {
         Collection<Double> maximumValues = MaxMF.of(x.toCollection(), mf)
                 .keySet();
-        IteratorToGeneratorAdapter<Double> adapter = IteratorToGeneratorAdapter
-                .<Double> adapt(maximumValues.iterator());
-        UnaryProcedure<Double> proc = new MapAbs<Double>();
-        adapter.run(proc);
-        Collection<Double> absMaximumValues = ((MapAbs<Double>) proc).getCol();
-        return Max.of(absMaximumValues);
+        return Max.of(maximumValues, /* abs */ true);
     }
 
     /* (non-Javadoc)

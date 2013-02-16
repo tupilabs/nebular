@@ -32,14 +32,20 @@ public class TestMax {
 	@Test
 	public void testMax() {
 		Collection<Double> list = Arrays.asList(-1.0, 1.0, 2.0, 3.5);
-		Double r = Max.of(list);
+		Double r = Max.of(list, false);
 		assertEquals(Double.valueOf(3.5), r);
 	}
 	
 	@Test
-	public void testEmptyMax() {
-		Double r = Max.of(Collections.<Double>emptyList());
+	public void testMaxEmpty() {
+		Double r = Max.of(Collections.<Double>emptyList(), false);
 		assertEquals(Double.valueOf(0.0), r);
 	}
-	
+
+	@Test
+    public void testMaxAbs() {
+	    Collection<Double> list = Arrays.asList(-10.0, -1.0, 1.0, 2.0, 3.5);
+        Double r = Max.of(list, true);
+        assertEquals(Double.valueOf(-10.0), r);
+    }
 }

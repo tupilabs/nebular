@@ -29,7 +29,7 @@ import org.junit.Test;
  * @since 0.1
  * @see GaussianMembershipFunction
  */
-public class GaussianMembershipFunctionTest extends
+public class TestGaussianMembershipFunction extends
 		BaseMembershipFunctionTest<GaussianMembershipFunction> {
 
 	protected GaussianMembershipFunction mf;

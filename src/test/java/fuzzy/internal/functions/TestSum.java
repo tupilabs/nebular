@@ -37,7 +37,7 @@ public class TestSum {
 	}
 	
 	@Test
-	public void testEmptySum() {
+	public void testSumEmpty() {
 		Double r = Sum.of(Collections.<Double>emptyList());
 		assertEquals(Double.valueOf(0.0), r);
 	}

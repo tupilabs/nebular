@@ -41,6 +41,7 @@ import fuzzy.mf.MembershipFunction;
  */
 public class BisectorDefuzzificationFunction<T extends Number & Comparable<T>>
         implements DefuzzificationFunction<T> {
+
     /**
      * {@inheritDoc}
      *

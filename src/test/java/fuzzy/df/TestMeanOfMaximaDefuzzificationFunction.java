@@ -21,7 +21,6 @@ import org.apache.commons.functor.generator.range.DoubleRange;
 import org.junit.Test;
 
 import fuzzy.mf.MembershipFunction;
-import fuzzy.mf.SigmoidalMembershipFunction;
 import fuzzy.mf.TrapezoidalMembershipFunction;
 
 
@@ -29,32 +28,23 @@ import fuzzy.mf.TrapezoidalMembershipFunction;
  * Tests for Smallest Of Maxima Defuzzification Function.
  * 
  * @since 0.2
- * @see LargestOfMaximaDefuzzificationFunction
+ * @see SmallestOfMaximaDefuzzificationFunction
  */
-public class TestLargestOfMaximaDefuzzificationFunction extends BaseDefuzzificationFunctionTest<LargestOfMaximaDefuzzificationFunction<Double>>{
+public class TestMeanOfMaximaDefuzzificationFunction extends BaseDefuzzificationFunctionTest<MeanOfMaximaDefuzzificationFunction<Double>>{
 
 	@Override
-	protected LargestOfMaximaDefuzzificationFunction<Double> makeDefuzzificationFunction() {
-		final LargestOfMaximaDefuzzificationFunction<Double> df = new LargestOfMaximaDefuzzificationFunction<Double>();
+	protected MeanOfMaximaDefuzzificationFunction<Double> makeDefuzzificationFunction() {
+		final MeanOfMaximaDefuzzificationFunction<Double> df = new MeanOfMaximaDefuzzificationFunction<Double>();
 		return df;
 	}
 
 	@Test
 	public void testDefuzzification() {
-	    LargestOfMaximaDefuzzificationFunction<Double> df = makeDefuzzificationFunction();
+	    MeanOfMaximaDefuzzificationFunction<Double> df = makeDefuzzificationFunction();
 		DoubleRange range = new DoubleRange(-10.0, 10.0, 0.1);
 		MembershipFunction<Double> mf = new TrapezoidalMembershipFunction(-10.0, -8.0, -4.0, 7.0);
-		Double d = df.evaluate(range, mf);
-		assertEquals(Integer.valueOf(-8).toString(), new DecimalFormat("#.#").format(d));
-	}
-
-	@Test()
-	public void testDefuzzificationEmptySet() {
-	    LargestOfMaximaDefuzzificationFunction<Double> df = makeDefuzzificationFunction();
-		DoubleRange range = new DoubleRange(0.0, 0.0);
-		MembershipFunction<Double> mf = new SigmoidalMembershipFunction(-10.0, 10.0);
-		Double d = df.evaluate(range, mf);
-		assertEquals(Double.valueOf(0.0), d);
+        Double d = df.evaluate(range, mf);
+		assertEquals(Integer.valueOf(-6).toString(), new DecimalFormat("#.#").format(d));
 	}
 
 }

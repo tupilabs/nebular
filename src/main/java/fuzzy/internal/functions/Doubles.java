@@ -13,25 +13,31 @@
  */
 package fuzzy.internal.functions;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
+import java.util.Collection;
 
 /**
- * Tests for Map Absolute values procedure.
- * 
+ * Utility methods for Doubles.
+ *
  * @since 0.2
- * @see MapAbs
  */
-public class TestMapAbs {
+public class Doubles {
 
-	@Test
-	public void testMapAbs() {
-		MapAbs<Double> mapAbs = new MapAbs<Double>();
-		assertTrue(mapAbs.getCol().size() == 0);
-		mapAbs.run(-1.0);
-		assertEquals(Double.valueOf(1.0), mapAbs.getCol().iterator().next());
-	}
-	
+    /**
+     * Convert a collection of boxed Doubles into an array with primitive
+     * doubles.
+     *
+     * @param col collection of boxed Doubles
+     * @return array with primitive doubles
+     */
+    public static double[] toArray(Collection<Double> col) {
+        col.remove(null);
+        double[] r = new double[col.size()];
+        int i = 0;
+        for (Double value : col) {
+            r[i] = value;
+            i++;
+        }
+        return r;
+    }
+
 }

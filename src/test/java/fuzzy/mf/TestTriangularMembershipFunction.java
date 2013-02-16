@@ -29,7 +29,7 @@ import org.junit.Test;
  * @since 0.1
  * @see TriangularMembershipFunction
  */
-public class TriangularMembershipFunctionTest extends BaseMembershipFunctionTest<TriangularMembershipFunction> {
+public class TestTriangularMembershipFunction extends BaseMembershipFunctionTest<TriangularMembershipFunction> {
 
 	protected TriangularMembershipFunction mf;
 	

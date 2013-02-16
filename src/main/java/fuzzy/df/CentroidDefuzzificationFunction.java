@@ -50,7 +50,8 @@ import fuzzy.util.CrispFuzzyProduct;
  */
 public class CentroidDefuzzificationFunction<T extends Number & Comparable<T>>
 		implements DefuzzificationFunction<T> {
-	/**
+
+    /**
 	 * {@inheritDoc}
 	 *
 	 * @throws IllegalArgumentException if total area is zero

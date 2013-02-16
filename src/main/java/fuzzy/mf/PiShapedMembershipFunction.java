@@ -40,15 +40,15 @@ public class PiShapedMembershipFunction implements MembershipFunction<Double> {
 		if(x <= a) {
 			return 0.0;
 		} else if (a <= x && x <= ((a+b)/2)) {
-			return 2 * FastMath.pow(((x-a)/(b-a)), 2);
+			return 2 * (FastMath.pow((x-a)/(b-a), 2));
 		} else if(((a+b)/2) <= x && x <= b) {
-			return 1 - 2 * FastMath.pow(((x-b)/(b-a)), 2);
+			return 1 - (2 * FastMath.pow((x-b)/(b-a), 2));
 		} else if(b <= x && x <= c) {
 			return 1.0;
-		} else if(c <= x && x <= ((c+d)/2)) {
-			return 1 - 2 * FastMath.pow(((x-c)/(d-c)), 2);
+		} else if(c <= x && x <= (c+d)/2) {
+			return 1 - (2 * (FastMath.pow((x-c)/(d-c), 2)));
 		} else if((c+d)/2 <= x && x <= d) {
-			return 2 * FastMath.pow(((x-d)/(d-c)), 2);
+			return 2 * (FastMath.pow((x-d)/(d-c), 2));
 		} else if(x >= d) {
 			return 0.0;
 		}

@@ -30,14 +30,20 @@ public class Min<T extends Number & Comparable<T>> implements Function<Double> {
 	 * Collection.
 	 */
     private final Collection<T> col;
+    /**
+     * Whether use the absolute value of elements or not.
+     */
+    private final boolean abs;
 
     /**
      * Constructor with arguments.
      *
      * @param col a collection
+     * @param abs whether to use absolute values or not
      */
-    public Min(Collection<T> col) {
+    public Min(Collection<T> col, boolean abs) {
         this.col = col;
+        this.abs = abs;
     }
 
     /*
@@ -45,25 +51,34 @@ public class Min<T extends Number & Comparable<T>> implements Function<Double> {
      * @see org.apache.commons.functor.Function#evaluate()
      */
     public Double evaluate() {
+        double out = 0.0;
         double min = 0.0;
         boolean first = true;
-        for (T value : col) {
-            if (first || value.doubleValue() < min) {
-                min = value.doubleValue();
+        for (T elem : col) {
+            final double value;
+            if (abs) {
+                value = Math.abs(elem.doubleValue());
+            } else {
+                value = elem.doubleValue();
+            }
+            if (first || value < min) {
+                min = value;
+                out = elem.doubleValue();
                 first = false;
             }
         }
-        return min;
+        return out;
     }
 
     /**
      * Returns the minimum value found in a collection.
      *
      * @param col a collection
+     * @param abs whether to use absolute values or not
      * @return minimum value
      */
-    public static <T extends Number & Comparable<T>> double of(Collection<T> col) {
-        return new Min<T>(col).evaluate();
+    public static <T extends Number & Comparable<T>> double of(Collection<T> col, boolean abs) {
+        return new Min<T>(col, abs).evaluate();
     }
 
 }

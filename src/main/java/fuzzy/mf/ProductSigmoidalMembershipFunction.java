@@ -50,7 +50,7 @@ public class ProductSigmoidalMembershipFunction implements MembershipFunction<Do
 		final double r1 = sigmoid.value(a1*(x-c1));
 		final double r2 = sigmoid.value(a2*(x-c2));
 		
-		return (r1 * r2);
+		return r1 * r2;
 	}
 	
 	/* (non-Javadoc)

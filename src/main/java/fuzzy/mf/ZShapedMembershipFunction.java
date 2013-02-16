@@ -35,10 +35,10 @@ public class ZShapedMembershipFunction implements MembershipFunction<Double> {
 	public Double evaluate(Double x) {
 		if(x <= a) {
 			return 1.0;
-		} else if(a <= x && x <= ((a+b)/2)) {
-			return 1-(2 * FastMath.pow(((x-a)/(b-a)), 2));
-		} else if(((a+b)/2) <= x && x <= b) {
-			return 2 * FastMath.pow(((x-b)/(b-a)), 2);
+		} else if(a <= x && x <= (a+b)/2) {
+			return 1-(2 * FastMath.pow((x-a)/(b-a), 2));
+		} else if((a+b)/2 <= x && x <= b) {
+			return 2 * FastMath.pow((x-b)/(b-a), 2);
 		} else if(x >= b) {
 			return 0.0;
 		}

@@ -36,7 +36,7 @@ public class GaussianMembershipFunction implements MembershipFunction<Double> {
 	}
 	
 	public Double evaluate(Double x) {
-		return FastMath.exp(-FastMath.pow((x-c), 2) / (2*FastMath.pow(sigma, 2))); 
+		return FastMath.exp(-FastMath.pow(x-c, 2) / (2 * FastMath.pow(sigma, 2))); 
 	}
 	
 	/* (non-Javadoc)

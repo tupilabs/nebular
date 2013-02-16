@@ -29,28 +29,28 @@ import fuzzy.mf.TrapezoidalMembershipFunction;
  * Tests for Smallest Of Maxima Defuzzification Function.
  * 
  * @since 0.2
- * @see LargestOfMaximaDefuzzificationFunction
+ * @see SmallestOfMaximaDefuzzificationFunction
  */
-public class TestLargestOfMaximaDefuzzificationFunction extends BaseDefuzzificationFunctionTest<LargestOfMaximaDefuzzificationFunction<Double>>{
+public class TestSmallestOfMaximaDefuzzificationFunction extends BaseDefuzzificationFunctionTest<SmallestOfMaximaDefuzzificationFunction<Double>>{
 
 	@Override
-	protected LargestOfMaximaDefuzzificationFunction<Double> makeDefuzzificationFunction() {
-		final LargestOfMaximaDefuzzificationFunction<Double> df = new LargestOfMaximaDefuzzificationFunction<Double>();
+	protected SmallestOfMaximaDefuzzificationFunction<Double> makeDefuzzificationFunction() {
+		final SmallestOfMaximaDefuzzificationFunction<Double> df = new SmallestOfMaximaDefuzzificationFunction<Double>();
 		return df;
 	}
 
 	@Test
 	public void testDefuzzification() {
-	    LargestOfMaximaDefuzzificationFunction<Double> df = makeDefuzzificationFunction();
+		SmallestOfMaximaDefuzzificationFunction<Double> df = makeDefuzzificationFunction();
 		DoubleRange range = new DoubleRange(-10.0, 10.0, 0.1);
 		MembershipFunction<Double> mf = new TrapezoidalMembershipFunction(-10.0, -8.0, -4.0, 7.0);
-		Double d = df.evaluate(range, mf);
-		assertEquals(Integer.valueOf(-8).toString(), new DecimalFormat("#.#").format(d));
+        Double d = df.evaluate(range, mf);
+		assertEquals(Integer.valueOf(-4).toString(), new DecimalFormat("#.#").format(d));
 	}
 
 	@Test()
 	public void testDefuzzificationEmptySet() {
-	    LargestOfMaximaDefuzzificationFunction<Double> df = makeDefuzzificationFunction();
+		SmallestOfMaximaDefuzzificationFunction<Double> df = makeDefuzzificationFunction();
 		DoubleRange range = new DoubleRange(0.0, 0.0);
 		MembershipFunction<Double> mf = new SigmoidalMembershipFunction(-10.0, 10.0);
 		Double d = df.evaluate(range, mf);

@@ -18,6 +18,7 @@ import java.util.Collection;
 import org.apache.commons.functor.generator.range.NumericRange;
 import org.apache.commons.math3.stat.descriptive.moment.Mean;
 
+import fuzzy.internal.functions.Doubles;
 import fuzzy.mf.MembershipFunction;
 import fuzzy.util.MaxMF;
 
@@ -37,26 +38,18 @@ import fuzzy.util.MaxMF;
  * @param <T> numeric type used in this defuzzification function
  * @since 0.2
  */
-public class MeanOfMaximaDefuzzificationFunction implements
-        DefuzzificationFunction<Double> {
-    public Double evaluate(NumericRange<Double> x, MembershipFunction<Double> mf) {
+public class MeanOfMaximaDefuzzificationFunction<T extends Number & Comparable<T>>
+        implements DefuzzificationFunction<T> {
+
+    /*
+     * (non-Javadoc)
+     * @see fuzzy.df.DefuzzificationFunction#evaluate(org.apache.commons.functor.generator.range.NumericRange, fuzzy.mf.MembershipFunction)
+     */
+    public Double evaluate(NumericRange<T> x, MembershipFunction<T> mf) {
         Collection<Double> maximumValues = MaxMF.of(x.toCollection(), mf)
                 .keySet();
         double mean = new Mean().evaluate(Doubles.toArray(maximumValues));
         return mean;
-    }
-
-    private static class Doubles {
-        public static double[] toArray(Collection<Double> col) {
-            col.remove(null);
-            double[] r = new double[col.size()];
-            int i = 0;
-            for (Double value : col) {
-                r[i] = value;
-                i++;
-            }
-            return r;
-        }
     }
 
 	/* (non-Javadoc)

@@ -29,7 +29,7 @@ import org.junit.Test;
  * @since 0.1
  * @see ProductSigmoidalMembershipFunction
  */
-public class ProductSigmoidalMembershipFunctionTest extends BaseMembershipFunctionTest<ProductSigmoidalMembershipFunction> {
+public class TestProductSigmoidalMembershipFunction extends BaseMembershipFunctionTest<ProductSigmoidalMembershipFunction> {
 
 	protected ProductSigmoidalMembershipFunction mf;
 	
