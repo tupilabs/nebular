@@ -18,6 +18,7 @@ import static org.junit.Assert.assertEquals;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.util.Locale;
+import java.util.function.Function;
 
 import org.junit.After;
 import org.junit.Before;
@@ -30,7 +31,7 @@ import org.junit.Test;
  * @see GaussianMembershipFunction
  */
 public class TestGaussianMembershipFunction extends
-		BaseMembershipFunctionTest<GaussianMembershipFunction> {
+		BaseMembershipFunctionTest<Function<?, ?>> {
 
 	protected GaussianMembershipFunction mf;
 
@@ -179,7 +180,7 @@ public class TestGaussianMembershipFunction extends
 		nf.setRoundingMode(RoundingMode.HALF_UP);
 		int i = 0;
 		for (double x = 0.0; x <= 10.0; x += 0.1) {
-			double y = Double.parseDouble(nf.format(mf.evaluate(x)));
+			double y = Double.parseDouble(nf.format(mf.apply(x)));
 			assertEquals(Double.valueOf(expected[i][1]), Double.valueOf(y));
 			i++;
 		}

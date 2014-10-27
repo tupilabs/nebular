@@ -13,6 +13,8 @@
  */
 package fuzzy.mf;
 
+import java.util.function.Function;
+
 import org.apache.commons.math3.util.FastMath;
 
 /**
@@ -22,7 +24,7 @@ import org.apache.commons.math3.util.FastMath;
  *
  * @since 0.1
  */
-public class GaussianMembershipFunction implements MembershipFunction<Double> {
+public class GaussianMembershipFunction implements Function<Double, Double> {
 
 	// TODO Revisit this class later, and see if we can use math Gaussian
 	//protected final Gaussian gaussian;
@@ -35,7 +37,8 @@ public class GaussianMembershipFunction implements MembershipFunction<Double> {
 		this.c = c;
 	}
 	
-	public Double evaluate(Double x) {
+	@Override
+	public Double apply(Double x) {
 		return FastMath.exp(-FastMath.pow(x-c, 2) / (2 * FastMath.pow(sigma, 2))); 
 	}
 	

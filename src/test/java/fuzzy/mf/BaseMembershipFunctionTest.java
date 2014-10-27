@@ -18,6 +18,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.function.Function;
+
 import org.junit.Test;
 
 /**
@@ -26,7 +28,7 @@ import org.junit.Test;
  * @param <T> Type of Membership Function
  * @since 0.1
  */
-public abstract class BaseMembershipFunctionTest<T extends MembershipFunction<?>> {
+public abstract class BaseMembershipFunctionTest<T extends Function<?, ?>> {
 
 	/**
 	 * Creates a membership function for tests.
