@@ -1,14 +1,14 @@
 /*
- * Licensed under the Apache License, Version 2.0 (the "License"); 
- * you may not use this file except in compliance with the License. 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software 
- * distributed under the License is distributed on an 
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
- * either express or implied. See the License for the specific language 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
 package fuzzy.mf;
@@ -25,34 +25,34 @@ import org.junit.Test;
 
 /**
  * Tests for S-Shaped Membership Function.
- * 
+ *
  * @since 0.1
  * @see SShapedMembershipFunction
  */
 public class TestSShapedMembershipFunction extends BaseMembershipFunctionTest<SShapedMembershipFunction> {
 
 	protected SShapedMembershipFunction mf;
-	
+
 	private final double a = 1.0;
 	private final double b = 8.0;
-	
+
 	private final double[][] expected = new double[101][2];
-	
+
 	@Override
 	protected SShapedMembershipFunction makeMembershipFunction() {
 		return new SShapedMembershipFunction(a, b);
 	}
-	
+
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
 		mf = makeMembershipFunction();
-		
+
 		/*
 		 * Results from Matlab smf.
-		 * 
+		 *
 		 * x=0:0.1:10;
 		 * y=smf(x,[1 8]);
 		 */
@@ -167,7 +167,7 @@ public class TestSShapedMembershipFunction extends BaseMembershipFunctionTest<SS
 	public void tearDown() throws Exception {
 		mf = null;
 	}
-	
+
 	/**
 	 * Test method for {@link fuzzy.mf.SShapedMembershipFunction#evaluate(java.lang.Double)}.
 	 */
@@ -178,10 +178,10 @@ public class TestSShapedMembershipFunction extends BaseMembershipFunctionTest<SS
 		nf.setRoundingMode(RoundingMode.HALF_UP);
 		int i = 0;
 		for(double x = 0.0 ; x <= 10.0 ; x+=0.1) {
-			double y = Double.parseDouble(nf.format(mf.evaluate(x)));
+			double y = Double.parseDouble(nf.format(mf.apply(x)));
 			assertEquals(Double.valueOf(expected[i][1]), Double.valueOf(y));
 			i++;
 		}
 	}
-	
+
 }

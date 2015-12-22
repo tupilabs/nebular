@@ -1,14 +1,14 @@
 /*
- * Licensed under the Apache License, Version 2.0 (the "License"); 
- * you may not use this file except in compliance with the License. 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software 
- * distributed under the License is distributed on an 
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
- * either express or implied. See the License for the specific language 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
 package fuzzy.mf;
@@ -25,7 +25,7 @@ import org.junit.Test;
 
 /**
  * Tests for Z-Shaped Membership Function.
- * 
+ *
  * @see ZShapedMembershipFunction
  * @since 0.1
  */
@@ -35,24 +35,24 @@ public class TestZShapedMembershipFunction extends BaseMembershipFunctionTest<ZS
 
 	private final double a = 3.0;
 	private final double b = 7.0;
-	
+
 	private final double[][] expected = new double[101][2];
-	
+
 	@Override
 	protected ZShapedMembershipFunction makeMembershipFunction() {
 		return new ZShapedMembershipFunction(a, b);
 	}
-	
+
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
 		mf = makeMembershipFunction();
-		
+
 		/*
 		 * Results from Matlab zmf.
-		 * 
+		 *
 		 * x=0:0.1:10;
 		 * y=zmf(x,[3 7]);
 		 */
@@ -173,7 +173,7 @@ public class TestZShapedMembershipFunction extends BaseMembershipFunctionTest<ZS
 	 */
 	@Test
 	public void testEvaluate() {
-		// TODO Revisit this class later... there is some strange issue with 
+		// TODO Revisit this class later... there is some strange issue with
 		// rounding in zmf function in matlab or with math or apache math.
 		final NumberFormat nf = NumberFormat.getInstance(Locale.US);
 		//nf.setMaximumFractionDigits(4);
@@ -181,7 +181,7 @@ public class TestZShapedMembershipFunction extends BaseMembershipFunctionTest<ZS
 		nf.setRoundingMode(RoundingMode.HALF_UP);
 		int i = 0;
 		for(double x = 0.0 ; x <= 10.0 ; x+=0.1) {
-			double y = Double.parseDouble(nf.format(mf.evaluate(x)));
+			double y = Double.parseDouble(nf.format(mf.apply(x)));
 			//assertEquals(Double.valueOf(expected[i][1]), Double.valueOf(y));
 			Double expectedValue = Double.parseDouble(nf.format(Double.valueOf(expected[i][1])));
 			assertEquals(expectedValue, Double.valueOf(y));

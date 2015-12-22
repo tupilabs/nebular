@@ -1,14 +1,14 @@
 /*
- * Licensed under the Apache License, Version 2.0 (the "License"); 
- * you may not use this file except in compliance with the License. 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software 
- * distributed under the License is distributed on an 
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
- * either express or implied. See the License for the specific language 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
 package fuzzy.mf;
@@ -25,34 +25,34 @@ import org.junit.Test;
 
 /**
  * Tests for Sigmoidal Membership Function.
- * 
+ *
  * @since 0.1
  * @see SigmoidalMembershipFunction
  */
 public class TestSigmoidalMembershipFunction extends BaseMembershipFunctionTest<SigmoidalMembershipFunction> {
 
 	protected SigmoidalMembershipFunction mf;
-	
+
 	private final double a = 2.0;
 	private final double c = 4.0;
-	
+
 	private final double[][] expected = new double[101][2];
-	
+
 	@Override
 	protected SigmoidalMembershipFunction makeMembershipFunction() {
 		return new SigmoidalMembershipFunction(a, c);
 	}
-	
+
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
 		mf = makeMembershipFunction();
-		
+
 		/*
 		 * Results from Matlab sigmf.
-		 * 
+		 *
 		 * x=0:0.1:10;
 		 * y=sigmf(x, [2 4]);
 		 */
@@ -157,7 +157,7 @@ public class TestSigmoidalMembershipFunction extends BaseMembershipFunctionTest<
 		expected[98] = new double[]{9.8000, 1.0000};
 		expected[99] = new double[]{9.9000, 1.0000};
 		expected[100] = new double[]{10.0000, 1.0000};
-		
+
 	}
 
 	/**
@@ -178,10 +178,10 @@ public class TestSigmoidalMembershipFunction extends BaseMembershipFunctionTest<
 		nf.setRoundingMode(RoundingMode.HALF_UP);
 		int i = 0;
 		for(double x = 0.0 ; x <= 10.0 ; x+=0.1) {
-			double y = Double.parseDouble(nf.format(mf.evaluate(x)));
+			double y = Double.parseDouble(nf.format(mf.apply(x)));
 			assertEquals(Double.valueOf(expected[i][1]), Double.valueOf(y));
 			i++;
 		}
 	}
-	
+
 }

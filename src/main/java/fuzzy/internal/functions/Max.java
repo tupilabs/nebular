@@ -1,21 +1,20 @@
 /*
- * Licensed under the Apache License, Version 2.0 (the "License"); 
- * you may not use this file except in compliance with the License. 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software 
- * distributed under the License is distributed on an 
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
- * either express or implied. See the License for the specific language 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
 package fuzzy.internal.functions;
 
 import java.util.Collection;
-
-import org.apache.commons.functor.Function;
+import java.util.function.Supplier;
 
 /**
  * Returns the maximum value in a collection. In case the collection is empty it
@@ -24,7 +23,7 @@ import org.apache.commons.functor.Function;
  * @param <T> numeric type
  * @since 0.2
  */
-public class Max<T extends Number & Comparable<T>> implements Function<Double> {
+public class Max<T extends Number & Comparable<T>> implements Supplier<Double> {
 
 	/**
 	 * Collection.
@@ -48,9 +47,9 @@ public class Max<T extends Number & Comparable<T>> implements Function<Double> {
 
     /*
      * (non-Javadoc)
-     * @see org.apache.commons.functor.Function#evaluate()
+     * @see java.util.function.Supplier#get()
      */
-    public Double evaluate() {
+    public Double get() {
         double out = 0.0;
         double max = 0.0;
         boolean first = true;
@@ -78,7 +77,7 @@ public class Max<T extends Number & Comparable<T>> implements Function<Double> {
      * @return maximum value
      */
     public static <T extends Number & Comparable<T>> double of(Collection<T> col, boolean abs) {
-        return new Max<T>(col, abs).evaluate();
+        return new Max<T>(col, abs).get();
     }
 
 }

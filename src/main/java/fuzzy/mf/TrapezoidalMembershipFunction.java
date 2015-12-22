@@ -1,22 +1,22 @@
 /*
- * Licensed under the Apache License, Version 2.0 (the "License"); 
- * you may not use this file except in compliance with the License. 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software 
- * distributed under the License is distributed on an 
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
- * either express or implied. See the License for the specific language 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
 package fuzzy.mf;
 
 
 /**
- * Trapezoidal Shaped Membership Function. Equivalent to Matlab 
- * <a href="http://www.mathworks.com/help/toolbox/fuzzy/trapmf.html">trapmf</a> 
+ * Trapezoidal Shaped Membership Function. Equivalent to Matlab
+ * <a href="http://www.mathworks.com/help/toolbox/fuzzy/trapmf.html">trapmf</a>
  * function.
  *
  * @since 0.1
@@ -27,15 +27,20 @@ public class TrapezoidalMembershipFunction implements MembershipFunction<Double>
 	private final double b;
 	private final double c;
 	private final double d;
-	
+
 	public TrapezoidalMembershipFunction(double a, double b, double c, double d) {
 		this.a = a;
 		this.b = b;
 		this.c = c;
 		this.d = d;
 	}
-	
-	public Double evaluate(Double x) {
+
+	/*
+	 * (non-Javadoc)
+	 * @see fuzzy.mf.MembershipFunction#apply(java.lang.Object)
+	 */
+	@Override
+	public Double apply(Double x) {
 		if(x <= a) {
 			return 0.0;
 		} else if(a <= x && x <= b) {
@@ -45,10 +50,10 @@ public class TrapezoidalMembershipFunction implements MembershipFunction<Double>
 		} else if(d <= x) {
 			return 0.0;
 		}
-		
+
 		return 1.0;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
@@ -66,7 +71,7 @@ public class TrapezoidalMembershipFunction implements MembershipFunction<Double>
 		final TrapezoidalMembershipFunction that = (TrapezoidalMembershipFunction)obj;
 		return this.a == that.a && this.b == that.b && this.c == that.c && this.d == that.d;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -79,7 +84,7 @@ public class TrapezoidalMembershipFunction implements MembershipFunction<Double>
 		hash ^= (int)this.b;
 		return hash;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

@@ -1,14 +1,14 @@
 /*
- * Licensed under the Apache License, Version 2.0 (the "License"); 
- * you may not use this file except in compliance with the License. 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software 
- * distributed under the License is distributed on an 
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
- * either express or implied. See the License for the specific language 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
 package fuzzy.mf;
@@ -16,9 +16,9 @@ package fuzzy.mf;
 import org.apache.commons.math3.util.FastMath;
 
 /**
- * Triangular Membership Function. Equivalent to Matlab 
- * <a href="http://www.mathworks.com/help/toolbox/fuzzy/trimf.html">trimf</a> 
- * function. 
+ * Triangular Membership Function. Equivalent to Matlab
+ * <a href="http://www.mathworks.com/help/toolbox/fuzzy/trimf.html">trimf</a>
+ * function.
  *
  * @since 0.1
  */
@@ -27,17 +27,22 @@ public class TriangularMembershipFunction implements MembershipFunction<Double> 
 	private final double a;
 	private final double b;
 	private final double c;
-	
+
 	public TriangularMembershipFunction(double a, double b, double c) {
 		this.a = a;
 		this.b = b;
 		this.c = c;
 	}
-	
-	public Double evaluate(Double x) {
+
+	/*
+	 * (non-Javadoc)
+	 * @see fuzzy.mf.MembershipFunction#apply(java.lang.Object)
+	 */
+	@Override
+	public Double apply(Double x) {
 		return FastMath.max(FastMath.min((x-a)/(b-a), (c-x)/(c-b)), 0.0);
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
@@ -55,7 +60,7 @@ public class TriangularMembershipFunction implements MembershipFunction<Double> 
 		final TriangularMembershipFunction that = (TriangularMembershipFunction)obj;
 		return this.a == that.a && this.b == that.b && this.c == that.c;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -70,7 +75,7 @@ public class TriangularMembershipFunction implements MembershipFunction<Double> 
 		hash ^= (int)this.c;
 		return hash;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

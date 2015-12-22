@@ -1,14 +1,14 @@
 /*
- * Licensed under the Apache License, Version 2.0 (the "License"); 
- * you may not use this file except in compliance with the License. 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software 
- * distributed under the License is distributed on an 
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
- * either express or implied. See the License for the specific language 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
 package fuzzy.mf;
@@ -25,26 +25,26 @@ import org.junit.Test;
 
 /**
  * Tests for PI-Shaped Membership Function.
- * 
+ *
  * @since 0.1
  * @see PiShapedMembershipFunction
  */
 public class TestPiShapedMembershipFunction extends BaseMembershipFunctionTest<PiShapedMembershipFunction> {
 
 	protected PiShapedMembershipFunction mf;
-	
+
 	private final double a = 1.0;
 	private final double b = 4.0;
 	private final double c = 5.0;
 	private final double d = 10.0;
-	
+
 	private final double[][] expected = new double[101][2];
-	
+
 	@Override
 	protected PiShapedMembershipFunction makeMembershipFunction() {
 		return new PiShapedMembershipFunction(a, b, c, d);
 	}
-	
+
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -54,7 +54,7 @@ public class TestPiShapedMembershipFunction extends BaseMembershipFunctionTest<P
 
 		/*
 		 * Results from Matlab pimf.
-		 * 
+		 *
 		 * x=0:0.1:10; y=pimf(x,[1 4 5 10]);
 		 */
 		expected[0] = new double[] { 0.0000, 0 };
@@ -179,7 +179,7 @@ public class TestPiShapedMembershipFunction extends BaseMembershipFunctionTest<P
 		nf.setRoundingMode(RoundingMode.HALF_UP);
 		int i = 0;
 		for(double x = 0.0 ; x <= 10.0 ; x+=0.1) {
-			double y = Double.parseDouble(nf.format(mf.evaluate(x)));
+			double y = Double.parseDouble(nf.format(mf.apply(x)));
 			assertEquals(Double.valueOf(expected[i][1]), Double.valueOf(y));
 			i++;
 		}

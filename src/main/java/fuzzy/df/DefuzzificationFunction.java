@@ -1,6 +1,7 @@
 package fuzzy.df;
 
-import org.apache.commons.functor.BinaryFunction;
+import java.util.function.BiFunction;
+
 import org.apache.commons.functor.generator.range.NumericRange;
 
 import fuzzy.mf.MembershipFunction;
@@ -13,7 +14,7 @@ import fuzzy.mf.MembershipFunction;
  * @since 0.2
  */
 public interface DefuzzificationFunction<T extends Number & Comparable<T>>
-		extends BinaryFunction<NumericRange<T>, MembershipFunction<T>, Double> {
+		extends BiFunction<NumericRange<T>, MembershipFunction<T>, Double> {
 	/**
 	 * Defuzzifies the result of a membership function applied to a numeric
 	 * range.
@@ -27,10 +28,10 @@ public interface DefuzzificationFunction<T extends Number & Comparable<T>>
 	 * <p>
 	 * This method may throw different exceptions, depending on the
 	 * implementation function.
-	 * 
+	 *
 	 * @param x numeric range
 	 * @param mf membership function applied to numeric range
 	 * @return crisp result
 	 */
-	Double evaluate(NumericRange<T> x, MembershipFunction<T> mf);
+	Double apply(NumericRange<T> x, MembershipFunction<T> mf);
 }

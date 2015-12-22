@@ -1,14 +1,14 @@
 /*
- * Licensed under the Apache License, Version 2.0 (the "License"); 
- * you may not use this file except in compliance with the License. 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software 
- * distributed under the License is distributed on an 
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
- * either express or implied. See the License for the specific language 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
 package fuzzy.mf;
@@ -26,12 +26,11 @@ import org.junit.Test;
 
 /**
  * Tests for Gaussian Membership Function.
- * 
+ *
  * @since 0.1
  * @see GaussianMembershipFunction
  */
-public class TestGaussianMembershipFunction extends
-		BaseMembershipFunctionTest<Function<?, ?>> {
+public class TestGaussianMembershipFunction extends BaseMembershipFunctionTest<Function<?, ?>> {
 
 	protected GaussianMembershipFunction mf;
 
@@ -54,7 +53,7 @@ public class TestGaussianMembershipFunction extends
 
 		/*
 		 * Results from Matlab gaussmf.
-		 * 
+		 *
 		 * x=0:0.1:10; y=gaussmf(x,[2 5]);
 		 */
 		expected[0] = new double[] { 0.0000, 0.0439 };
@@ -158,7 +157,6 @@ public class TestGaussianMembershipFunction extends
 		expected[98] = new double[] { 9.8000, 0.0561 };
 		expected[99] = new double[] { 9.9000, 0.0497 };
 		expected[100] = new double[] { 10.0000, 0.0439 };
-
 	}
 
 	/**

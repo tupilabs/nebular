@@ -1,14 +1,14 @@
 /*
- * Licensed under the Apache License, Version 2.0 (the "License"); 
- * you may not use this file except in compliance with the License. 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software 
- * distributed under the License is distributed on an 
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
- * either express or implied. See the License for the specific language 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
 package fuzzy.util;
@@ -16,8 +16,7 @@ package fuzzy.util;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-
-import org.apache.commons.functor.Function;
+import java.util.function.Supplier;
 
 import fuzzy.mf.MembershipFunction;
 
@@ -28,7 +27,7 @@ import fuzzy.mf.MembershipFunction;
  * @param <T> numeric type
  * @since 0.2
  */
-public final class CrispFuzzyProduct<T extends Number & Comparable<T>> implements Function<Collection<Double>> {
+public final class CrispFuzzyProduct<T extends Number & Comparable<T>> implements Supplier<Collection<Double>> {
 
 	/**
 	 * A collection.
@@ -53,12 +52,12 @@ public final class CrispFuzzyProduct<T extends Number & Comparable<T>> implement
 
     /*
      * (non-Javadoc)
-     * @see org.apache.commons.functor.Function#evaluate()
+     * @see java.util.function.Supplier#get()
      */
-    public Collection<Double> evaluate() {
+    public Collection<Double> get() {
         Collection<Double> result = new ArrayList<Double>();
         for (T value : collection) {
-            Double fuzzyValue = mf.evaluate(value);
+            Double fuzzyValue = mf.apply(value);
             result.add(value.doubleValue() * fuzzyValue);
         }
         return result;
@@ -72,7 +71,7 @@ public final class CrispFuzzyProduct<T extends Number & Comparable<T>> implement
      * @return crisp fuzzy producty of the elements in a collection
      */
     public static <T extends Number & Comparable<T>> Collection<Double> of(Collection<T> x, MembershipFunction<T> mf) {
-        return new CrispFuzzyProduct<T>(x, mf).evaluate();
+        return new CrispFuzzyProduct<T>(x, mf).get();
     }
 
 }
