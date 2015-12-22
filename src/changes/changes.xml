@@ -6,16 +6,9 @@
     <author email="kinow AT apache DOT org">Bruno P. Kinoshita</author>
   </properties>
   <body>
-    <release version="0.1" date="2012-03-11" description="First release">
+    <release version="0.4" date="2015-12-22" description="0.4 release">
       <action dev="kinow" type="add">
-        Initial code with support to differential sigmoidal, gaussing, 
-        generalized bell shaped, PI-shaped, product sigmoidal, sigmoidal, 
-        S-shaped, trapezoidal, triangular and Z-shaped membership functions.
-      </action>
-    </release>
-    <release version="0.2" date="2012-05-10" description="0.2 release">
-      <action dev="kinow" type="add">
-        Updated Apache Commons Functor classes used in nebular.
+        Use Java 8 function, bifunction and supplier.
       </action>
     </release>
     <release version="0.3" date="2013-02-16" description="0.3 release">
@@ -26,6 +19,18 @@
       <action dev="kinow" type="add">
         Created internal functions and a util package with classes to be 
         used by fuzzification, defuzzification and other packages of nebular.
+      </action>
+    </release>
+    <release version="0.2" date="2012-05-10" description="0.2 release">
+      <action dev="kinow" type="add">
+        Updated Apache Commons Functor classes used in nebular.
+      </action>
+    </release>
+    <release version="0.1" date="2012-03-11" description="First release">
+      <action dev="kinow" type="add">
+        Initial code with support to differential sigmoidal, gaussing, 
+        generalized bell shaped, PI-shaped, product sigmoidal, sigmoidal, 
+        S-shaped, trapezoidal, triangular and Z-shaped membership functions.
       </action>
     </release>
   </body>
