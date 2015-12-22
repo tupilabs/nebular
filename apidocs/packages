@@ -1,0 +1,17 @@
+org.apache.commons.functor
+org.apache.commons.functor.generator.loop
+org.apache.commons.functor.generator
+org.apache.commons.functor.generator.range
+org.apache.commons.functor.generator.util
+org.apache.commons.functor.adapter
+org.apache.commons.functor.aggregator
+org.apache.commons.functor.aggregator.functions
+org.apache.commons.functor.core
+org.apache.commons.functor.core.algorithm
+org.apache.commons.functor.core.comparator
+org.apache.commons.functor.core.composite
+org.apache.commons.functor.core.collection
+fuzzy.internal.functions
+fuzzy.mf
+fuzzy.df
+fuzzy.util
