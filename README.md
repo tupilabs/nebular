@@ -1,6 +1,6 @@
 # Nebular
 
-Nebular is a pure Java fuzzy API. With nebular you can include fuzzy logic and 
+Nebular is a pure Java fuzzy logic API. With nebular you can include fuzzy logic and 
 fuzzy sets to your Java code, without the need of external or binary files. 
 
 This is possible in nebular because it uses functional programming. Instead of 
@@ -16,7 +16,7 @@ The following code:
     double c = 4.0;
     SigmoidalMembershipFunction mf = new SigmoidalMembershipFunction(a, c);
     for(double i : new DoubleRange(0.0, 10.0, 0.1).toCollection()) {
-        System.out.printf("%.4f ", mf.evaluate(i));
+        System.out.printf("%.4f ", mf.apply(i));
     }
 
 Produces the following output:
