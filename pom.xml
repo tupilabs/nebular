@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>nebular</artifactId>
-	<version>0.4</version>
+	<version>0.5-SNAPSHOT</version>
 
 	<name>nebular</name>
 	<description>A fuzzy logic API in Java</description>
