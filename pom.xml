@@ -5,6 +5,7 @@
 
 	<artifactId>nebular</artifactId>
 	<version>0.4-SNAPSHOT</version>
+
 	<name>nebular</name>
 	<description>A fuzzy logic API in Java</description>
 
@@ -13,6 +14,10 @@
 		<artifactId>parent-oss</artifactId>
 		<version>0.1</version>
 	</parent>
+	
+	<url>http://tupilabs.github.io/nebular</url>
+	
+	<inceptionYear>2011</inceptionYear>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,10 +26,6 @@
 		<!-- needed until functor dependencies are removed and javadocs reviewed -->
 		<additionalparam>-Xdoclint:none</additionalparam>
 	</properties>
-
-	<url>http://tupilabs.github.io/nebular</url>
-
-	<inceptionYear>2011</inceptionYear>
 
 	<licenses>
 		<license>
@@ -51,7 +52,7 @@
 	</ciManagement>
 
 	<issueManagement>
-		<system>GitHub issue tracker</system>
+		<system>GitHub</system>
 		<url>https://github.com/tupilabs/nebular/issues</url>
 	</issueManagement>
 

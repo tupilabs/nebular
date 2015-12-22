@@ -10,6 +10,9 @@
       <action dev="kinow" type="add">
         Use Java 8 function, bifunction and supplier.
       </action>
+      <action dev="kinow" type="fix">
+        Replaced deprecated Sonatype OSS parent.
+      </action>
     </release>
     <release version="0.3" date="2013-02-16" description="0.3 release">
       <action dev="kinow" type="add">
